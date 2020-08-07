@@ -1,0 +1,150 @@
+<div class="row justify-content-center mainContent">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-document-heading" jhiTranslate="fjcintranetApp.document.home.createOrEditLabel">Create or edit a Document</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.codDoc" for="field_codDoc">Cod Doc</label>
+                    <input type="text" class="form-control" name="codDoc" id="field_codDoc"
+                           formControlName="codDoc" placeholder="{{ 'fjcintranetApp.document.create.placeholderCode' | translate }}"/>
+                    <div *ngIf="editForm.get('codDoc').invalid && (editForm.get('codDoc').dirty || editForm.get('codDoc').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codDoc').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.nameDoc" for="field_nameDoc">Name Doc</label>
+                    <input type="text" class="form-control" name="nameDoc" id="field_nameDoc"
+                           formControlName="nameDoc" placeholder="{{ 'fjcintranetApp.document.create.placeholderName' | translate }}"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.storage" for="field_storage">Storage</label>
+                    <select id="storageDoc" class="form-control" name="storage" id="field_storage" formControlName="storage">
+                        <option value="undefined" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+                        <option value="digital" jhiTranslate="fjcintranetApp.document.create.storageOpt.digital"></option>
+                        <option value="physical" jhiTranslate="fjcintranetApp.document.create.storageOpt.physical"></option>
+                        <option value="d/p" jhiTranslate="fjcintranetApp.document.create.storageOpt.both"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.dateCreation" for="field_dateCreation">Date Creation</label>
+                    <div class="input-group">
+                        <input readonly type="text" name="dateCreation" class="form-control w-75 mr-2" readonly id="field_dateCreation" ngbDatepicker  #dateCreationDp="ngbDatepicker" formControlName="dateCreation" placeholder="0000-00-00"/>
+                        <label *ngIf="editForm.get('dateCreation').value != null" (click)="clearInput('field_dateCreation','dateCreation')" class="clearBox m-0">X</label>
+                        <div class="p-1 ml-2">
+                          <img class="icons" (click)="dateCreationDp.toggle()" src="../../../content/icons/calendar.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.duration" for="field_duration">Duration</label>
+                    <select id="active" class="form-control" name="duration" id="field_duration" formControlName="duration">
+                        <option value="undefined" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+                        <option value="perman" jhiTranslate="fjcintranetApp.document.create.activeOpt.perman"></option>
+                        <option value="1" jhiTranslate="fjcintranetApp.document.create.activeOpt.one"></option>
+                        <option value="2" jhiTranslate="fjcintranetApp.document.create.activeOpt.two"></option>
+                        <option value="3" jhiTranslate="fjcintranetApp.document.create.activeOpt.three"></option>
+                        <option value="4" jhiTranslate="fjcintranetApp.document.create.activeOpt.four"></option>
+                        <option value="5" jhiTranslate="fjcintranetApp.document.create.activeOpt.five"></option>
+                        <option value="6" jhiTranslate="fjcintranetApp.document.create.activeOpt.six"></option>
+                        <option value="7" jhiTranslate="fjcintranetApp.document.create.activeOpt.seven"></option>
+                        <option value="8" jhiTranslate="fjcintranetApp.document.create.activeOpt.eigth"></option>
+                        <option value="9" jhiTranslate="fjcintranetApp.document.create.activeOpt.nine"></option>
+                        <option value="10" jhiTranslate="fjcintranetApp.document.create.activeOpt.teen"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.finalDisposition" for="field_finalDisposition">Final Disposition</label>
+                    <select class="form-Control w-100" name="finalDisposition" id="field_finalDisposition" formControlName="finalDisposition">
+                        <option value="undefined" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.origin" for="field_origin">Origin</label>
+                    <input type="number" class="form-control" name="origin" id="field_origin"
+                           formControlName="origin" placeholder="{{ 'fjcintranetApp.document.create.placeholderOrigin' | translate }}"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.doc" for="field_doc">Doc</label>
+                    <div>
+                        <div *ngIf="editForm.get('doc').value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('docContentType').value, editForm.get('doc').value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{editForm.get('docContentType').value}}, {{byteSize(editForm.get('doc').value)}}</span>
+                            <button type="button" (click)="editForm.patchValue({doc: null});editForm.patchValue({docContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_doc" (change)="setFileData($event, 'doc', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="doc" id="field_doc"
+                           formControlName="doc"/>
+                    <input type="hidden" class="form-control" name="docContentType" id="field_docContentType"
+                           formControlName="docContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.content" for="field_content">Content</label>
+                    <input type="text" class="form-control" name="content" id="field_content"
+                           formControlName="content" placeholder="{{ 'fjcintranetApp.document.create.placeholderContent' | translate }}"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.creator" for="field_creator">Creator</label>
+                    <select class="form-control" id="field_creator" name="creator" formControlName="creator">
+                        <option value="undefined" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+                        <option [ngValue]="userOption.id === editForm.get('creator').value?.id ? editForm.get('creator').value : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.departament" for="field_departament">Departament</label>
+                    <select class="form-control" id="field_departament" name="departament" formControlName="departament">
+                        <option value="undefined" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+                        <option [ngValue]="departamentOption.id === editForm.get('departament').value?.id ? editForm.get('departament').value : departamentOption" *ngFor="let departamentOption of departaments; trackBy: trackDepartamentById">{{departamentOption.nameDepartament}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('departament').invalid && (editForm.get('departament').dirty || editForm.get('departament').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('departament').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.state" for="field_state">State</label>
+                    <select class="form-control" id="field_state" name="state" formControlName="state">
+                        <option value="undefined" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+                        <option [ngValue]="documentStateOption.id === editForm.get('state').value?.id ? editForm.get('state').value : documentStateOption" *ngFor="let documentStateOption of documentstates; trackBy: trackDocumentStateById">{{documentStateOption.nameEs}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.document.type" for="field_type">Type</label>
+                    <select class="form-control" id="field_type" name="type" formControlName="type">
+                        <option value="undefined" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+                        <option [ngValue]="documentTypeOption.id === editForm.get('type').value?.id ? editForm.get('type').value : documentTypeOption" *ngFor="let documentTypeOption of documenttypes; trackBy: trackDocumentTypeById">{{documentTypeOption.name}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('type').invalid && (editForm.get('type').dirty || editForm.get('type').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('type').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

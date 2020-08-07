@@ -1,0 +1,90 @@
+<div class="d-flex flex-column align-items-center screenBox">
+  <div *ngIf="showModalMsg">
+    <jhi-modal-activity [modalTitle]="modalTitle" [modalMsg]="modalMsg" [icon]="modalIcon" [btnMsg]="modalbtn"
+    (closeModalVal)="closeModal($event)"></jhi-modal-activity>
+  </div>
+  <h2 class="pageTitle" jhiTranslate="fjcintranetApp.activity.create.titlePage"></h2>
+  <div class="dataBox p-4">
+    <form name="form" [formGroup]="editForm" (ngSubmit)="save()">
+      <div class="d-flex justify-content-between flex-row mb-4">
+        <div class="d-flex flex-column activityName">
+          <label for="nameAct" jhiTranslate="fjcintranetApp.activity.create.name"></label>
+          <input type="text" id="nameAct" placeholder="{{ 'fjcintranetApp.activity.create.placeholderName' | translate }}" formControlName="nameActivity">
+        </div>
+        <div class="d-flex flex-column w-25">
+          <label for="dateStart" jhiTranslate="fjcintranetApp.activity.create.startDate"></label>
+          <div class="d-flex flex-row align-items-center">
+            <input class="w-100 mr-2" type="text" id="dateStart" readonly ngbDatepicker #dateStartDp="ngbDatepicker" placeholder="0000-00-00" formControlName="dateStart">
+            <label *ngIf="editForm.get('dateStart').value != null" (click)="clearInput('dateStart','dateStart')" class="clearBox m-0">X</label>
+            <div class="p-1 ml-2">
+              <img class="icons" (click)="dateStartDp.toggle()" src="../../../content/icons/calendar.svg">
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-column w-25">
+          <label for="dateEnd" jhiTranslate="fjcintranetApp.activity.create.dateFinish"></label>
+          <div class="d-flex flex-row align-items-center">
+            <input class="w-100 mr-2" type="text" id="dateEnd" ngbDatepicker readonly #dateEndDp="ngbDatepicker" placeholder="0000-00-00" formControlName="dateLimit">
+            <label *ngIf="editForm.get('dateLimit').value != null" (click)="clearInput('dateEnd','dateLimit')" class="clearBox m-0">X</label>
+            <div class="p-1 ml-2">
+              <img class="icons" (click)="dateEndDp.toggle()" src="../../../content/icons/calendar.svg">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column mb-4">
+        <label for="dsc" jhiTranslate="fjcintranetApp.activity.create.dsc"></label>
+        <div class="w-100 pl-4 mt-1">
+          <textarea id="dsc" rows="8" class="w-100" placeholder="{{ 'fjcintranetApp.activity.create.placeholderDsc' | translate }}" formControlName="description"></textarea>
+        </div>
+      </div>
+      <div class="d-flex flex-column mb-4">
+        <label for="deliverables" jhiTranslate="fjcintranetApp.activity.create.deliverables"></label>
+        <div class="w-100 pl-4 mt-1">
+          <textarea id="deliverables" rows="8" class="w-100" placeholder="{{ 'fjcintranetApp.activity.create.placeholderDel' | translate }}" formControlName="deliverables"></textarea>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between flex-row mb-4">
+        <div class="d-flex flex-column activityName">
+          <label for="dpte" jhiTranslate="fjcintranetApp.activity.create.dpte"></label>
+          <select id="dpte" formControlName="dept">
+            <option value="Seleccione..." disabled selected jhiTranslate="fjcintranetApp.activity.create.dpteOpt.placeholder"></option>
+            <option *ngFor="let dpte of dpte; let i = index" [value]="dpte.id">{{ dpte.shortDsc }}</option>
+          </select>
+        </div>
+
+
+
+        <div class="d-flex flex-column w-50">
+
+          <label for="involved" jhiTranslate="fjcintranetApp.activity.create.involved"></label>
+
+          <input type="text" id="involved" (keyup)="searchUser($event)" autocomplete="off" placeholder="{{ 'fjcintranetApp.activity.create.placeholderInvol' | translate }}" formControlName="involvedActivity">
+          <div class="dataResult">
+            <p *ngFor="let name of likeUser" class="listItem" (click)="uploadName(name.login,i)">{{name.login}}-{{name.firstName}} {{name.lastName}}</p>
+            <p *ngIf="likeUser.length > 10" class="lastResult">Especifique para mejorar la busqueda</p>
+          </div>
+
+          <div>
+            <p *ngFor="let name of involvedNames; let k = index" class="involvedNames m-2">
+              <span>{{ name }}</span>
+              <span class="deleteInvolved ml-2" (click)="deleteInvol(k)">X</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="w-100 d-flex justify-content-center">
+        <button class="create" type="submit" jhiTranslate="fjcintranetApp.finding.create.buttonSend"></button>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

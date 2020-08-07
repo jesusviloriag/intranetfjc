@@ -1,0 +1,88 @@
+<div class="row justify-content-center mainContent">
+    <div class="col-8">
+        <div *ngIf="document">
+            <h2 jhiTranslate="fjcintranetApp.document.detail.title"></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="global.field.id"></span></dt>
+                <dd>
+                  <span>{{document.id}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.codDoc">Cod Doc</span></dt>
+                <dd>
+                    <span>{{document.codDoc}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.nameDoc">Name Doc</span></dt>
+                <dd>
+                    <span>{{document.nameDoc}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.storage">Storage</span></dt>
+                <dd>
+                    <span>{{document.storage}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.dateCreation">Date Creation</span></dt>
+                <dd>
+                    <span>{{document.dateCreation | date:'dd/MM/yyyy'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.duration">Duration</span></dt>
+                <dd>
+                    <span>{{document.duration}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.finalDisposition">Final Disposition</span></dt>
+                <dd>
+                    <span>{{document.finalDisposition}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.origin">Origin</span></dt>
+                <dd>
+                    <span>{{document.origin}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.doc">Doc</span></dt>
+                <dd>
+                    <div *ngIf="document.doc">
+                        <a (click)="openFile(document.docContentType, document.doc)" jhiTranslate="entity.action.open">open</a>
+                        {{document.docContentType}}, {{byteSize(document.doc)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.content">Content</span></dt>
+                <dd>
+                    <span>{{document.content}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.creator">Creator</span></dt>
+                <dd>
+                    {{document.creator?.login}}
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.departament">Departament</span></dt>
+                <dd>
+                    <div *ngIf="document.departament">
+                        <a [routerLink]="['/departament', document.departament?.id, 'view']">{{document.departament?.nameDepartament}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.state">State</span></dt>
+                <dd>
+                    <div *ngIf="document.state">
+                        <a [routerLink]="['/document-state', document.state?.id, 'view']">{{document.state?.nameEs}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.document.type">Type</span></dt>
+                <dd>
+                    <div *ngIf="document.type">
+                        <a [routerLink]="['/document-type', document.type?.id, 'view']">{{document.type?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/document', document.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="d-flex flex-column align-items-center screenBox">
+  <div *ngIf="showModalMsg">
+    <jhi-modal-activity [modalTitle]="modalTitle" [modalMsg]="modalMsg" [icon]="modalIcon" [btnMsg]="modalbtn"
+    (closeModalVal)="closeModal($event)"></jhi-modal-activity>
+  </div>
+  <h2 class="pageTitle" jhiTranslate="fjcintranetApp.activity.modify.titlePage"></h2>
+  <div class="dataBox py-2 px-4">
+    <form class="p-3 d-flex flex-column" name="form" [formGroup]="editForm" (ngSubmit)="save()">
+      <span class="text-center mb-2 actName" >{{ editForm.get('nameActivity').value }}</span>
+
+      <div class="d-flex flex-row justify-content-between mb-2">
+        <div class="d-flex flex-row align-items-center">
+          <label class="mr-1" jhiTranslate="fjcintranetApp.activity.modify.startDate"></label>
+          <span>{{ editForm.get('dateStart').value | date:'dd/MM/yyyy' }}</span>
+        </div>
+
+        <div class="d-flex flex-row align-items-center">
+          <label class="mr-1" jhiTranslate="fjcintranetApp.activity.modify.finishDate"></label>
+          <span>{{ editForm.get('dateLimit').value | date:'dd/MM/yyyy' }}</span>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row justify-content-between mb-2">
+        <div class="d-flex flex-row">
+          <label class="mr-1" jhiTranslate="fjcintranetApp.activity.modify.author"></label>
+          <span>{{ editForm.get('creator').value.login }}</span>
+        </div>
+
+        <div class="d-flex flex-row">
+          <label class="mr-1" jhiTranslate="fjcintranetApp.activity.modify.dpte"></label>
+          <span>{{activityDpte == undefined ? '' : activityDpte.nameDepartament}}</span>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row justify-content-between mb-2">
+        <div class="d-flex flex-row align-items-center w-25">
+          <label for="status" class="mr-1" jhiTranslate="fjcintranetApp.activity.modify.status"></label>
+          <select id="status" class="w-100" (change)="putDateReal($event)" formControlName="status">
+            <option value="Seleccione..." disabled selected jhiTranslate="fjcintranetApp.activity.modify.statusOpt.select"></option>
+            <option value="1" jhiTranslate="fjcintranetApp.activity.modify.statusOpt.active"></option>
+            <option value="2" jhiTranslate="fjcintranetApp.activity.modify.statusOpt.finished"></option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column mb-2">
+        <label for="involved" jhiTranslate="fjcintranetApp.activity.modify.involved"></label>
+
+        <div>
+          <p *ngFor="let name of involvedNames; let k = index" class="involvedNames m-2">
+            <span>{{ name }}</span>
+            <span class="deleteInvolved" (click)="deleteInvol(k)" *ngIf="k > maxInvolved">X</span>
+          </p>
+        </div>
+
+        <div class="w-100 pl-4 mt-1">
+          <input type="text" id="involved" (keyup)="searchUser($event)" autocomplete="off" placeholder="{{ 'fjcintranetApp.activity.create.placeholderInvol' | translate }}" class="w-100" formControlName="involvedActivity"/>
+          <div class="dataResult">
+            <p *ngFor="let name of likeUser" class="listItem" (click)="uploadName(name.login,i)">{{name.login}}-{{name.firstName}} {{name.lastName}}</p>
+            <p *ngIf="likeUser.length > 10" class="lastResult">Especifique para mejorar la busqueda</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column mb-2">
+        <label for="dsc" jhiTranslate="fjcintranetApp.activity.modify.dsc"></label>
+        <div class="w-100 pl-4 mt-1">
+          <textarea id="dsc" rows="8" class="w-100" formControlName="description"></textarea>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column mb-2">
+        <label for="deliverables" jhiTranslate="fjcintranetApp.activity.modify.deliverables"></label>
+        <div class="w-100 pl-4 mt-1">
+          <textarea id="deliverables" rows="8" class="w-100" formControlName="deliverables"></textarea>
+        </div>
+      </div>
+
+      <div class="w-100 d-flex justify-content-center">
+        <button class="save" type="submit" jhiTranslate="fjcintranetApp.activity.modify.button"></button>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

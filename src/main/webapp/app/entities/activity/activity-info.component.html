@@ -1,0 +1,156 @@
+<div class="d-flex flex-column align-items-center screenBox">
+    <h1 class="pageTitle" jhiTranslate="fjcintranetApp.activity.info.title"></h1>
+    <div class="findingBox" *ngIf="activity">
+        <span class="text-center">{{activity.nameActivity}}</span>
+
+        <div class="d-flex flex-row justify-content-between w-100 mb-4">
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.activity.info.startDate"></span>
+                <span>{{activity.dateStart | date:'dd/MM/yyyy'}}</span>
+            </span>
+
+             <span class="d-flex flex-row" *ngIf="activity.dateLimit !== null">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.activity.info.endDate"></span>
+                <span>{{activity.dateLimit | date:'dd/MM/yyyy'}}</span>
+            </span>
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.activity.info.realDate"></span>
+                <span *ngIf="activity.dateClosure == null" jhiTranslate="fjcintranetApp.finding.view.null"></span>
+                <span>{{activity.dateClosure | date:'dd/MM/yyyy'}}</span>
+            </span>
+        </div>
+
+        <div class="d-flex flex-row justify-content-between w-100 mb-4">
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.activity.info.author"></span>
+                <span>{{activity.creator?.login}}</span>
+            </span>
+
+             <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.activity.info.dept"></span>
+                <span>{{departament == undefined ? '' : departament.nameDepartament}}</span>
+            </span>
+        </div>
+
+        <div class="d-flex">
+            <span class="subTitles mr-2" jhiTranslate="fjcintranetApp.activity.info.status.status"></span>
+            <p *ngIf="activity.dateLimit !== null" jhiTranslate="fjcintranetApp.activity.info.status.active"></p>
+            <p *ngIf="activity.dateLimit == null" jhiTranslate="fjcintranetApp.activity.info.status.finished"></p>
+        </div>
+
+        <div class="d-flex">
+            <span class="subTitles mr-2" jhiTranslate="fjcintranetApp.activity.info.invol"></span>
+            <p class="invol">{{activity.involvedActivity}}</p>
+        </div>
+
+        <div class="dataBox">
+            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.activity.info.description"></span>
+            <p class="ml-4">{{activity.description}}</p>
+        </div>
+
+        <div class="dataBox">
+            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.activity.info.deliverables"></span>
+            <p class="ml-4">{{activity.deliverables}}</p>
+        </div>
+
+        <div class="d-flex flex-column">
+            <div class="d-flex justify-content-center w-100">
+                <button [routerLink]="['/activity', activity.id, 'modify']" class="button-s mx-2" type="button"
+                  jhiTranslate="fjcintranetApp.activity.info.modify" *ngIf="activity.status == 1"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center w-100 mt-5">
+      <button [routerLink]="['/activity', 'records']" class="button-s mx-2" type="button"  (click)="navigateBack()" jhiTranslate="fjcintranetApp.finding.view.buttonBack"></button>
+    </div>
+
+</div>
+
+<!-- <div *ngIf="!infoLoad">
+    <div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div> -->
+
+
+
+
+
+
+
+<!--<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="finding">
+            <h2><span jhiTranslate="fjcintranetApp.finding.detail.title">Finding</span> {{finding.id}}</h2>
+            <h1>HOLAAAAAAAAAAAAAAAAAAAA SOY YO EL DE LOS MEMES EN TIKOKX</h1>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="fjcintranetApp.finding.codFinding">Cod Finding</span></dt>
+                <dd>
+                    <span>{{finding.codFinding}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateStart">Date Start</span></dt>
+                <dd>
+                    <span>{{finding.dateStart}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateEnd">Date End</span></dt>
+                <dd>
+                    <span>{{finding.dateEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateClosure">Date Closure</span></dt>
+                <dd>
+                    <span>{{finding.dateClosure}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.description">Description</span></dt>
+                <dd>
+                    <span>{{finding.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.evidence">Evidence</span></dt>
+                <dd>
+                    <span>{{finding.evidence}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.methodology">Methodology</span></dt>
+                <dd>
+                    <span>{{finding.methodology}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.linkDoc">Link Doc</span></dt>
+                <dd>
+                    <div *ngIf="finding.linkDoc">
+                        <a (click)="openFile(finding.linkDocContentType, finding.linkDoc)" jhiTranslate="entity.action.open">open</a>
+                        {{finding.linkDocContentType}}, {{byteSize(finding.linkDoc)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.descHow">Desc How</span></dt>
+                <dd>
+                    <span>{{finding.descHow}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.typeFinding">Type Finding</span></dt>
+                <dd>
+                    <span>{{finding.typeFinding}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.creator">Creator</span></dt>
+                <dd>
+                    {{finding.creator?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/finding', finding.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div> -->

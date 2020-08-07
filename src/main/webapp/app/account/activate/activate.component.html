@@ -1,0 +1,23 @@
+<div class="d-flex screenBox">
+  <div class="d-flex w-50 pl-3">
+		<img class="img-fluid rounded w-100" src="../../../content/images/logofjc.svg"/>
+	</div>
+  <div class="d-flex w-50 flex-column justify-content-center align-items-center">
+    <h1 jhiTranslate="activate.title" class="titlePage">Activation</h1>
+        <div class="d-flex boxForm">
+
+            <div class="alert text-justify d-flex flex-column msgStyle align-items-center" *ngIf="success">
+              <img src="../../../content/icons/ic_success.svg" alt="success" class="img-fluid">
+              <p class="mt-2 mb-0" jhiTranslate="activate.messages.success"></p>
+              <button type="button" name="button" class="registerButton mt-1" routerLink="/" jhiTranslate="global.messages.info.authenticated.link"></button>
+            </div>
+
+            <div class="alert text-justify d-flex flex-column msgStyle align-items-center" *ngIf="error">
+              <img src="../../../content/icons/warning.svg" alt="success" class="img-fluid">
+              <p class="mt-2 mb-0" jhiTranslate="activate.messages.error"></p>
+              <button type="button" name="button" class="registerButton mt-1" routerLink="/account/register" jhiTranslate="activate.messages.button"></button>
+            </div>
+
+        </div>
+  </div>
+</div>

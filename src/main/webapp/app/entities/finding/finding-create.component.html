@@ -1,0 +1,314 @@
+<div class="d-flex flex-column align-items-center screenBox">
+  <div *ngIf="showModalMsg">
+    <jhi-modal-finding [modalTitle]="modalTitle" [modalMsg]="modalMsg" [icon]="modalIcon" [btnMsg]="modalbtn"
+    (closeModalVal)="closeModal($event)"></jhi-modal-finding>
+  </div>
+  <h2 class="pageTitle" jhiTranslate="fjcintranetApp.finding.create.titlePage"></h2>
+  <div class="dataBox p-4">
+    <form name="form" [formGroup]="editForm" (ngSubmit)="save()">
+
+      <div class="d-flex flex-row firstInputs justify-content-between">
+
+        <div class=" inputWidth d-flex flex-row align-items-center">
+          <label class="mr-2" for="codeFinding" jhiTranslate="fjcintranetApp.finding.create.code"></label>
+          <input class="w-100" type="text" id="codeFinding" formControlName="codFinding" placeholder="{{ 'fjcintranetApp.finding.create.placeholderCode' | translate }}" readonly>
+        </div>
+
+        <div class=" inputWidth d-flex flex-row align-items-center">
+          <label for="dateStart" class="mr-2" jhiTranslate="fjcintranetApp.finding.create.since"></label>
+          <input class="w-100" type="text" id="dateStart" ngbDatepicker  readonly (dateSelect)="generateCode()" #dateStartDp="ngbDatepicker" formControlName="dateStart" placeholder="0000-00-00">
+          <div class="p-1">
+            <img class="icons" (click)="dateStartDp.toggle()" src="../../../content/icons/calendar.svg">
+          </div>
+        </div>
+
+        <div class="inputWidth d-flex flex-row align-items-center">
+          <label for="dateEnd" class="mr-2" jhiTranslate="fjcintranetApp.finding.create.end"></label>
+          <input class="w-100" type="text" id="dateEnd" ngbDatepicker  readonly #dateEndDp="ngbDatepicker" formControlName="dateEnd" placeholder="0000-00-00">
+          <div class="p-1">
+            <img class="icons" (click)="dateEndDp.toggle()" src="../../../content/icons/calendar.svg">
+          </div>
+        </div>
+
+        <div class="inputWidth d-flex flex-row align-items-center">
+          <label for="dept" class="mr-2" jhiTranslate="fjcintranetApp.finding.create.dept"></label>
+          <select class="w-50" id="dept" formControlName="deptInvol" (change)="generateCode()">
+            <option value="null" disabled selected jhiTranslate="fjcintranetApp.finding.create.optDisabled"></option>
+            <option *ngFor="let dpte of dpte; let i = index" [value]="dpte.id">{{ dpte.shortDsc }}</option>
+          </select>
+        </div>
+
+      </div>
+
+      <span class="sep"></span>
+
+      <div class="d-flex flex-column mt-2">
+        <div class="d-flex flex-row align-items-center">
+          <label for="desc" jhiTranslate="fjcintranetApp.finding.create.desc"></label>
+          <select class="ml-1 w-25" formControlName="typeFinding" (change)="generateCode()">
+            <option value="null" jhiTranslate="fjcintranetApp.finding.create.optDisabled"></option>
+            <option value="1" jhiTranslate="fjcintranetApp.finding.create.selectOpt1"></option>
+            <option value="0" jhiTranslate="fjcintranetApp.finding.create.selectOpt2"></option>
+          </select>
+          <div *ngIf="editForm.get('typeFinding').invalid && (editForm.get('typeFinding').dirty || editForm.get('typeFinding').touched)">
+              <small class="form-text text-danger"
+                *ngIf="editForm.get('typeFinding').errors.required" jhiTranslate="entity.validation.required">
+              </small>
+          </div>
+          <div class="toolTip">
+            <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+            <span class="tooltiptext" jhiTranslate="fjcintranetApp.finding.create.tipDscFinding"></span>
+          </div>
+        </div>
+
+        <div *ngIf="editForm.get('description').invalid && (editForm.get('description').dirty || editForm.get('description').touched)">
+            <small class="form-text text-danger"
+              *ngIf="editForm.get('description').errors.required" jhiTranslate="entity.validation.required">
+            </small>
+        </div>
+        <div class="w-100 pl-4">
+          <textarea  type="text" class="w-100 mt-1" id="desc" placeholder="{{ 'fjcintranetApp.finding.create.placeholderDsc' | translate }}" formControlName="description" rows="8"></textarea>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row mt-3 justify-content-between">
+        <div class="d-flex flex-column orderTextArea mr-2">
+          <div class="d-flex">
+            <label for="descHow" jhiTranslate="fjcintranetApp.finding.create.descHowFind"></label>
+            <div class="toolTip">
+              <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+              <span class="tooltiptext" jhiTranslate="fjcintranetApp.finding.create.tipDscHowFinding"></span>
+            </div>
+          </div>
+          <div *ngIf="editForm.get('descHow').invalid && (editForm.get('descHow').dirty || editForm.get('descHow').touched)">
+              <small class="form-text text-danger"
+                *ngIf="editForm.get('descHow').errors.required" jhiTranslate="entity.validation.required">
+              </small>
+          </div>
+          <div class="w-100 pl-4">
+            <textarea id="descHow" rows="8" class="w-100" placeholder="{{ 'fjcintranetApp.finding.create.placeholderDsc' | translate }}" formControlName="descHow"></textarea>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column orderTextArea ml-2">
+          <div class="d-flex">
+            <label for="evidence" jhiTranslate="fjcintranetApp.finding.create.evidence"></label>
+            <div class="toolTip">
+              <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+              <span class="tooltiptext" jhiTranslate="fjcintranetApp.finding.create.tipDscEvidencePlan"></span>
+            </div>
+          </div>
+          <div *ngIf="editForm.get('evidence').invalid && (editForm.get('evidence').dirty || editForm.get('evidence').touched)">
+              <small class="form-text text-danger"
+                *ngIf="editForm.get('evidence').errors.required" jhiTranslate="entity.validation.required">
+              </small>
+          </div>
+          <div class="w-100 pl-4">
+            <textarea id="evidence" rows="8" class="w-100" placeholder="{{ 'fjcintranetApp.finding.create.placeholderEvidence' | translate }}" formControlName="evidence"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <span class="sep"></span>
+
+      <div class="d-flex flex-column mt-2">
+        <div class="d-flex">
+          <p jhiTranslate="fjcintranetApp.finding.create.rootCause"></p>
+          <div class="toolTip">
+            <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+            <span class="tooltiptext" jhiTranslate="fjcintranetApp.finding.create.tipRootCause"></span>
+          </div>
+        </div>
+        <div class="d-flex flex-row">
+          <div class="d-flex flex-column w-50 align-items-center justify-content-center">
+            <div *ngIf="editForm.get('methodology').invalid && (editForm.get('methodology').dirty || editForm.get('methodology').touched)">
+                <small class="form-text text-danger"
+                  *ngIf="editForm.get('methodology').errors.required" jhiTranslate="entity.validation.required">
+                </small>
+            </div>
+            <div class="d-flex flex-row align-items-center w-100">
+              <label for="methodology" class="mr-2" jhiTranslate="fjcintranetApp.finding.create.methodology"></label>
+              <select class="w-50" id="methodology" formControlName="methodology">
+                <option value="null" jhiTranslate="fjcintranetApp.finding.create.optDisabled"></option>
+                <option value="Lluvia de ideas" jhiTranslate="fjcintranetApp.finding.create.options.storm"></option>
+                <option value="5 + 1" jhiTranslate="fjcintranetApp.finding.create.options.5+1"></option>
+                <option value="Ishikawa" jhiTranslate="fjcintranetApp.finding.create.options.ishikawa"></option>
+                <option value="Cinco ¿Por qués?" jhiTranslate="fjcintranetApp.finding.create.options.fiveWhy"></option>
+                <option value="Otro" jhiTranslate="fjcintranetApp.finding.create.options.other"></option>
+              </select>
+            </div>
+            <div class="mt-2 w-100 d-flex align-items-center" *ngIf="editForm.get('methodology').value == 'Otro'">
+              <label for="otherMethodology" class="mr-2" jhiTranslate="fjcintranetApp.finding.create.methodologyOther"></label>
+              <input type="text" id="otherMethodology" class="w-50 otherMetho" formControlName="methodologyOther">
+            </div>
+
+          </div>
+          <div class="d-flex flex-row w-50 align-items-center">
+            <label class="w-auto mr-2" for="file_linkDoc" jhiTranslate="fjcintranetApp.finding.create.doc"></label>
+            <div class="w-50 text-center">
+              <p class="mb-0" *ngIf="!editForm.get('linkDoc').value" jhiTranslate="fjcintranetApp.finding.create.step"></p>
+              <div class="boxFile" *ngIf="!editForm.get('linkDoc').value">
+                <input class="w-100 h-100 fileBox" type="file" id="file_linkDoc" (change)="setFileData($event, 'linkDoc', false)"/>
+
+              </div>
+              <div *ngIf="editForm.get('linkDoc').value" class="form-text text-success clearfix">
+                  <a class="pull-left" (click)="openFile(editForm.get('linkDocContentType').value, editForm.get('linkDoc').value)" jhiTranslate="entity.action.open">open</a><br>
+                  <span class="pull-left">{{editForm.get('linkDocContentType').value}}, {{byteSize(editForm.get('linkDoc').value)}}</span><br>
+                  <button type="button" (click)="editForm.patchValue({linkDoc: null});editForm.patchValue({linkDocContentType: null});"
+                          class="btn btn-secondary btn-xs pull-right">
+                      <fa-icon [icon]="'times'"></fa-icon>
+                  </button>
+              </div>
+            </div>
+            <input type="hidden" class="form-control" name="linkDoc" id="field_linkDoc"
+                   formControlName="linkDoc"/>
+            <input type="hidden" class="form-control" name="linkDocContentType" id="field_linkDocContentType"
+                   formControlName="linkDocContentType" />
+          </div>
+        </div>
+      </div>
+
+      <span class="sep"></span>
+
+      <div class="d-flex flex-column">
+
+        <div class="d-flex mt-2 align-items-center">
+          <label for="identification" jhiTranslate="fjcintranetApp.finding.create.identification"></label>
+          <div class="toolTip">
+            <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+            <span class="tooltiptext" jhiTranslate="fjcintranetApp.finding.create.tipIdentification"></span>
+          </div>
+        </div>
+
+        <div *ngIf="editForm.get('identificationCause').invalid && (editForm.get('identificationCause').dirty || editForm.get('identificationCause').touched)">
+            <small class="form-text text-danger"
+              *ngIf="editForm.get('identificationCause').errors.required" jhiTranslate="entity.validation.required">
+            </small>
+        </div>
+        <div class="pl-4 w-100">
+          <textarea id="identification" rows="8" class="w-100" placeholder="{{ 'fjcintranetApp.finding.create.placeholderRoot' | translate }}" formControlName="identificationCause"></textarea>
+        </div>
+
+        <div class="d-flex mt-2 align-items-center">
+          <label for="actionRes" jhiTranslate="fjcintranetApp.finding.create.actionResult"></label>
+          <div class="toolTip">
+            <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+            <span class="tooltiptext" jhiTranslate="fjcintranetApp.finding.create.tipActionRes"></span>
+          </div>
+        </div>
+        <div *ngIf="editForm.get('correctiveAct').invalid && (editForm.get('correctiveAct').dirty || editForm.get('correctiveAct').touched)">
+            <small class="form-text text-danger"
+              *ngIf="editForm.get('correctiveAct').errors.required" jhiTranslate="entity.validation.required">
+            </small>
+        </div>
+        <div class="pl-4 w-100">
+          <textarea id="actionRes" rows="8" class="w-100" placeholder="{{ 'fjcintranetApp.finding.create.placeholderAction' | translate }}" formControlName="correctiveAct"></textarea>
+        </div>
+
+        <div class="d-flex mt-2 align-items-center">
+          <label for="descA8" jhiTranslate="fjcintranetApp.finding.create.descActio"></label>
+          <div class="toolTip">
+            <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+            <span class="tooltiptext" jhiTranslate="fjcintranetApp.finding.create.tipDscAction"></span>
+          </div>
+        </div>
+        <div *ngIf="editForm.get('actionDesc').invalid && (editForm.get('actionDesc').dirty || editForm.get('actionDesc').touched)">
+            <small class="form-text text-danger"
+              *ngIf="editForm.get('actionDesc').errors.required" jhiTranslate="entity.validation.required">
+            </small>
+        </div>
+        <div class="pl-4 w-100">
+          <textarea id="descA8" rows="8" class="w-100" placeholder="{{ 'fjcintranetApp.finding.create.placeholderDsc' | translate }}" formControlName="actionDesc"></textarea>
+        </div>
+
+      </div>
+
+      <span class="sep"></span>
+
+      <p class="mt-2 mb-3" jhiTranslate="fjcintranetApp.finding.create.titleAction"></p>
+
+      <div class="actions border-0" formArrayName="actions" *ngFor="let actions of editForm.get('actions').controls; let i = index" id="{{i}}">
+      <div [formGroupName]="i" class="border-0">
+        <div class="d-flex flex-row mt-2 align-items-center" >
+          <p class="w-25 mb-0">Nº {{i + 1}}</p>
+          <div class="d-flex flex-row dateInputs justify-content-around w-100">
+
+            <div class="d-flex flex-row align-items-center">
+              <label for="dateStartAction" class="mr-2" jhiTranslate="fjcintranetApp.finding.create.startedDate"></label>
+              <input id="dateStartAction" type="text" ngbDatepicker  #dateStartActionDp="ngbDatepicker" formControlName="dateStartAction" placeholder="0000-00-00" readonly>
+              <div class="p-1">
+                <img class="icons" (click)="dateStartActionDp.toggle()" src="../../../content/icons/calendar.svg">
+              </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center">
+              <label for="dateEndAction" class="mr-2" jhiTranslate="fjcintranetApp.finding.create.estimatedDate"></label>
+              <input id="datEndtAction" type="text" ngbDatepicker  #dateStartAEndDp="ngbDatepicker" formControlName="dateCommit" placeholder="0000-00-00" readonly>
+              <div class="p-1">
+                <img class="icons" (click)="dateStartAEndDp.toggle()" src="../../../content/icons/calendar.svg">
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="d-flex flex-column">
+          <div class="d-flex align-items-center mt-2">
+            <label  for="descAct" jhiTranslate="fjcintranetApp.finding.create.descHow"></label>
+            <div class="toolTip">
+              <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+              <span class="tooltiptext"
+              jhiTranslate="fjcintranetApp.finding.create.tipDscAction"></span>
+            </div>
+          </div>
+          <div *ngIf="actions.get('descAction').invalid && (actions.get('descAction').dirty || actions.get('descAction').touched)">
+              <small class="form-text text-danger"
+                *ngIf="actions.get('descAction').errors.required" jhiTranslate="entity.validation.required">
+              </small>
+          </div>
+          <div class="pl-4 w-100">
+            <textarea id="descAct" rows="8" class="w-100" placeholder="{{ 'fjcintranetApp.finding.create.placeholderHow' | translate }}" formControlName="descAction"></textarea>
+          </div>
+          <label class="mt-2" for="involved" jhiTranslate="fjcintranetApp.finding.create.invol"></label>
+          <div class="pl-4 w-100">
+
+            <div class="my-2 d-flex flex-row">
+              <p *ngFor="let name of involvedNames[i]; let k = index" class="involvedNames mx-2">
+                <span>{{ name }}</span>
+                <span class="deleteInvolved ml-2" (click)="deleteInvol(k)">X</span>
+              </p>
+            </div>
+
+            <input type="text" id="involved" class="w-100" (keyup)="searchUser($event)" autocomplete="off" placeholder="{{ 'fjcintranetApp.finding.create.placeholderInvol' | translate }}" formControlName="involved">
+            <div class="dataResult">
+              <p *ngFor="let name of likeUser" class="listItem" (click)="uploadName(name.login,i)">{{name.login}}-{{name.firstName}} {{name.lastName}}</p>
+              <p *ngIf="likeUser.length > 10" class="lastResult">Especifique para mejorar la busqueda</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <span class="sep"></span>
+      </div>
+
+      <p><span jhiTranslate="fjcintranetApp.finding.create.actQty" class="mr-1"></span><span>{{actions.length}}</span></p>
+
+      <div class="w-100 d-flex justify-content-center">
+        <span id="circlePlus" class="ml-2 mr-2" (click)="addAction()"></span>
+        <span id="circleLess" class="ml-2 mr-2" (click)="removeAction()"></span>
+      </div>
+
+      <div class="w-100 d-flex justify-content-center">
+        <button class="create" type="submit" jhiTranslate="fjcintranetApp.finding.create.buttonSend"></button>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

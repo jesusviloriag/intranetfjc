@@ -1,0 +1,75 @@
+<div class="row justify-content-center mainContent">
+    <div class="col-8">
+        <div *ngIf="activity">
+            <h2><span jhiTranslate="fjcintranetApp.activity.detail.title">Activity</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+              <dt><span jhiTranslate="global.field.id"></span></dt>
+              <dd>
+                  <span>{{activity.id}}</span>
+              </dd>
+                <dt><span jhiTranslate="fjcintranetApp.activity.nameActivity">Name Activity</span></dt>
+                <dd>
+                    <span>{{activity.nameActivity}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.activity.dateStart">Date Start</span></dt>
+                <dd>
+                    <span>{{activity.dateStart | date:'dd/MM/yyyy'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.activity.dateLimit">Date Limit</span></dt>
+                <dd>
+                    <span>{{activity.dateLimit | date:'dd/MM/yyyy'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.activity.description">Description</span></dt>
+                <dd>
+                    <span>{{activity.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.activity.deliverables">Deliverables</span></dt>
+                <dd>
+                    <span>{{activity.deliverables}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.activity.dept">Dept</span></dt>
+                <dd>
+                    <span>{{departament == undefined ? '' : departament.nameDepartament}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.activity.involvedActivity">Involved Activity</span></dt>
+                <dd>
+                    <span>{{activity.involvedActivity}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.activity.status">Status</span></dt>
+                <dd>
+                    <span>{{activity.status == 1 ? 'Abierta' : 'Cerrada'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.activity.dateClosure">Date Closure</span></dt>
+                <dd>
+                    <span>{{activity.dateClosure == null ? 'Sin finalizar' : activity.dateClosure | date:'dd/MM/yyyy'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.activity.creator">Creator</span></dt>
+                <dd>
+                    {{activity.creator?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/activity', activity.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

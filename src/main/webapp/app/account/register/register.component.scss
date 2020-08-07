@@ -1,0 +1,65 @@
+.screenBox {
+  margin-top: 90px;
+  margin-bottom: 40px;
+}
+
+.title-font {
+  font-family: 'oswald-bold';
+  font-size: 30px;
+}
+
+.icons {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+input, select {
+  border: 2px solid #aaaaaa;
+  border-radius: 10px;
+  text-indent: 1rem;
+  height: 40px;
+  width: 230px;
+}
+
+.box {
+  border: 3px solid #3f5486;
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  font-family: 'poppins-regular';
+  width: 55%;
+  align-items: center;
+}
+
+.button-s {
+  background-color: #3f5486;
+  border: 2px solid #3f5486;
+  border-radius: 10px;
+  color: white;
+  font-family: 'poppins-bold';
+  width: 25%;
+  height: 40px;
+}
+
+.msg {
+  font-family: 'poppins-regular';
+  font-size: 100%;
+}
+
+form {
+  width: 100%;
+}
+
+.div-evenly {
+  justify-content: space-evenly;
+}
+
+ul {
+  margin: 0;
+}
+
+.checkbox{
+  background-color: red;
+  width: 9%;
+  height: 80%;
+}

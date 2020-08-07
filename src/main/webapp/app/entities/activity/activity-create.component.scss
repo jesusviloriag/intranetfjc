@@ -1,0 +1,112 @@
+.pageTitle {
+  font-family: 'oswald-bold';
+  font-size: 30px;
+}
+
+.dataBox {
+  border: 2px solid #3f5486;
+  border-radius: 10px;
+  width: 70%;
+  font-family: 'poppins-regular';
+  font-size: 16px;
+  color: #000;
+}
+
+input,
+textarea,
+select {
+  border: 2px solid #3f5486;
+  text-indent: 5px;
+}
+
+input,
+select {
+  border-radius: 5px;
+  height: 40px;
+}
+
+textarea {
+  border-radius: 10px;
+  line-height: 1.2;
+  text-indent: 5px;
+  resize: none;
+}
+
+.screenBox {
+  margin-top: 90px;
+  margin-bottom: 40px;
+}
+
+.activityName {
+  width: 35%;
+}
+
+.create {
+  background: #3f5486;
+  border-radius: 10px;
+  width: 20%;
+  color: #fff;
+  border-style: none;
+  height: 40px;
+  margin-top: 20px;
+  font-family: 'poppins-bold';
+  font-size: 18px;
+}
+
+.icons {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.clearBox {
+  cursor: pointer;
+  font-family: 'poppins-bold';
+}
+
+.dataResult {
+  background: #ddd;
+  width: 100%;
+  height: auto;
+  max-height: 100px;
+  overflow: auto;
+}
+
+.listItem {
+  margin: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  padding: 0px 10px;
+}
+
+.listItem:hover {
+  color: #fff;
+  background-color: #2d3888;
+}
+
+.lastResult {
+  color: #fff !important;
+  background-color: #2d3888;
+  text-align: center;
+  padding: 5px 10px !important;
+  border-radius: 10px;
+}
+
+.modalBox {
+  position: fixed;
+}
+
+.involvedNames {
+  padding: 5px 20px;
+  background-color: gray;
+  border-radius: 15px;
+  color: #fff;
+  margin: 0px;
+  float: left;
+}
+
+.deleteInvolved {
+  cursor: pointer;
+  font-family: 'poppins-bold';
+}

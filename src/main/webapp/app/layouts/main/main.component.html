@@ -1,0 +1,12 @@
+<jhi-page-ribbon></jhi-page-ribbon>
+<div class="flexing">
+  <div class="headerBox">
+    <router-outlet name="navbar"></router-outlet>
+  </div>
+  <div class="mainBox">
+    <router-outlet (activate)="onNavigate($event)" ></router-outlet>
+  </div>
+  <div class="footerBox">
+    <jhi-footer></jhi-footer>
+  </div>
+</div>

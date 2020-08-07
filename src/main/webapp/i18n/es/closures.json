@@ -1,0 +1,70 @@
+{
+  "fjcintranetApp": {
+    "closures": {
+      "home": {
+        "title": "Cierres",
+        "createLabel": "Crear nuevo Cierre",
+        "createOrEditLabel": "Crear o editar cierre",
+        "search": "Buscar cierre",
+        "notFound": "Ningún cierre encontrado"
+      },
+      "created": "Un nuevo Closures ha sido creado con el identificador {{ param }}",
+      "updated": "Un Closures ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Closures ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Closures {{ id }}?"
+      },
+      "detail": {
+        "title": "Closures"
+      },
+      "create": {
+        "title": "CREACIÓN DE CIERRE",
+        "viewTitle": "INFORMACIÓN DE CIERRE",
+        "code": "Código:",
+        "status": "Estado:",
+        "statusPlaceholder":"Abierto",
+        "involved":"Cierre por:",
+        "since": "Desde:",
+        "to": "Hasta (estipulado):",
+        "realDate": "Fecha de cierre:",
+        "actionClosed":"Las acciones fueron cerradas?:",
+        "button": "Crear",
+        "yes": "Si",
+        "no": "No",
+        "placeholder":"Si/no?",
+        "textPlaceholder":"Describa...",
+        "statusClosure":"Cerrado",
+        "improveComment":"Comentarios en caso de acción de mejora:"
+      },
+      "status": {
+      "pending":"Por verificar",
+      "effective": "Cerrado eficaz",
+      "noEffective": "Cerrado no eficaz"
+      },
+      "verify": {
+        "title": "VERIFICACIÓN DE CIERRE",
+        "code": "Codigo:",
+        "author": "Autor:",
+        "from": "Desde:",
+        "to": "Hasta(estipulada):",
+        "realDate": "Fecha de cierre:",
+        "stateEfic": "Fue eficaz?:",
+        "comment": "Verificación de la eficiencia. Comentarios. Podría volver a ocurrir?",
+        "button": "Verificar cierre",
+        "yes": "Si",
+        "no": "No",
+        "fakeOption": "Seleccione..."
+      },
+      "stateClosure": "Estado de cierre",
+      "actionClosed": "Las acciones fueron cerradas?",
+      "effectiveness": "Efectividad",
+      "dept": "Departamento",
+      "improveComment": "Comentarios en caso de acción de mejora:",
+      "effectivenessComment": "Verificación de la eficiencia. Comentarios. Podría volver a ocurrir?",
+      "findClose": "Hallazgo del cierre",
+      "effectiveness0": "En proceso",
+      "effectiveness1": "Cierre eficaz",
+      "effectiveness2": "Cierre no eficaz"
+    }
+  }
+}

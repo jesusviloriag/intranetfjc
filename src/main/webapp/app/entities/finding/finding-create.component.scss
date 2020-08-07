@@ -1,0 +1,207 @@
+.pageTitle {
+  font-family: 'oswald-bold';
+  font-size: 30px;
+}
+
+.dataBox {
+  border: 2px solid #3f5486;
+  border-radius: 10px;
+  width: 90%;
+  font-family: 'poppins-regular';
+  font-size: 16px;
+  color: #000;
+}
+
+input,
+textarea,
+select {
+  border: 2px solid #9f9f9f;
+  text-indent: 5px;
+}
+
+input,
+select {
+  border-radius: 5px;
+}
+
+textarea {
+  border-radius: 10px;
+  line-height: 1.2;
+  text-indent: 5px;
+  resize: none;
+}
+
+.firstInputs input,
+.firstInputs select,
+.dateInputs input,
+.otherMetho {
+  height: 40px;
+}
+
+.sep {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #3f5486;
+  margin: 15px 0px;
+}
+
+.screenBox {
+  margin-top: 90px;
+  margin-bottom: 40px;
+}
+
+.orderTextArea {
+  width: 40%;
+}
+
+#circlePlus:before,
+#circleLess:before {
+  content: '+';
+  display: flex;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #2d3888;
+  border-radius: 22.5px;
+  font-size: 30px;
+  color: #fff;
+  margin: 5px 0px;
+  font-weight: bold;
+}
+
+#circleLess:before {
+  content: '-';
+  background-color: #ff7355;
+}
+
+#circleLess:hover,
+#circlePlus:hover {
+  cursor: pointer;
+}
+
+label {
+  margin-bottom: 0px;
+}
+
+.create {
+  background: #3f5486;
+  border-radius: 10px;
+  width: 20%;
+  color: #fff;
+  border-style: none;
+  height: 40px;
+  margin-top: 20px;
+  font-family: 'poppins-bold';
+  font-size: 18px;
+}
+
+#methodology {
+  height: 40px;
+}
+.deleteBlob {
+  height: 25px;
+  width: 25px;
+}
+
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.boxFile {
+  width: 100%;
+  height: 80px;
+  border: 3px dashed #444;
+  border-radius: 15px;
+}
+
+.boxFile:hover {
+  border-color: #3f5486;
+}
+
+.fileBox {
+  opacity: 0;
+}
+
+.icons {
+  height: 30px;
+  width: 30px;
+}
+
+.icons:hover {
+  cursor: pointer;
+}
+
+.tipIcon {
+  width: 25px;
+  height: 25px;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 25%;
+  background: #ccc;
+  border-radius: 20px;
+  position: absolute;
+  z-index: 1;
+  height: auto;
+  padding: 5px 15px;
+  margin-top: 30px;
+  margin-left: -100px;
+}
+
+.toolTip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.inputWidth {
+  width: 23%;
+}
+
+.dataResult {
+  position: absolute;
+  background: white;
+  width: 35%;
+  height: auto;
+  max-height: 150px;
+  overflow: auto;
+}
+
+.listItem {
+  margin: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  padding: 0px 10px;
+}
+
+.listItem:hover {
+  color: #fff;
+  background-color: #2d3888;
+}
+
+.lastResult {
+  color: #fff !important;
+  background-color: #2d3888;
+  text-align: center;
+  padding: 5px 10px !important;
+  border-radius: 10px;
+}
+
+.modalBox {
+  position: fixed;
+}
+
+.involvedNames {
+  padding: 5px 20px;
+  background-color: gray;
+  border-radius: 15px;
+  color: #fff;
+}
+
+.deleteInvolved {
+  cursor: pointer;
+  font-family: 'poppins-bold';
+}

@@ -1,0 +1,98 @@
+<div class="row justify-content-center mainContent w-100">
+    <div class="col-8">
+        <div *ngIf="finding">
+            <h2><span jhiTranslate="fjcintranetApp.finding.detail.title">Finding</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+              <dt><span jhiTranslate="global.field.id"></span></dt>
+              <dd>
+                  <span>{{finding.id}}</span>
+              </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.codFinding">Cod Finding</span></dt>
+                <dd>
+                    <span>{{finding.codFinding}}{{finding.id}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateStart">Date Start</span></dt>
+                <dd>
+                    <span>{{finding.dateStart | date:'dd/MM/yyyy'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateEnd">Date End</span></dt>
+                <dd>
+                    <span>{{finding.dateEnd | date:'dd/MM/yyyy'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateClosure">Date Closure</span></dt>
+                <dd>
+                    <span>{{finding.dateClosure == null ? 'No finalizada' : finding.dateClosure | date:'dd/MM/yyyy'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.description">Description</span></dt>
+                <dd>
+                    <span>{{finding.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.evidence">Evidence</span></dt>
+                <dd>
+                    <span>{{finding.evidence}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.methodology">Methodology</span></dt>
+                <dd>
+                    <span>{{finding.methodology}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.linkDoc">Link Doc</span></dt>
+                <dd>
+                    <div *ngIf="finding.linkDoc">
+                        <a (click)="openFile(finding.linkDocContentType, finding.linkDoc)" jhiTranslate="entity.action.open">open</a>
+                        {{finding.linkDocContentType}}, {{byteSize(finding.linkDoc)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.descHow">Desc How</span></dt>
+                <dd>
+                    <span>{{finding.descHow}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.typeFinding">Type Finding</span></dt>
+                <dd>
+                    <span>{{finding.typeFinding == 1 ? getLabel('Opportunity for improvement', 'Oportunidad de mejora') : getLabel('Nonconformity', 'No conformidad')}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.deptInvol">Dept Invol</span></dt>
+                <dd>
+                    <span>{{departament.nameDepartament}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.identificationCause">Identification Cause</span></dt>
+                <dd>
+                    <span>{{finding.identificationCause}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.correctiveAct">Corrective Act</span></dt>
+                <dd>
+                    <span>{{finding.correctiveAct}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.actionDesc">Action Desc</span></dt>
+                <dd>
+                    <span>{{finding.actionDesc}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.creator">Creator</span></dt>
+                <dd>
+                    {{finding.creator?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/finding', finding.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

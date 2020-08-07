@@ -1,0 +1,80 @@
+<div class="row justify-content-center mainContent">
+    <div class="col-8">
+        <div *ngIf="actionFinding">
+            <h2><span jhiTranslate="fjcintranetApp.actionFinding.detail.title">Action Finding</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+              <dt><span jhiTranslate="global.field.id"></span></dt>
+              <dd>
+                  <span>{{actionFinding.id}}</span>
+              </dd>
+                <dt><span jhiTranslate="fjcintranetApp.actionFinding.descAction">Desc Action</span></dt>
+                <dd>
+                    <span>{{actionFinding.descAction}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.actionFinding.dateStartAction">Date Start Action</span></dt>
+                <dd>
+                    <span>{{actionFinding.dateStartAction | date:'dd/MM/yyyy'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.actionFinding.dateCommit">Date Commit</span></dt>
+                <dd>
+                    <span>{{actionFinding.dateCommit | date:'dd/MM/yyyy'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.actionFinding.dateRealCommit">Date Real Commit</span></dt>
+                <dd>
+                    <span>{{actionFinding.dateRealCommit == null ? getLabel('Unfinished','Sin concluir') : actionFinding.dateRealCommit | date:'dd/MM/yyyy'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.actionFinding.descHow">Desc How</span></dt>
+                <dd>
+                    <span>{{actionFinding.descHow}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.actionFinding.involved">Involved</span></dt>
+                <dd>
+                    <span>{{actionFinding.involved}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.actionFinding.status">Status</span></dt>
+                <dd>
+                    <span>{{actionFinding.status == 1 ? getLabel('Open','Abierta') : getLabel('Closed','Cerrada')}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.actionFinding.evidenceDoc">Evidence Doc</span></dt>
+                <dd>
+                    <div *ngIf="actionFinding.evidenceDoc">
+                        <a (click)="openFile(actionFinding.evidenceDocContentType, actionFinding.evidenceDoc)" jhiTranslate="entity.action.open">open</a>
+                        {{actionFinding.evidenceDocContentType}}, {{byteSize(actionFinding.evidenceDoc)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.actionFinding.observation">Observation</span></dt>
+                <dd>
+                    <span>{{actionFinding.observation}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.actionFinding.actFinding">Act Finding</span></dt>
+                <dd>
+                    <div *ngIf="actionFinding.actFinding">
+                        <a [routerLink]="['/finding', actionFinding.actFinding?.id, 'view']">{{actionFinding.actFinding?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/action-finding', actionFinding.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

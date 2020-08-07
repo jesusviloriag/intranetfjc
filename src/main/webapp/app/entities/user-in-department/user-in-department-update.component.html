@@ -1,0 +1,50 @@
+<div class="row justify-content-center mainContent">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-user-in-department-heading" jhiTranslate="fjcintranetApp.userInDepartment.home.createOrEditLabel">Create or edit a User In Department</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.userInDepartment.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user" readonly disabled>
+                        <option value="undefined" disabled selected jhiTranslate="fjcintranetApp.activity.create.dpteOpt.placeholder"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user').value?.id ? editForm.get('user').value : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('user').invalid && (editForm.get('user').dirty || editForm.get('user').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('user').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.userInDepartment.departament" for="field_departament">Departament</label>
+                    <select class="form-control" id="field_departament" name="departament" formControlName="departament">
+                        <option value="undefined" disabled selected jhiTranslate="fjcintranetApp.activity.create.dpteOpt.placeholder"></option>
+                        <option [ngValue]="departamentOption.id === editForm.get('departament').value?.id ? editForm.get('departament').value : departamentOption" *ngFor="let departamentOption of departaments; trackBy: trackDepartamentById">{{departamentOption.nameDepartament}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('departament').invalid && (editForm.get('departament').dirty || editForm.get('departament').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('departament').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

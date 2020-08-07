@@ -1,0 +1,90 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+/* ==========================================================================
+Navbar
+========================================================================== */
+
+.navbar-version {
+  font-size: 0.65em;
+  color: $navbar-dark-color;
+}
+
+.profile-image {
+  height: 1.75em;
+  width: 1.75em;
+}
+
+.navbar {
+  padding: 0.2rem 1rem;
+  background-color: #3f5486;
+
+  ul.navbar-nav {
+    .nav-item {
+      margin-left: 0.5em;
+    }
+  }
+
+  a.nav-link {
+    font-weight: 400;
+  }
+}
+
+.navPos {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-s {
+  padding: 0.2rem 1.75rem;
+  height: 75px;
+  background-color: #3f5486;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.arrowBack {
+  height: 40px;
+  transform: rotate(180deg);
+}
+
+.img-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+.welcomeText {
+  margin: 0;
+  margin-right: 0.75rem;
+  font-size: 15px;
+  font-family: 'poppins-bold';
+  color: #fff;
+}
+
+.link-menu{
+  font-size: 18px;
+  font-family: 'poppins-bold';
+  color: #fff;
+  padding-top: 3.5px;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+Logo styles
+========================================================================== */
+.logo-img {
+  height: 45px;
+  width: 45px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
+  background-size: contain;
+}
+
+.optionsLang {
+  min-width: 0;
+}

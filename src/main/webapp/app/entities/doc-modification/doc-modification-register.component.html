@@ -1,0 +1,43 @@
+<div class="d-flex flex-column align-items-center screen">
+    <h1 class="pageTitle" jhiTranslate="fjcintranetApp.docModification.register.title"></h1>
+    <h5 class="mb-4">{{nameDoc}}</h5>
+     <div class="box">
+    <div class="d-flex justify-content-center">
+        <table class="text-center" arira-describedby="page-heading">
+            <tr id="table-s" aria-colspan="5">
+            <thead>
+            <tr  jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col" ><span jhiTranslate="fjcintranetApp.docModification.register.actionDate"></span></th>
+            <th scope="col" ><span jhiTranslate="fjcintranetApp.docModification.register.author"></span></th>
+            <th scope="col" ><span jhiTranslate="fjcintranetApp.docModification.register.action"></span></th>
+            <th scope="col" ><span jhiTranslate="fjcintranetApp.docModification.register.revision"></span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let docModification of docModifications ;trackBy: trackId">
+                <td>{{docModification.dateMod | date: 'dd/MM/yyyy'}}</td>
+                <td>{{docModification.author?.login}}</td>
+                <td>{{docModification.commit}}</td>
+                <td>{{docModification.version}}</td>
+                <td>
+                  <div>
+                      <a [routerLink]="['/doc-modification', docModification.id, 'info']" class="mr-2" jhiTranslate="fjcintranetApp.docModification.register.view"></a>
+                      <a *ngIf="i == 0" [routerLink]="['/document', idDoc, 'update']" jhiTranslate="fjcintranetApp.docModification.register.modify" href="#"></a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            </tr>
+        </table>
+    </div>
+         <div class="mt-3" [hidden]="docModifications?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+    </div>
+</div>

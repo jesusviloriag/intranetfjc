@@ -1,0 +1,35 @@
+<div class="row justify-content-center cms__container">
+    <div class="col-8">
+        <div *ngIf="departament">
+            <h2><span jhiTranslate="fjcintranetApp.departament.detail.title">Departament</span> {{departament.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="fjcintranetApp.departament.nameDepartament">Name Departament</span></dt>
+                <dd>
+                    <span>{{departament.nameDepartament}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.departament.idDepartament">Id Departament</span></dt>
+                <dd>
+                    <span>{{departament.idDepartament}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.departament.shortDsc">Short Dsc</span></dt>
+                <dd>
+                    <span>{{departament.shortDsc}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/departament', departament.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

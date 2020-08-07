@@ -1,0 +1,41 @@
+{
+  "reset": {
+    "request": {
+      "title": "PASSWORD RECOVERY",
+      "form": {
+        "button": "Send"
+      },
+      "messages": {
+        "info": "A link will be sent to you by email for the reset of your password",
+        "secondInfo": "Once you receive the email you can reset your password and log into your account",
+        "link": "Go back to login",
+        "success": "Check your emails for details on how to reset your password.",
+        "notfound": "<strong>Email address isn't registered!</strong> Please check and try again",
+        "error": "and error has ocurred, try again."
+      },
+      "confirm": {
+        "info": "Recovery mail was sent to:",
+        "button": "Go back"
+      }
+    },
+    "finish": {
+      "title": "Reset password",
+      "form": {
+        "button": "Validate new password",
+        "linkLogin": "Go back to Login"
+      },
+      "messages": {
+        "info": "Choose a new password",
+        "success": "Your password has been reset. Please ",
+        "successLink": "Sign in",
+        "keymissing": {
+          "missingTitle": "The reset key is missing",
+          "missingMsg": "to reset your passwordde you must have a reset key.",
+          "missingBackInit": "You can return to ",
+          "missingBackFinish": " and perform the process again."
+        },
+        "error": "Your password couldn't be reset. Remember a password request is only valid for 24 hours."
+      }
+    }
+  }
+}

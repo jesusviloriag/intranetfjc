@@ -1,0 +1,53 @@
+{
+  "fjcintranetApp": {
+    "docModification": {
+      "home": {
+        "title": "Modificaciones de documentos",
+        "createLabel": "Crear nuevo modificacion de documento",
+        "createOrEditLabel": "Crear o editar modificacion de documento",
+        "search": "Buscar modificacion de documento",
+        "notFound": "Ningún modificacion de documento encontrado"
+      },
+      "register": {
+        "title": "REGISTRO DE CONTROL",
+        "ubication": "Ubicado en la carpeta: ",
+        "actionDate": "Fecha de acción",
+        "author": "Autor",
+        "action": "Acción",
+        "revision": "Revisión",
+        "view": "Ver",
+        "modify": "Modificar"
+      },
+      "log":{
+        "title":"BITACORA DE DOCUMENTOS GENERAL",
+        "filter":"Filtros:",
+        "departament":"Departamento:",
+        "selectDept":"Seleccionar departamento",
+        "type":"Tipo:",
+        "selectType":"Seleccionar tipo",
+        "actionDate":"F. de acción",
+        "author":"Autor",
+        "departamentHead":"Departamento",
+        "revision":"Revisión",
+        "action":"Acción",
+        "registerLink":"Registro",
+        "viewLink":"Ver"
+      },
+      "created": "Un nuevo Doc Modification ha sido creado con el identificador {{ param }}",
+      "updated": "Un Doc Modification ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Doc Modification ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Doc Modification {{ id }}?"
+      },
+      "detail": {
+        "title": "Modificacion de documento"
+      },
+      "dateMod": "Fecha de la modificación",
+      "commit": "Comentario",
+      "version": "Versión",
+      "doc": "Documento",
+      "author": "Autor",
+      "docMod": "Documento modificado"
+    }
+  }
+}

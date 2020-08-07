@@ -1,0 +1,107 @@
+<div class="cms__container">
+    <h2 id="page-heading">
+        <span jhiTranslate="fjcintranetApp.closures.home.title">Closures</span>
+<!--         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-closures" [routerLink]="['/closures/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="fjcintranetApp.closures.home.createLabel">
+            Create a new Closures
+            </span>
+        </button> -->
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'fjcintranetApp.closures.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="closures?.length === 0">
+        <span jhiTranslate="fjcintranetApp.closures.home.notFound">No closures found</span>
+    </div>
+    <div class="table-responsive cms__table--style" *ngIf="closures?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="stateClosure"><span jhiTranslate="fjcintranetApp.closures.stateClosure">State Closure</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="actionClosed"><span jhiTranslate="fjcintranetApp.closures.actionClosed">Action Closed</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="effectiveness"><span jhiTranslate="fjcintranetApp.closures.effectiveness">Effectiveness</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dept"><span jhiTranslate="fjcintranetApp.closures.dept">Dept</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="improveComment"><span jhiTranslate="fjcintranetApp.closures.improveComment">Improve Comment</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="effectivenessComment"><span jhiTranslate="fjcintranetApp.closures.effectivenessComment">Effectiveness Comment</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="findClose.id"><span jhiTranslate="fjcintranetApp.closures.findClose">Find Close</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let closures of closures ;trackBy: trackId">
+                <td><a [routerLink]="['/closures', closures.id, 'view' ]">{{closures.id}}</a></td>
+                <td>{{closures.stateClosure}}</td>
+                <td>{{closures.actionClosed}}</td>
+                <td *ngIf="closures.effectiveness == 0" jhiTranslate="fjcintranetApp.closures.effectiveness0"></td>
+                <td *ngIf="closures.effectiveness == 1" jhiTranslate="fjcintranetApp.closures.effectiveness1"></td>
+                <td *ngIf="closures.effectiveness == 2" jhiTranslate="fjcintranetApp.closures.effectiveness2"></td>
+                <!-- {{getDepartament(closures.dept)}} -->
+
+                <td>{{getDepartament(closures.dept)}}</td>
+                <td>{{closures.improveComment}}</td>
+                <td>{{closures.effectivenessComment}}</td>
+                <td>
+                    <div *ngIf="closures.findClose">
+                        <a [routerLink]="['/finding', closures.findClose?.id, 'view' ]" >{{closures.findClose?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/closures', closures.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/closures', closures.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(closures)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="closures?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isLoading">
+    <div class="modalBox">
+        <div class="firstCircle">
+            <div class="secondCircle">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+{
+  "fjcintranetApp": {
+    "activity": {
+      "home": {
+        "title": "Activities",
+        "createLabel": "Create a new Activity",
+        "createOrEditLabel": "Create or edit an Activity",
+        "search": "Search for Activity",
+        "notFound": "No Activities found"
+      },
+      "records": {
+        "title": "ACTIVITIES RECORDS",
+        "filter": "Filters: ",
+        "sinceDate": "Since: ",
+        "toDate": "To: ",
+        "statusFilter": "Status: ",
+        "date": "Start Date",
+        "author": "Author",
+        "dept": "Departament",
+        "name": "Title",
+        "desc": "Description",
+        "status": "Status",
+        "warningFilter": "No data was found with the search.",
+        "placeholder": {
+          "status": "Select..",
+          "all": "All"
+        }
+      },
+      "book": {
+        "title": "ACTIVITY'S BOOK",
+        "link": "See more",
+        "dateStart": "Start: ",
+        "dateEnd": "End: ",
+        "involved": "Involved: ",
+        "todayDate": "Today"
+      },
+      "info": {
+        "title": "ACTIVITY'S INFO",
+        "startDate": "Start date: ",
+        "endDate": "Stipulated date: ",
+        "realDate": "Real date: ",
+        "author": "Author: ",
+        "dept": "Departament: ",
+        "status": {
+          "status": "Status: ",
+          "active": "Active",
+          "finished": "finished"
+        },
+        "invol": "Involved: ",
+        "description": "Description: ",
+        "deliverables": "Deliverables: ",
+        "modify": "Modify"
+      },
+      "created": "A new Activity is created with identifier {{ param }}",
+      "updated": "A Activity is updated with identifier {{ param }}",
+      "deleted": "A Activity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Activity {{ name }} {{ id }}?"
+      },
+      "detail": {
+        "title": "Activity"
+      },
+      "create": {
+        "titlePage": "ACTIVITY CREATION",
+        "name": "Activity's Name:",
+        "placeholderName": "Name...",
+        "startDate": "Start Date:",
+        "dateFinish": "Limit Date:",
+        "dsc": "Description:",
+        "placeholderDsc": "Description...",
+        "deliverables": "Deliverables:",
+        "placeholderDel": "Deliverables...",
+        "dpte": "Department:",
+        "involved": "Involved:",
+        "placeholderInvol": "Involved...",
+        "button": "Save",
+        "status": "Status:",
+        "dateClosure": "Real date:",
+        "author": "Autor:",
+        "dpteOpt": {
+          "placeholder": "Select...",
+          "all": "ALL"
+        }
+      },
+      "modify": {
+        "titlePage": "ACTIVITY MODIFICATION",
+        "startDate": "Start date:",
+        "finishDate": "Finish date:",
+        "author": "Author:",
+        "dpte": "Department:",
+        "involved": "Involved:",
+        "dsc": "Description:",
+        "deliverables": "Deliverables:",
+        "button": "Update",
+        "status": "Status:",
+        "statusOpt": {
+          "select": "Select...",
+          "active": "Active",
+          "finished": "Finished"
+        }
+      },
+      "nameActivity": "Activity's Name",
+      "dateStart": "Start Date",
+      "dateLimit": "Stipulated date",
+      "description": "Description",
+      "deliverables": "Deliverables",
+      "dept": "Department",
+      "involvedActivity": "Involved Activity",
+      "status": "Status",
+      "dateClosure": "Real date",
+      "creator": "Author"
+    }
+  }
+}

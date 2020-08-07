@@ -1,0 +1,53 @@
+.titlePage {
+  font-family: 'oswald-bold';
+  font-size: 30px;
+}
+
+.screenBox {
+  height: 90%;
+}
+
+.boxForm {
+  border: 2px solid #3f5486;
+  border-radius: 20px;
+  padding: 10px;
+  width: 60%;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.msg {
+  font-family: 'poppins-regular';
+}
+
+.dataEntry {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+input,
+button {
+  height: 40px;
+}
+
+input {
+  border-radius: 10px;
+  border: 3px solid #aaa;
+  font-family: 'poppins-regular';
+  font-size: 90%;
+  width: 90%;
+  opacity: 0.9;
+}
+
+.backButton {
+  color: #fff;
+  border-radius: 10px;
+  background-color: #3f5486;
+  border-style: none;
+  font-family: 'poppins-bold';
+  font-size: 100%;
+  width: 100px;
+}

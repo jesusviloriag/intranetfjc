@@ -1,0 +1,109 @@
+.menu-s {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
+}
+.title-s {
+  text-align: center;
+  font-family: 'oswald-bold';
+  font-size: 30px;
+  margin-bottom: 2rem;
+}
+.title-boxes {
+  font-family: 'oswald-bold';
+  text-align: center;
+  font-size: 18px;
+  margin: 0;
+  margin-top: 0.4rem;
+}
+.boxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 4.5rem;
+}
+.box {
+  border: 3px solid #3f5486;
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  font-family: 'poppins-regular';
+}
+.button-arrow {
+  background-color: #3f5486;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-width: 0;
+  border-radius: 50%;
+  border-style: none;
+  border-image: none;
+  display: flex;
+  justify-content: center;
+}
+.wrapper-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 2px solid #3f5486;
+  padding: 12px;
+  align-items: center;
+  outline-style: none;
+}
+.text-option {
+  margin-right: 10px;
+  font-family: 'poppins-medium';
+}
+
+.wrapper-option2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 2px solid #3f5486;
+  padding: 5px 12px 5px 11px;
+  align-items: center;
+}
+
+.boxes-footer {
+  border: 3px solid #3f5486;
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  font-family: 'poppins-regular';
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 9rem;
+  margin-right: 9rem;
+}
+.title-footer {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #3f5486;
+}
+.wrapper-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.wrapper-box-footer {
+  width: 33%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.text-option-footer {
+  font-family: 'poppins-medium';
+}
+
+.wrapper-box-footer:nth-of-type(2) {
+  border-left: 3px solid #3f5486;
+  border-right: 3px solid #3f5486;
+}
+
+.navigateBox:hover {
+  cursor: pointer;
+}

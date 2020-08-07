@@ -1,0 +1,78 @@
+.screenBox {
+  margin-top: 90px;
+  margin-bottom: 40px;
+}
+
+.pageTitle {
+  font-family: 'oswald-bold';
+  font-size: 30px;
+}
+
+#closureTitle {
+  font-family: 'oswald-bold';
+  font-size: 25px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.findingBox {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #3f5486;
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  font-family: 'poppins-regular';
+  width: 85%;
+  padding: 1rem 3rem 2rem 3rem;
+}
+
+.dataBox {
+  display: flex;
+  flex-direction: column;
+}
+.subTitles {
+  font-family: 'poppins-bold';
+}
+
+p {
+  text-align: justify;
+}
+#linkDoc {
+  margin-right: 12rem;
+}
+
+.sep {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #3f5486;
+  margin: 15px 0px;
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+.button-s {
+  background-color: #3f5486;
+  border: 2px solid #3f5486;
+  border-radius: 10px;
+  color: white;
+  font-family: 'poppins-bold';
+  height: 40px;
+  width: 15%;
+  margin-bottom: 1.5rem;
+  font-size: 16px;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #888;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,204 @@
+<div class="d-flex flex-column align-items-center screenBox">
+    <h1 class="pageTitle" jhiTranslate="fjcintranetApp.document.info.pageTitle"></h1>
+    <div class="findingBox" *ngIf="document">
+        <div class="d-flex flex-row justify-content-between w-100 mb-3">
+
+             <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.document.info.codDoc"></span>
+                <span>{{document.codDoc}}{{document.id}}</span>
+            </span>
+
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.document.info.nameDoc"></span>
+                <span>{{document.nameDoc}}</span>
+            </span>
+
+        </div>
+
+        <div class="d-flex flex-row justify-content-between w-100 mb-3">
+
+             <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.document.info.creator"></span>
+                <span>{{document.creator.login}}</span>
+            </span>
+
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.document.info.dateCreation"></span>
+                <span>{{document.dateCreation | date:'dd/MM/yyyy'}}</span>
+            </span>
+
+        </div>
+
+        <div class="d-flex flex-row justify-content-between w-100 mb-3">
+
+             <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.document.info.departament"></span>
+                <span>{{departament.nameDepartament}}</span>
+            </span>
+
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.document.info.type"></span>
+                <span *ngIf="document.type == 0" jhiTranslate="fjcintranetApp.document.create.typeDocOpt.process"></span>
+                <span *ngIf="document.type == 1" jhiTranslate="fjcintranetApp.document.create.typeDocOpt.form"></span>
+                <span *ngIf="document.type == 2" jhiTranslate="fjcintranetApp.document.create.typeDocOpt.instruc"></span>
+                <span *ngIf="document.type == 3" jhiTranslate="fjcintranetApp.document.create.typeDocOpt.informative"></span>
+            </span>
+
+        </div>
+
+
+        <div class="d-flex flex-row justify-content-between w-100 mb-3">
+
+             <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.document.info.finalDisposition"></span>
+                <span *ngIf="document.finalDisposition == 1" jhiTranslate="fjcintranetApp.document.create.dispoOpt.delete"></span>
+                <span *ngIf="document.finalDisposition == 2" jhiTranslate="fjcintranetApp.document.create.dispoOpt.upgrade"></span>
+                <span *ngIf="document.finalDisposition == 3" jhiTranslate="fjcintranetApp.document.create.dispoOpt.archive"></span>
+            </span>
+
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.document.info.origin"></span>
+                <span *ngIf="document.origin == 0" jhiTranslate="fjcintranetApp.document.create.originOpt.int"></span>
+                <span *ngIf="document.origin == 1" jhiTranslate="fjcintranetApp.document.create.originOpt.ext"></span>
+            </span>
+
+        </div>
+
+        <div class="d-flex flex-row justify-content-between w-100 mb-4">
+
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.document.info.duration"></span>
+                <span *ngIf="document.duration == 0" jhiTranslate="fjcintranetApp.document.create.activeOpt.perman"></span>
+                <span *ngIf="document.duration == 1" jhiTranslate="fjcintranetApp.document.create.activeOpt.one"></span>
+                <span *ngIf="document.duration == 2" jhiTranslate="fjcintranetApp.document.create.activeOpt.two"></span>
+                <span *ngIf="document.duration == 3" jhiTranslate="fjcintranetApp.document.create.activeOpt.three"></span>
+                <span *ngIf="document.duration == 4" jhiTranslate="fjcintranetApp.document.create.activeOpt.four"></span>
+                <span *ngIf="document.duration == 5" jhiTranslate="fjcintranetApp.document.create.activeOpt.five"></span>
+                <span *ngIf="document.duration == 6" jhiTranslate="fjcintranetApp.document.create.activeOpt.six"></span>
+                <span *ngIf="document.duration == 7" jhiTranslate="fjcintranetApp.document.create.activeOpt.seven"></span>
+                <span *ngIf="document.duration == 8" jhiTranslate="fjcintranetApp.document.create.activeOpt.eigth"></span>
+                <span *ngIf="document.duration == 9" jhiTranslate="fjcintranetApp.document.create.activeOpt.nine"></span>
+                <span *ngIf="document.duration == 10" jhiTranslate="fjcintranetApp.document.create.activeOpt.teen"></span>
+            </span>
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.document.info.storage"></span>
+                <option *ngIf="document.storage == 0" jhiTranslate="fjcintranetApp.document.create.storageOpt.digital"></option>
+                <option *ngIf="document.storage == 1" jhiTranslate="fjcintranetApp.document.create.storageOpt.physical"></option>
+                <option *ngIf="document.storage == 2" jhiTranslate="fjcintranetApp.document.create.storageOpt.both"></option>
+            </span>
+
+        </div>
+
+
+
+        <div class="d-flex flex-row">
+            <div class="d-flex justify-content-center w-100">
+                <button class="button-s mx-2" type="button" (click)="openFile(currentDocByte, currentDoc)"
+                  jhiTranslate="fjcintranetApp.document.info.doc"></button>
+            </div>
+
+            <div class="d-flex justify-content-center w-100">
+                <button class="button-s mx-2" type="button" [routerLink]="['/document', document.id, 'update']"
+                  jhiTranslate="fjcintranetApp.document.info.modify"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center w-100 mt-5">
+      <button  class="button--return mx-2" type="button"  (click)="previousState()" jhiTranslate="fjcintranetApp.finding.view.buttonBack"></button>
+    </div>
+
+</div>
+
+<!-- <div *ngIf="!infoLoad">
+    <div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div> -->
+
+
+
+
+
+
+
+<!--<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="finding">
+            <h2><span jhiTranslate="fjcintranetApp.finding.detail.title">Finding</span> {{finding.id}}</h2>
+            <h1>HOLAAAAAAAAAAAAAAAAAAAA SOY YO EL DE LOS MEMES EN TIKOKX</h1>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="fjcintranetApp.finding.codFinding">Cod Finding</span></dt>
+                <dd>
+                    <span>{{finding.codFinding}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateStart">Date Start</span></dt>
+                <dd>
+                    <span>{{finding.dateStart}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateEnd">Date End</span></dt>
+                <dd>
+                    <span>{{finding.dateEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateClosure">Date Closure</span></dt>
+                <dd>
+                    <span>{{finding.dateClosure}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.description">Description</span></dt>
+                <dd>
+                    <span>{{finding.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.evidence">Evidence</span></dt>
+                <dd>
+                    <span>{{finding.evidence}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.methodology">Methodology</span></dt>
+                <dd>
+                    <span>{{finding.methodology}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.linkDoc">Link Doc</span></dt>
+                <dd>
+                    <div *ngIf="finding.linkDoc">
+                        <a (click)="openFile(finding.linkDocContentType, finding.linkDoc)" jhiTranslate="entity.action.open">open</a>
+                        {{finding.linkDocContentType}}, {{byteSize(finding.linkDoc)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.descHow">Desc How</span></dt>
+                <dd>
+                    <span>{{finding.descHow}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.typeFinding">Type Finding</span></dt>
+                <dd>
+                    <span>{{finding.typeFinding}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.creator">Creator</span></dt>
+                <dd>
+                    {{finding.creator?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/finding', finding.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div> -->

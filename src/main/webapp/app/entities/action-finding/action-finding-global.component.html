@@ -1,0 +1,92 @@
+<div class="d-flex align-items-center flex-column screenBox">
+  <h1 class="pageTitle mb-2" jhiTranslate="fjcintranetApp.actionFinding.global.title"></h1>
+  <div class="d-flex align-items-center justify-content-center w-100 flex-row">
+
+    <div class="d-flex align-items-center flex-column w-50 p-2">
+      <h2 class="pageTitle" jhiTranslate="fjcintranetApp.actionFinding.global.titleFind"></h2>
+      <form class="w-100 mt-2" [formGroup]="resFindForm">
+        <div class="d-flex flex-row justify-content-around mb-4">
+          <div class="d-flex flex-column inputLabel text-center">
+            <label for="registeredActions" jhiTranslate="fjcintranetApp.actionFinding.global.registeredFind"></label>
+            <input type="text" id="registeredActions" formControlName="registeredActions" readonly >
+          </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-around mb-4">
+          <div class="d-flex flex-column inputLabel text-center">
+            <label for="processActions" jhiTranslate="fjcintranetApp.actionFinding.global.processFind"></label>
+            <input type="text" id="processActions" formControlName="processActions" readonly >
+          </div>
+          <div class="d-flex flex-column inputLabel text-center">
+            <label for="findingWaiting" jhiTranslate="fjcintranetApp.actionFinding.global.findWaiting"></label>
+            <input type="text" id="findingWaiting" formControlName="findingWait" readonly>
+          </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-around">
+          <div class="d-flex flex-column inputLabel text-center">
+            <label for="nonEficActions" jhiTranslate="fjcintranetApp.actionFinding.global.nonEficFind"></label>
+            <input type="text" id="nonEficActions" formControlName="nonEficActions" readonly >
+          </div>
+
+          <div class="d-flex flex-column inputLabel text-center">
+            <label for="eficActions" jhiTranslate="fjcintranetApp.actionFinding.global.eficFind"></label>
+            <input type="text" id="eficActions" formControlName="eficActions" readonly >
+          </div>
+        </div>
+
+        <div class="w-50 mx-auto mt-4">
+          <canvas id="pieChartFind" height="300" width="300"></canvas>
+        </div>
+      </form>
+    </div>
+
+    <div class="d-flex align-items-center flex-column w-50 p-2">
+      <h2 class="pageTitle" jhiTranslate="fjcintranetApp.actionFinding.global.titleAct"></h2>
+      <form class="w-100 mt-2" [formGroup]="resActForm">
+        <div class="d-flex flex-row justify-content-center mb-4">
+          <div class="d-flex flex-column inputLabel text-center">
+            <label for="registerAct" jhiTranslate="fjcintranetApp.actionFinding.global.registerAct"></label>
+            <input type="text" id="registerAct" formControlName="registeredAct" readonly>
+          </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-around mb-4">
+          <div class="d-flex flex-column inputLabel text-center">
+            <label for="processAct" jhiTranslate="fjcintranetApp.actionFinding.global.processAct"></label>
+            <input type="text" id="processAct" formControlName="openAct" readonly>
+          </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-around">
+          <div class="d-flex flex-column inputLabel text-center">
+            <label for="closeActions" jhiTranslate="fjcintranetApp.actionFinding.global.closeActions"></label>
+            <input type="text" id="closeActions" formControlName="closeAct" readonly>
+          </div>
+
+          <div class="d-flex flex-column inputLabel text-center">
+            <label for="notFinishedAct" jhiTranslate="fjcintranetApp.actionFinding.global.actionNotFinished"></label>
+            <input type="text" id="notFinishedAct" formControlName="neverFinished" readonly>
+          </div>
+        </div>
+
+        <div class="w-50 mx-auto mt-4">
+          <canvas id="pieChartAct" height="300" width="300"></canvas>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="d-flex justify-content-center mt-5 w-100">
+    <button type="button" routerLink="/menu" class="buttonBack text-white" jhiTranslate="fjcintranetApp.actionFinding.global.goBack"></button>
+  </div>
+</div>
+<div *ngIf="!actionSaved && !findingSaved">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

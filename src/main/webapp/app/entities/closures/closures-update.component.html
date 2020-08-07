@@ -1,0 +1,82 @@
+<div class="row justify-content-center mainContent">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-closures-heading" jhiTranslate="fjcintranetApp.closures.home.createOrEditLabel">Create or edit a Closures</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.closures.stateClosure" for="field_stateClosure">State Closure</label>
+                    <input  readonly type="text" class="form-control" name="stateClosure" id="field_stateClosure"
+                           formControlName="stateClosure"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.closures.actionClosed" for="field_actionClosed">Action Closed</label>
+                    <select class="form-control" name="actionClosed" id="field_actionClosed" formControlName="actionClosed">
+                        <option [value]="editForm.get('actionClosed').value">{{editForm.get('actionClosed').value}}</option>
+                        <option jhiTranslate="fjcintranetApp.closures.create.yes" value="Si">Si</option>
+                        <option  jhiTranslate="fjcintranetApp.closures.create.no" value="No">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.closures.effectiveness" for="field_effectiveness">Effectiveness</label>
+                    <select class="form-control" name="effectiveness" id="field_effectiveness" formControlName="effectiveness">
+                        <option [value]="editForm.get('effectiveness').value" jhiTranslate="fjcintranetApp.closures.effectiveness0"></option>
+                        <option value="1" jhiTranslate="fjcintranetApp.closures.effectiveness1">Efectiva</option>
+                        <option value="2" jhiTranslate="fjcintranetApp.closures.effectiveness2">No efectiva</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.closures.dept" for="field_dept">Dept</label>
+                    <select class="form-control w-75" name="dept" id="field_dept"
+                           formControlName="dept">
+                        <option value="null" disabled selected jhiTranslate="fjcintranetApp.finding.create.optDisabled"></option>
+                        <option *ngFor="let dpte of dpte; let i = index" [value]="dpte.id">{{ dpte.shortDsc }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.closures.improveComment" for="field_improveComment">Improve Comment</label>
+                     <textarea  placeholder="{{ 'fjcintranetApp.closures.create.textPlaceholder' | translate }}"
+                 rows="5" formControlName="improveComment" class="form-control" name="improveComment" id="field_improveComment"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.closures.effectivenessComment" for="field_effectivenessComment">Effectiveness Comment</label>
+                    <textarea  rows="5" class="form-control" name="effectivenessComment" id="field_effectivenessComment"
+                    placeholder="{{ 'fjcintranetApp.closures.create.textPlaceholder' | translate }}"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.closures.findClose" for="field_findClose">Find Close</label>
+                    <input readonly class="form-control" id="field_findClose" name="findclose" formControlName="findClose"/>
+                </div>
+                <div *ngIf="editForm.get('findClose').invalid && (editForm.get('findClose').dirty || editForm.get('findClose').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('findClose').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="isSaving">
+    <div class="modalBox">
+        <div class="firstCircle">
+            <div class="secondCircle">
+            </div>
+        </div>
+    </div>
+</div>

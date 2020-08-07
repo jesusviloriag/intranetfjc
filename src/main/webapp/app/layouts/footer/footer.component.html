@@ -1,0 +1,15 @@
+<div [ngSwitch]="isAuthenticated()">
+    <div  *ngSwitchCase="false" class="footerLogin">
+        <p class="footer--font">
+            <span jhiTranslate=footer.name></span>
+            <span jhiTranslate="footer.rif"></span>
+            <span jhiTranslate="footer.rights"></span>
+        </p>
+    </div>
+</div>
+
+
+<div *jhiHasAnyAuthority="'ROLE_USER'" class="footer-s">
+    <img class="img img-fluid" src="../../../content/images/logo-footer.svg">
+    <p jhiTranslate="footer.info" class="m-0 info-footer"></p>
+</div>

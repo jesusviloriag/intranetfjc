@@ -1,0 +1,31 @@
+<div class="row justify-content-center cms__container">
+    <div class="col-8">
+        <div *ngIf="documentType">
+            <h2><span jhiTranslate="fjcintranetApp.documentType.detail.title">Document Type</span> {{documentType.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="fjcintranetApp.documentType.name">Name</span></dt>
+                <dd>
+                    <span>{{documentType.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.documentType.description">Description</span></dt>
+                <dd>
+                    <span>{{documentType.description}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/document-type', documentType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

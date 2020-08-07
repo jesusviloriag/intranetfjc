@@ -1,0 +1,24 @@
+{
+  "fjcintranetApp": {
+    "userInDepartment": {
+      "home": {
+        "title": "Usuarios en departamentos",
+        "createLabel": "Crear nuevo usuario en departamento",
+        "createOrEditLabel": "Crear o editar usuario en departamento",
+        "search": "Buscar usuario en departamento",
+        "notFound": "Ningún usuario en departamento encontrado"
+      },
+      "created": "Un nuevo usuario en departamento ha sido creado con el identificador {{ param }}",
+      "updated": "Un usuario en departamento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un usuario en departamento ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar el usuario en departamento {{ id }}?"
+      },
+      "detail": {
+        "title": "Usuario en departamento"
+      },
+      "user": "Usuario",
+      "departament": "Departamento"
+    }
+  }
+}

@@ -1,0 +1,162 @@
+<div class="d-flex align-items-center flex-column screenBox" >
+    <h1 class="pageTitle" jhiTranslate="fjcintranetApp.finding.records.title"></h1>
+    <div class="box">
+
+      <div class="d-flex justify-content-center">
+        <div [hidden]="warning != true">
+          <p class="text-danger" jhiTranslate="fjcintranetApp.finding.records.warningFilter"></p>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+			  <button jhiTranslate="fjcintranetApp.finding.records.buttonGlobal" routerLink="/action-finding/globalActions" type="button" class="btn-primary button-s"></button>
+		  </div>
+            <table class="text-center table" aria-describedby="page-heading">
+                <thead class="filter-s">
+                  <tr>
+                    <td colspan="11">
+                      <div class="justify-content-center">
+                          <div class="d-flex flex-row justify-content-between boxFilter">
+
+                              <span class="align-self-center ml-2" jhiTranslate="fjcintranetApp.finding.records.filter"></span>
+
+                              <div class="d-flex flex-row align-items-center inputBox">
+                                  <label for="sinceDate"  class="mr-1" jhiTranslate="fjcintranetApp.finding.records.filterSince"></label>
+
+                                  <input class="input-date mr-2" placeholder="000-00-00" type="text" ngbDatepicker #dateStartDp="ngbDatepicker" id="sinceDate" [ngModel]="mymodel" (ngModelChange)="getParams($event, 'dateStart')" readonly>
+                                  <label *ngIf="dateStart != ''" (click)="clearInput('sinceDate')" class="clearBox">X</label>
+                                  <img class="icons ml-2" alt="Since date"  (click)="dateStartDp.toggle()" src="../../../content/icons/calendar.svg">
+                              </div>
+
+                              <div class="d-flex flex-row align-items-center inputBox">
+                                  <label for="untilDate"   class="mr-1"jhiTranslate="fjcintranetApp.finding.records.filterUntil"></label>
+                                  <input class="mr-2 input-date" placeholder="000-00-00" type="text" ngbDatepicker  #dateEndDp="ngbDatepicker" id="untilDate" [ngModel]="mymodel" (ngModelChange)="getParams($event,'dateEnd')" readonly>
+                                  <label *ngIf="dateEnd != ''" (click)="clearInput('untilDate')" class="clearBox">X</label>
+                                  <img class="icons ml-2" alt="Until Date" (click)="dateEndDp.toggle()" src="../../../content/icons/calendar.svg">
+                              </div>
+
+                              <div class="d-flex flex-row align-items-center inputBox">
+                                  <label for="status" class="mr-1" jhiTranslate="fjcintranetApp.finding.records.statusOption.label"></label>
+                                  <select class="input-s mr-2" id="status" [ngModel]="mymodel" (ngModelChange)="getParams($event,'status')">
+                                      <option hidden [value]="Seleccione" jhiTranslate="fjcintranetApp.finding.records.statusOption.info"></option>
+                                      <option value="null" jhiTranslate="fjcintranetApp.finding.records.statusOption.all" >Todos</option>
+                                      <option value="false" jhiTranslate="fjcintranetApp.finding.records.statusOption.open"></option>
+                                      <option value="true" jhiTranslate="fjcintranetApp.finding.records.statusOption.closed"></option>
+                                  </select>
+                              </div>
+                          </div>
+                       </div>
+                    </td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="tr-head">
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.finding.records.id"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="idUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="idDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.finding.records.author"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="authorUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="authorDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.finding.records.findType"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="typeUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="typeDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.finding.records.code"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="codUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="codDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.finding.records.dateStart"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="dateStartUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="dateStartDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.finding.records.dateEnd"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="dateEndUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="dateEndDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.finding.records.description"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="dscUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="dscDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.finding.records.actionCount"></span>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.finding.records.percent"></span>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.finding.records.status"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="statusUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="statusDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                    </th>
+                  </tr>
+                  <tr class="tr-s" *ngFor="let finding of findings ; let i = index">
+                    <td>{{finding.id}}</td>
+                    <td>{{finding.creator?.login}}</td>
+                    <td>{{finding.typeFinding == 0 ? getLabel('Opportunity for improvement', 'Oportunidad de mejora') : getLabel('Nonconformity', 'No conformidad')}}</td>
+                    <td>{{finding.codFinding}}{{finding.id}}</td>
+                    <td>{{finding.dateStart | date:'dd/MM/yyyy'}}</td>
+                    <td>{{finding.dateEnd | date:'dd/MM/yyyy'}}</td>
+                    <td>{{finding.description}}</td>
+                    <td>{{actionNumber[i]}}</td><!-- Aqui va numero de acciones-->
+                    <td>{{percent[i]}}</td> <!-- Aqui va porcentaje-->
+                      <td class="closedFinding" *ngIf="closureData[i] == 0">{{ closureData[i] == 0 ? getLabel('Closed', 'Cerrado') : closureData[i] }}</td>
+                      <td class="closedFinding" *ngIf="closureData[i] == 1">{{ closureData[i] == 1 ? getLabel(' Successfully closed', 'Cerrado eficaz') : closureData[i] }}</td>
+                      <td class="closedFinding" *ngIf="closureData[i] == 2">{{ closureData[i] == 2 ? getLabel(' Not successfully closed', 'Cerrado no eficaz') : closureData[i] }}</td>
+                    <td class="openFinding" *ngIf="closureData[i] == 'Abierto'">{{ getLabel('Open', 'Abierto') }}</td>
+                    <td>
+                      <div class="d-flex flex-row justify-content-center">
+                        <a class="pl-2 pr-2"jhiTranslate="fjcintranetApp.finding.records.linkView"
+                          [routerLink]="['/finding', finding.id, 'findView' ]"></a>
+                        <a *ngIf="closureData[i] == 0" class="pr-2" [routerLink]="['/closures', closureRoute[i], 'verify' ]" jhiTranslate="fjcintranetApp.finding.records.linkVerify"></a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+
+        <div [hidden]="findings?.length === 0">
+            <div class="row justify-content-center mt-3">
+                <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!infoLoad">
+  <div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

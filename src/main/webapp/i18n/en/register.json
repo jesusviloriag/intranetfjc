@@ -1,0 +1,41 @@
+{
+  "register": {
+    "title": "SIGN UP",
+    "form": {
+      "info": "Fill the required data to create an account",
+      "user": "*Username:",
+      "email": "*Email:",
+      "firstname": "* First name:",
+      "lastname": "*Last name:",
+      "password": "*Password:",
+      "confirmpassword": "*Repeat password:",
+      "dept" : "Departament: ",
+      "rol": "Rol: ",
+      "rolUser":" User",
+      "rolAdmin": "Admin",
+      "language" : "Language: ",
+      "selectPlaceholder":"Select one..",
+      "activate": "Activate user",
+      "button": "Sign up",
+      "info.login": "Do you already have an account?",
+      "info.link": "Log in"
+    },
+    "messages": {
+      "validate": {
+        "login": {
+          "required": "Your username is required.",
+          "minlength": "Required to be at least 1 character.",
+          "maxlength": "Cannot be longer than 50 characters.",
+          "pattern": "It can only contain letters and digits."
+        }
+      },
+      "success": "Your data was stored correctly! Please check your email for confirmation.",
+      "successButton": "Login",
+      "error": {
+        "fail": "<strong>Registration failed!</strong> Please try again later.",
+        "userexists": "<strong>Login name already registered!</strong> Please choose another one.",
+        "emailexists": "<strong>Email is already in use!</strong> Please choose another one."
+      }
+    }
+  }
+}

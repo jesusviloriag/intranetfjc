@@ -1,0 +1,111 @@
+<div class="row justify-content-center mainContent w-100">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-activity-heading" jhiTranslate="fjcintranetApp.activity.home.createOrEditLabel">Create or edit a Activity</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.activity.create.name" for="field_nameActivity"></label>
+                    <input type="text" class="form-control" name="nameActivity" id="field_nameActivity"
+                           formControlName="nameActivity" placeholder="{{ 'fjcintranetApp.activity.create.placeholderName' | translate }}"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.activity.create.startDate" for="dateStart"></label>
+                    <div class="d-flex flex-row align-items-center">
+                        <input  type="text" class="form-control mr-2" readonly id="dateStart" ngbDatepicker  #dateStartDp="ngbDatepicker" formControlName="dateStart" placeholder="0000-00-00"/>
+                        <label *ngIf="editForm.get('dateStart').value != null" (click)="clearInput('dateStart','dateStart')" class="clearBox m-0">X</label>
+                        <div class="p-1 ml-2">
+                          <img class="icons" (click)="dateStartDp.toggle()" src="../../../content/icons/calendar.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.activity.create.dateFinish" for="dateLimit"></label>
+                    <div class="d-flex flex-row align-items-center">
+                        <input  type="text" class="form-control mr-2" readonly id="dateLimit" ngbDatepicker  #dateLimitDp="ngbDatepicker" formControlName="dateLimit" placeholder="0000-00-00"/>
+                        <label *ngIf="editForm.get('dateLimit').value != null" (click)="clearInput('dateLimit','dateLimit')" class="clearBox m-0">X</label>
+                        <div class="p-1 ml-2">
+                          <img class="icons" (click)="dateLimitDp.toggle()" src="../../../content/icons/calendar.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.activity.create.dsc" for="field_description"></label>
+                    <textarea id="dsc" rows="8" class="w-100 form-control" placeholder="{{ 'fjcintranetApp.activity.create.placeholderDsc' | translate }}" formControlName="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.activity.create.deliverables" for="field_deliverables"></label>
+                    <textarea id="deliverables" rows="8" class="w-100 form-control" placeholder="{{ 'fjcintranetApp.activity.create.placeholderDel' | translate }}" formControlName="deliverables"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.activity.create.dpte" for="field_dept"></label>
+                    <select id="dpte" class="form-control" formControlName="dept">
+                        <option value="undefined" disabled selected jhiTranslate="fjcintranetApp.activity.create.dpteOpt.placeholder"></option>
+                        <option *ngFor="let dpte of dpte; let i = index" [value]="dpte.id">{{ dpte.shortDsc }}</option>
+                    </select>
+                </div>
+                <div class="d-flex flex-column w-100 mb-2">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.activity.create.involved" for="field_involvedActivity"></label>
+                    <input type="text" id="field_involvedActivity" (keyup)="searchUser($event)" autocomplete="off" placeholder="{{ 'fjcintranetApp.activity.create.placeholderInvol' | translate }}"
+                    formControlName="involvedActivity">
+                    <div class="dataResult">
+                      <p *ngFor="let name of likeUser" class="listItem" (click)="uploadName(name.login,i)">{{name.login}}-{{name.firstName}} {{name.lastName}}</p>
+                      <p *ngIf="likeUser.length > 10" class="lastResult">Especifique para mejorar la busqueda</p>
+                    </div>
+
+                    <div>
+                      <p *ngFor="let name of involvedNames; let k = index" class="involvedNames m-2">
+                        <span>{{ name }}</span>
+                        <span class="deleteInvolved ml-2" (click)="deleteInvol(k)">X</span>
+                      </p>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="router.url != '/activity/new'">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.activity.create.dateClosure" for="dateClosure">Date Closure</label>
+                    <div class="d-flex flex-row align-items-center">
+                        <input type="text" class="form-control mr-2" id="dateClosure" ngbDatepicker  #dateClosureDp="ngbDatepicker" formControlName="dateClosure" readonly/>
+                        <label *ngIf="editForm.get('dateClosure').value != null" (click)="clearInput('dateClosure','dateClosure')" class="clearBox m-0">X</label>
+                        <div class="p-1 ml-2">
+                          <img class="icons" (click)="dateClosureDp.toggle()" src="../../../content/icons/calendar.svg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.activity.create.author" for="field_creator">Creator</label>
+                    <select class="form-control" id="field_creator" name="creator" formControlName="creator">
+                        <option value="undefined" disabled selected jhiTranslate="fjcintranetApp.activity.create.dpteOpt.placeholder"></option>
+                        <option [ngValue]="userOption.id === editForm.get('creator').value?.id ? editForm.get('creator').value : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('creator').invalid && (editForm.get('creator').dirty || editForm.get('creator').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('creator').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

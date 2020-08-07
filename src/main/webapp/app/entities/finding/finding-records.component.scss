@@ -1,0 +1,152 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.screenBox {
+  margin-top: 90px;
+  margin-bottom: 40px;
+}
+
+.pageTitle {
+  font-family: 'oswald-bold';
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.box {
+  width: 90%;
+  font-family: 'poppins-regular';
+  font-size: 14px;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#table-s {
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.3);
+  border-collapse: collapse;
+}
+.filter-s {
+  border: 3px solid #3f5486;
+  border-collapse: collapse;
+  border-bottom: 3px solid #3f5486;
+}
+
+.tr-s {
+  border: 3px solid #3f5486;
+  border-collapse: collapse;
+}
+
+.tr-head {
+  border-top: 1.5px solid #3f5486;
+  border-left: 3px solid #3f5486;
+  border-right: 3px solid #3f5486;
+  border-bottom: 1px solid #3f5486;
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid #3f5486;
+  padding: 5px;
+  text-align: center;
+  line-height: 1.2em;
+}
+.navigateBox:hover {
+  cursor: pointer;
+}
+
+.button-s {
+  background-color: #3f5486;
+  border: 2px solid #3f5486;
+  border-radius: 10px;
+  color: white;
+  font-family: 'poppins-bold';
+  height: 40px;
+  width: 11%;
+  margin-bottom: 1.5rem;
+}
+
+.input-s {
+  width: 100%;
+  height: 35px;
+  border: 3px solid #3f5486;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.input-date {
+  width: 110px;
+  padding: 2px;
+  height: 35px;
+  border: 3px solid #3f5486;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.boxFilter {
+  font-size: 17px;
+}
+
+.inputBox {
+  padding: 4px;
+}
+
+label {
+  margin: 0;
+}
+
+.icons {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.openFinding {
+  background-color: #00e887;
+  color: black;
+}
+
+.closedFinding {
+  background-color: #bc0202;
+  color: white;
+}
+
+.table {
+  padding: 0;
+}
+
+.arrowsGroup {
+  display: flex;
+  float: right;
+  flex-direction: column;
+  margin-right: 5px;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.arrowsGroup i {
+  border: solid #000;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.clearBox {
+  cursor: pointer;
+  font-family: 'poppins-bold';
+}
+
+th,
+td {
+  vertical-align: inherit;
+}

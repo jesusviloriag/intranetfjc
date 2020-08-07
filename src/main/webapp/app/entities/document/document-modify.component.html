@@ -1,0 +1,58 @@
+<div class="d-flex flex-column align-items-center screenBox">
+  <h2 class="pageTitle" jhiTranslate="fjcintranetApp.document.modify.pageTitle"></h2>
+  <form class="d-flex flex-column justify-content-center dataBox" [formGroup]="editForm">
+
+    <div class="d-flex flex-row justify-content-between my-4 mx-2">
+      <label><span class="labelInfo" jhiTranslate="fjcintranetApp.document.modify.creation"></span><span>{{ editForm.get('dateCreation').value.format('DD/MM/YYYY') }}</span></label>
+      <label><span class="labelInfo" jhiTranslate="fjcintranetApp.document.modify.author"></span><span>{{ editForm.get('creator').value.login }}</span></label>
+    </div>
+
+    <div class="d-flex flex-row justify-content-between my-4 mx-2">
+      <label><span class="labelInfo" jhiTranslate="fjcintranetApp.document.modify.verifiedBy"></span><span>{{ mods === undefined ? "" : mods[0].author.login }}</span></label>
+      <label><span class="labelInfo" jhiTranslate="fjcintranetApp.document.modify.code"></span><span>{{ editForm.get('codDoc').value }}{{editForm.get('id').value}}</span></label>
+    </div>
+
+    <div class="d-flex flex-row justify-content-start my-4 mx-2 align-items-center">
+      <label><span class="labelInfo" jhiTranslate="fjcintranetApp.document.modify.status"></span></label>
+      <select class="status" formControlName="duration">
+        <option value="null" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+        <option value="0" jhiTranslate="fjcintranetApp.document.create.activeOpt.perman"></option>
+        <option value="1" jhiTranslate="fjcintranetApp.document.create.activeOpt.one"></option>
+        <option value="2" jhiTranslate="fjcintranetApp.document.create.activeOpt.two"></option>
+        <option value="3" jhiTranslate="fjcintranetApp.document.create.activeOpt.three"></option>
+        <option value="4" jhiTranslate="fjcintranetApp.document.create.activeOpt.four"></option>
+        <option value="5" jhiTranslate="fjcintranetApp.document.create.activeOpt.five"></option>
+        <option value="6" jhiTranslate="fjcintranetApp.document.create.activeOpt.six"></option>
+        <option value="7" jhiTranslate="fjcintranetApp.document.create.activeOpt.seven"></option>
+        <option value="8" jhiTranslate="fjcintranetApp.document.create.activeOpt.eigth"></option>
+        <option value="9" jhiTranslate="fjcintranetApp.document.create.activeOpt.nine"></option>
+        <option value="10" jhiTranslate="fjcintranetApp.document.create.activeOpt.teen"></option>
+      </select>
+    </div>
+
+    <div class="w-100 d-flex justify-content-center my-4">
+      <button type="button" class="w-50" (click)="openFile(currentDocByte, currentDoc)" jhiTranslate="fjcintranetApp.document.modify.lookDoc"></button>
+    </div>
+
+    <div class="boxFile" *ngIf="currentDoc === editForm.get('doc').value">
+      <input class="w-100 h-100 fileBox" type="file" id="file_linkDoc" (change)="setFileData($event, 'doc', false)"/>
+    </div>
+    <div *ngIf="currentDoc !== editForm.get('doc').value" class="form-text text-danger clearfix text-center d-flex flex-column align-items-center justify-content-center mb-2">
+        <a class="pull-left" (click)="openFile(editForm.get('docContentType').value, editForm.get('doc').value)" jhiTranslate="entity.action.open">open</a>
+        <span class="pull-left">{{editForm.get('docContentType').value}}, {{byteSize(editForm.get('doc').value)}}</span>
+        <button type="button" (click)="editForm.patchValue({doc: null});editForm.patchValue({docContentType: null});"
+                class="btn btn-secondary btn-xs pull-right w-25">
+            <fa-icon [icon]="'times'"></fa-icon>
+        </button>
+    </div>
+    <input type="hidden" class="form-control" name="doc" id="field_doc"
+           formControlName="doc"/>
+    <input type="hidden" class="form-control" name="docContentType" id="field_docContentType"
+           formControlName="docContentType" />
+
+    <div class="d-flex flex-row justify-content-around">
+      <button type="button" class="w-25" (click)="save()" jhiTranslate="fjcintranetApp.document.modify.btnSave"></button>
+      <button type="button" class="w-25" jhiTranslate="fjcintranetApp.document.modify.btnSend"></button>
+    </div>
+  </form>
+</div>

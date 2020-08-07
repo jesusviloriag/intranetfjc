@@ -1,0 +1,56 @@
+{
+  "fjcintranetApp": {
+    "actionFinding": {
+      "home": {
+        "title": "Acciones de hallazgos",
+        "createLabel": "Crear nueva acción de hallazgo",
+        "createOrEditLabel": "Crear o editar acción de hallazgo",
+        "search": "Buscar acción de hallazgo",
+        "global": "Analisis Global",
+        "notFound": "Ningúna acción de hallazgo encontrada"
+      },
+      "created": "Un nuevo Action Finding ha sido creado con el identificador {{ param }}",
+      "updated": "Un Action Finding ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Action Finding ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Action Finding {{ name }} {{ id }}?"
+      },
+      "detail": {
+        "title": "Acción de hallazgo"
+      },
+      "global": {
+        "title": "ANÁLISIS GLOBAL",
+        "titleFind": "HALLAZGOS",
+        "registeredFind": "Registrados",
+        "processFind": "En proceso",
+        "findWaiting": "Esperando por verificación",
+        "nonEficFind": "Con cierre no eficaz",
+        "eficFind": "Con cierre eficaz",
+        "titleAct": "ACCIONES",
+        "registerAct": "Registradas",
+        "processAct": "En proceso",
+        "closeActions": "Cerradas",
+        "actionNotFinished": "No finalizadas",
+        "goBack": "Regresar"
+      },
+      "descAction": "Descripción del (¿como?)",
+      "dateStartAction": "Fecha de inicio",
+      "dateCommit": "Fecha de compromiso",
+      "dateRealCommit": "Fecha Real",
+      "descHow": "Evidencia",
+      "involved": "Involucrados",
+      "status": "Status",
+      "evidenceDoc": "Documento de evidencia",
+      "observation": "Observaciones",
+      "actFinding": "Hallazgo",
+      "tipDscHow": "La actividad perteneciente al plan de acción para eliminar la causa raíz de la desviación.",
+      "tipDscEvidence": "En caso de tener algun anexo (foto, documento, entre otro) que evidencie el resultado se debe describir.",
+      "tipDoc": "Documento con evidencia.",
+      "tipObservation": "Escribir el resultado de la acción al momento de hacer la revisión.",
+      "tipStartDate": "Escribir la fecha en la que el integrante se compromete a iniciar con la actividad.",
+      "tipLimitDate": "Escribir la fecha en la que el integrante se compromete a cumplir con la actividad.",
+      "tipRealDate": "Escribir la fecha en la que se ejecuta realmente la actividad.",
+      "tipInvolved": "Agregar a los involucrados que deberan interactuar en la acción."
+    }
+  }
+}

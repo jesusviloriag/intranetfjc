@@ -1,0 +1,47 @@
+/* after changing this file run 'npm run webpack:build' */
+
+/***************************
+put Sass variables here:
+eg $input-color: red;
+****************************/
+// Override Bootstrap variables
+@import 'bootstrap-variables';
+// Import Bootstrap source files from node_modules
+@import '~bootstrap/scss/bootstrap';
+
+@import '~angular-calendar/scss/angular-calendar.scss';
+
+.cal-month-view .cal-days {
+  border: 0; }
+
+  .cal-month-view .cal-day-cell:not(:last-child) {
+    border-right: 2px solid;
+}
+
+.cal-month-view .cal-day-cell:not(:last-child) {
+    border-right-color: #3f5486;
+}
+
+.cal-month-view .cal-day-cell {
+   min-height: 0px;
+}
+
+.cal-month-view .cal-days .cal-cell-row {
+    border-bottom: 2px solid #3f5486;
+}
+
+.cal-month-view .cal-days .cal-cell-row:last-child {
+    border-bottom: 0;
+}
+
+.cal-cell-row{
+	border-bottom: 2px solid #3f5486;
+}
+
+.cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
+    opacity: 0.35;
+}
+
+
+
+/* jhipster-needle-scss-add-vendor JHipster will add new css style */

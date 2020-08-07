@@ -1,0 +1,26 @@
+{
+  "fjcintranetApp": {
+    "documentType": {
+      "home": {
+        "title": " Tipos de documentos",
+        "createLabel": "Crear nuevo tipo de documento",
+        "createOrEditLabel": "Crear o editar tipo de documento",
+        "search": "Buscar tipo de documento",
+        "notFound": "Ningún tipos de documentos encontrado"
+      },
+      "created": "Un nuevo tipo de documento ha sido creado con el identificador {{ param }}",
+      "updated": "Un tipo de documento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un tipo de documento ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar tipo de documento {{ id }}?"
+      },
+      "detail": {
+        "title": " Tipo de documento"
+      },
+      "name": "Nombre",
+      "description": "Descripción",
+      "placeholderName": "Nombre...",
+      "placeholderDsc": "Descripción..."
+    }
+  }
+}

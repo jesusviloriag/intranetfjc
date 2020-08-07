@@ -1,0 +1,69 @@
+    <div class="col-8 mainContent justify-content-center">
+        <div *ngIf="closures">
+            <h2 jhiTranslate="fjcintranetApp.closures.detail.title"></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="global.field.id"></span></dt>
+                <dd>
+                    <span>{{closures.id}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.closures.stateClosure">State Closure</span></dt>
+                <dd>
+                    <span>{{closures.stateClosure}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.closures.actionClosed">Action Closed</span></dt>
+                <dd>
+                    <span>{{closures.actionClosed}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.closures.effectiveness">Effectiveness</span></dt>
+                <dd>
+                    <span *ngIf="closures.effectiveness == 0" jhiTranslate="fjcintranetApp.closures.effectiveness0"></span>
+                    <span *ngIf="closures.effectiveness == 1" jhiTranslate="fjcintranetApp.closures.effectiveness1"></span>
+                    <span *ngIf="closures.effectiveness == 2" jhiTranslate="fjcintranetApp.closures.effectiveness2"></span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.closures.dept">Dept</span></dt>
+                <dd>
+                    <span>{{getDepartament(closures.dept)}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.closures.improveComment">Improve Comment</span></dt>
+                <dd>
+                    <span>{{closures.improveComment}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.closures.effectivenessComment">Effectiveness Comment</span></dt>
+                <dd>
+                    <span>{{closures.effectivenessComment}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.closures.findClose">Find Close</span></dt>
+                <dd>
+                    <div *ngIf="closures.findClose">
+                        <a [routerLink]="['/finding', closures.findClose?.id, 'view']">{{closures.findClose?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/closures', closures.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+<div *ngIf="isLoading">
+    <div class="modalBox">
+        <div class="firstCircle">
+            <div class="secondCircle">
+            </div>
+        </div>
+    </div>
+</div>

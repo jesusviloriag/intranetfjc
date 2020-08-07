@@ -1,0 +1,95 @@
+<div class="d-flex flex-column align-items-center screenBox">
+
+	<div class="box">
+
+      <div class="activity-box text-center">
+        <div class="header-activity">
+          <h1 class="pageTitle mt-2" jhiTranslate="fjcintranetApp.activity.book.title"></h1>
+        </div>
+        <div *ngIf="dateDayClicked != undefined">
+          <div class="activity-date-header">{{dateDayClicked}}</div>
+        </div>
+        <div class="events">
+          <div *ngFor="let event of listEvent;let i = index">
+            <div class="activity">
+              <div class="activity-data">
+                <span>{{event.title}}</span>
+                <div class="activity-date">
+                  <p>
+                    <span jhiTranslate="fjcintranetApp.activity.book.dateStart"></span>
+                    <span>{{event.start | date:'dd-MM-yyyy'}}</span>
+                  </p>
+                  <p>
+                    <span jhiTranslate="fjcintranetApp.activity.book.dateEnd"></span>
+                    <span>{{event.end | date:'dd-MM-yyyy'}}</span>
+                  </p>
+                </div>
+                <div>
+                  <span jhiTranslate="fjcintranetApp.activity.book.involved"></span>
+                  <span>{{event.involved}}</span>
+                </div>
+                <div>
+                  <a [routerLink]="['/activity', event.id, 'info' ]" jhiTranslate="fjcintranetApp.activity.book.link"></a>
+                </div>
+              </div>
+              <div class="activity-index">
+                <span class="index">{{i+1}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--FIN DE ACTIVIDAD ESTILO CAJA-->
+
+
+
+    <div class="calendar">
+	    <div class="header-calendar">
+        <div class="arrow"
+          mwlCalendarPreviousView
+          [view]="view"
+          [(viewDate)]="viewDate">
+          <img id="arrow-left" src="../../../content/icons/Arrow-calendar.svg" alt="arrow"/>
+        </div>
+        <h4>{{ viewDate | calendarDate:(view + 'ViewTitle'):locale | uppercase }}</h4>
+        <div class="today-arrow">
+          <div
+            mwlCalendarToday
+            [(viewDate)]="viewDate"
+            jhiTranslate="fjcintranetApp.activity.book.todayDate"
+            class="button-s today">
+          
+          </div>
+          <div class="arrow"
+            mwlCalendarNextView
+            [view]="view"
+            [(viewDate)]="viewDate">
+            <img id="arrow-right" src="../../../content/icons/Arrow-calendar.svg" alt="arrow">
+          </div>
+        </div>
+      </div>
+      <div [ngSwitch]="view">
+        <mwl-calendar-month-view
+          *ngSwitchCase="CalendarView.Month"
+          [viewDate]="viewDate"
+          [locale]="locale"
+          [events]="events$"
+          [refresh]="refresh"
+          (dayClicked)="showEvents($event.day)"
+          (eventClicked)="handleEvent('Clicked', $event.event)"
+          [cellTemplate]="customCellTemplate">
+        </mwl-calendar-month-view>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #customCellTemplate let-day="day" let-locale="locale">
+  <div class="cal-cell-top">
+    <span class="cal-day-number"
+      >{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+      <span class="cal-day-badge" *ngIf="day.badgeTotal > 0"
+      >{{ day.badgeTotal }}</span>
+  </div>
+</ng-template>

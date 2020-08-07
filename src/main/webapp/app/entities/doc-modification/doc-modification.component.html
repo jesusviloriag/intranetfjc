@@ -1,0 +1,106 @@
+<div class="cms__container">
+    <h2 id="page-heading">
+        <span jhiTranslate="fjcintranetApp.docModification.home.title">Doc Modifications</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-doc-modification" [routerLink]="['/doc-modification/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="fjcintranetApp.docModification.home.createLabel">
+            Create a new Doc Modification
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'fjcintranetApp.docModification.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="docModifications?.length === 0">
+        <span jhiTranslate="fjcintranetApp.docModification.home.notFound">No docModifications found</span>
+    </div>
+    <div class="table-responsive cms__table--style" *ngIf="docModifications?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateMod"><span jhiTranslate="fjcintranetApp.docModification.dateMod">Date Mod</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="commit"><span jhiTranslate="fjcintranetApp.docModification.commit">Commit</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="version"><span jhiTranslate="fjcintranetApp.docModification.version">Version</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="doc"><span jhiTranslate="fjcintranetApp.docModification.doc">Doc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="author.login"><span jhiTranslate="fjcintranetApp.docModification.author">Author</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="docMod.id"><span jhiTranslate="fjcintranetApp.docModification.docMod">Doc Mod</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let docModification of docModifications ;trackBy: trackId">
+                <td><a [routerLink]="['/doc-modification', docModification.id, 'view' ]">{{docModification.id}}</a></td>
+                <td>{{docModification.dateMod | date:'dd/MM/yyyy'}}</td>
+                <td>{{docModification.commit}}</td>
+                <td>{{docModification.version}}</td>
+                <td>
+                    <a *ngIf="docModification.doc" (click)="openFile(docModification.docContentType, docModification.doc)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="docModification.doc">{{docModification.docContentType}}, {{byteSize(docModification.doc)}}</span>
+                </td>
+                <td>
+                    {{docModification.author?.login}}
+                </td>
+                <td>
+                    <div *ngIf="docModification.docMod">
+                        <a [routerLink]="['/document', docModification.docMod?.id, 'view' ]" >{{docModification.docMod?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/doc-modification', docModification.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/doc-modification', docModification.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(docModification)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="docModifications?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isLoading">
+    <div class="modalBox">
+        <div class="firstCircle">
+            <div class="secondCircle">
+            </div>
+        </div>
+    </div>
+</div>

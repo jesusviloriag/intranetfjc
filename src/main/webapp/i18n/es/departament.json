@@ -1,0 +1,28 @@
+{
+  "fjcintranetApp": {
+    "departament": {
+      "home": {
+        "title": "Departamentos",
+        "createLabel": "Crear nuevo departamento",
+        "createOrEditLabel": "Crear o editar departamento",
+        "search": "Buscar departamento",
+        "notFound": "Ningún departamentos encontrado"
+      },
+      "created": "Un nuevo departamento ha sido creado con el identificador {{ param }}",
+      "updated": "Un departamento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un departamento ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar departamento {{ id }}?"
+      },
+      "detail": {
+        "title": "Departamento"
+      },
+      "nameDepartament": "Nombre del departamento",
+      "idDepartament": "ID del departamento",
+      "shortDsc": "Abrev.",
+      "placeholderName": "Nombre...",
+      "placeholderId": "ID...",
+      "placeholderShort": "Abrev..."
+    }
+  }
+}

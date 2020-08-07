@@ -1,0 +1,168 @@
+{
+  "fjcintranetApp": {
+    "document": {
+      "home": {
+        "title": "Documentos",
+        "createLabel": "Crear nuevo documento",
+        "createOrEditLabel": "Crear o editar documento",
+        "search": "Buscar documento",
+        "notFound": "Ningún documento encontrado"
+      },
+      "search": {
+        "title": "BÚSQUEDA DE DOCUMENTOS",
+        "filter": "Filtros: ",
+        "statusFilter": "Estado: ",
+        "dateFilter": "Hasta: ",
+        "typeFilter": " Tipo: ",
+        "createDate": "Fecha de creación",
+        "author": "Autor",
+        "auditor": "Revisor",
+        "revision": "Revisión",
+        "code": "Código",
+        "name": "Nombre",
+        "status": "Estado",
+        "actions": "Acciones",
+        "view": "Ver",
+        "modify": "Modificar",
+        "register": "Registro",
+        "statusOption": {
+          "placeholder": "Selecciona",
+          "all": "Todos",
+          "active": "Activo",
+          "revision": "En revisión"
+        }
+      },
+      "master": {
+        "title": "LISTA MAESTRA DE DOCUMENTOS",
+        "export": "Exportar a PDF",
+        "code": "Código",
+        "origin": "Origen",
+        "name": "Nombre",
+        "creationDate": "F. creación",
+        "revision": "Revisión",
+        "revDate": "F. revisión",
+        "storage": "Almacenaje",
+        "retention": "Retención",
+        "disposition": "Disposición F."
+      },
+      "created": "Un nuevo Document ha sido creado con el identificador {{ param }}",
+      "updated": "Un Document ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Document ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Document {{ id }}?"
+      },
+      "detail": {
+        "title": "Document"
+      },
+      "create": {
+        "pageTitle": "CREACIÓN DE DOCUMENTO",
+        "instructions": "Ingrese los datos requeridos para la creación de un documento",
+        "codDoc": "Código:",
+        "placeholderCode": "Código...",
+        "nameDoc": "Nombre del Documento:",
+        "placeholderName": "Nombre...",
+        "storage": "Almacenaje:",
+        "typeDoc": "Tipo de documento:",
+        "retention": "Retención",
+        "disabledOpt": "Seleccione...",
+        "active": "Activo:",
+        "finalDis": "Disposición final:",
+        "btn": "Crear",
+        "origin": "Origen:",
+        "typeDoc": "Tipo de documento:",
+        "typeDocOpt": {
+          "process": "Procedimiento",
+          "form": "Formulario",
+          "instruc": "Instructivo",
+          "informative": "Informativo"
+        },
+        "originOpt": {
+          "int": "Interno",
+          "ext": "Externo"
+        },
+        "storageOpt": {
+          "physical": "Físico",
+          "digital": "Digital",
+          "both": "Físico/Digital"
+        },
+        "activeOpt": {
+          "perman": "Permanente",
+          "one": "1 Año",
+          "two": "2 Años",
+          "three": "3 Años",
+          "four": "4 Años",
+          "five": "5 Años",
+          "six": "6 Años",
+          "seven": "7 Años",
+          "eigth": "8 Años",
+          "nine": "9 Años",
+          "teen": "10 Años"
+        },
+        "dispoOpt": {
+          "delete": "Eliminar",
+          "upgrade": "Actualizar",
+          "archive": "Archivar"
+        },
+        "otherOption": "Otro"
+      },
+      "template": {
+        "pageTitle": "SELECCIÓN DE PLANTILLA",
+        "instructions": "Seleccione una plantilla para crear el documento",
+        "instructionsAfter": "Suba el archivo después de que haya sido creado",
+        "save": "Guardar"
+      },
+      "confirm": {
+        "title": "Documento creado con exito",
+        "msg": "El documento fue creado y guardado con exito. Seleccione si desea guardar el documento y que sea enviado a revisión o simplemente guardar el documento para su posterior edición.",
+        "btns": {
+          "save": "Guardar",
+          "revise": "Revisión"
+        }
+      },
+      "modify": {
+        "pageTitle": "MODIFICACIÓN DE DOCUMENTO",
+        "creation": "Creación:",
+        "author": "Autor:",
+        "verifiedBy": "Verificado por:",
+        "code": "Código:",
+        "status": "Estado:",
+        "lookDoc": "Ver Documento",
+        "btnSave": "Guardar",
+        "btnSend": "Enviar a Revisión",
+        "statusOpt": {
+          "active": "Activo",
+          "inactive": "Inactivo"
+        }
+      },
+      "info": {
+        "pageTitle": "INFORMACIÓN DE DOCUMENTO",
+        "codDoc": "Código:",
+        "nameDoc": "Nombre:",
+        "storage": "Almacenaje:",
+        "dateCreation": "Fecha de Creación:",
+        "departament": "Departamento:",
+        "state": "Estado:",
+        "type": "Tipo:",
+        "duration": "Duración:",
+        "finalDisposition": "Disposición final:",
+        "origin": "Origen:",
+        "doc": "Ver documento",
+        "modify": "Modificar documento",
+        "creator": "Creador:"
+      },
+      "pageTitle": "INFORMACIÓN DE DOCUMENTO",
+      "codDoc": "Cod. Documento",
+      "nameDoc": "Nombre",
+      "storage": "Almacenaje",
+      "dateCreation": "Fecha de Creación",
+      "departament": "Departamento",
+      "state": "Estado",
+      "type": "Tipo",
+      "duration": "Duración",
+      "finalDisposition": "Disposición final",
+      "origin": "Origen",
+      "doc": "Documento",
+      "creator": "Creador"
+    }
+  }
+}

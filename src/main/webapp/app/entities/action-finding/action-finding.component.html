@@ -1,0 +1,111 @@
+<div class="cms__container">
+    <h2 id="page-heading">
+        <span jhiTranslate="fjcintranetApp.actionFinding.home.title">Action Findings</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-action-finding" [routerLink]="['/action-finding/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="fjcintranetApp.actionFinding.home.createLabel">
+            Create a new Action Finding
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'fjcintranetApp.actionFinding.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="actionFindings?.length === 0">
+        <span jhiTranslate="fjcintranetApp.actionFinding.home.notFound">No actionFindings found</span>
+    </div>
+    <div class="table-responsive cms__table--style" *ngIf="actionFindings?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descAction"><span jhiTranslate="fjcintranetApp.actionFinding.descAction">Desc Action</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateStartAction"><span jhiTranslate="fjcintranetApp.actionFinding.dateStartAction">Date Start Action</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateCommit"><span jhiTranslate="fjcintranetApp.actionFinding.dateCommit">Date Commit</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateRealCommit"><span jhiTranslate="fjcintranetApp.actionFinding.dateRealCommit">Date Real Commit</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descHow"><span jhiTranslate="fjcintranetApp.actionFinding.descHow">Desc How</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="involved"><span jhiTranslate="fjcintranetApp.actionFinding.involved">Involved</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="status"><span jhiTranslate="fjcintranetApp.actionFinding.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="evidenceDoc"><span jhiTranslate="fjcintranetApp.actionFinding.evidenceDoc">Evidence Doc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="observation"><span jhiTranslate="fjcintranetApp.actionFinding.observation">Observation</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="actFinding.id"><span jhiTranslate="fjcintranetApp.actionFinding.actFinding">Act Finding</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let actionFinding of actionFindings ;trackBy: trackId">
+                <td><a [routerLink]="['/action-finding', actionFinding.id, 'view' ]">{{actionFinding.id}}</a></td>
+                <td>{{actionFinding.descAction}}</td>
+                <td>{{actionFinding.dateStartAction | date:'dd/MM/yyyy'}}</td>
+                <td>{{actionFinding.dateCommit | date:'dd/MM/yyyy'}}</td>
+                <td>{{actionFinding.dateRealCommit == null ? getLabel('Unfinished','Sin concluir') : actionFinding.dateRealCommit | date:'dd/MM/yyyy'}}</td>
+                <td>{{actionFinding.descHow}}</td>
+                <td>{{actionFinding.involved}}</td>
+                <td>{{actionFinding.status == 1 ? getLabel('Open','Abierta') : getLabel('Closed','Cerrada')}}</td>
+                <td>
+                    <a *ngIf="actionFinding.evidenceDoc" (click)="openFile(actionFinding.evidenceDocContentType, actionFinding.evidenceDoc)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="actionFinding.evidenceDoc">{{actionFinding.evidenceDocContentType}}, {{byteSize(actionFinding.evidenceDoc)}}</span>
+                </td>
+                <td>{{actionFinding.observation}}</td>
+                <td>
+                    <div *ngIf="actionFinding.actFinding">
+                        <a [routerLink]="['/finding', actionFinding.actFinding?.id, 'view' ]" >{{actionFinding.actFinding?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/action-finding', actionFinding.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/action-finding', actionFinding.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(actionFinding)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="actionFindings?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

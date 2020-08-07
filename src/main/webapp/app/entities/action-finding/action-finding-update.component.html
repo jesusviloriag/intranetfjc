@@ -1,0 +1,165 @@
+<div class="row justify-content-center mainContent w-100">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-action-finding-heading" jhiTranslate="fjcintranetApp.actionFinding.home.createOrEditLabel">Create or edit a Action Finding</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value" *ngIf="router.url != '/action-finding/new'">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                  <div class="d-flex mt-2 align-items-center">
+                    <label class="form-control-label m-0" jhiTranslate="fjcintranetApp.finding.create.descHowFind" for="field_descAction">Desc Action</label>
+                    <div class="toolTip">
+                      <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+                      <span class="tooltiptext" jhiTranslate="fjcintranetApp.actionFinding.tipDscHow"></span>
+                    </div>
+                  </div>
+                  <textarea  id="field_descAction" name="descAction" class="form-control"rows="8"formControlName="descAction" class="w-100" placeholder="{{ 'fjcintranetApp.finding.create.placeholderHow' | translate }}"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <div class="d-flex mt-2 align-items-center">
+                    <label class="form-control-label m-0" jhiTranslate="fjcintranetApp.finding.create.startedDate" for="dateStartAction">Date Start Action</label>
+                    <div class="toolTip">
+                      <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+                      <span class="tooltiptext" jhiTranslate="fjcintranetApp.actionFinding.tipStartDate"></span>
+                    </div>
+                  </div>
+                    <div class="d-flex flex-row align-items-center">
+                        <input placeholder="0000-00-00" type="text" class="form-control mr-2" readonly id="dateStartAction" ngbDatepicker  #dateStartActionDp="ngbDatepicker" formControlName="dateStartAction"/>
+                        <label *ngIf="editForm.get('dateStartAction').value != null" (click)="clearInput('dateStartAction','dateStartAction')" class="clearBox m-0">X</label>
+                        <div class="p-1 ml-2">
+                          <img class="icons" (click)="dateStartActionDp.toggle()" src="../../../content/icons/calendar.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <div class="d-flex mt-2 align-items-center">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.finding.create.estimatedDate" for="dateCommit">Date Commit</label>
+                    <div class="toolTip">
+                      <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+                      <span class="tooltiptext" jhiTranslate="fjcintranetApp.actionFinding.tipLimitDate"></span>
+                    </div>
+                  </div>
+                    <div class="d-flex flex-row align-items-center">
+                        <input type="text" class="form-control mr-2" id="dateCommit" readonly ngbDatepicker  #dateCommitDp="ngbDatepicker" formControlName="dateCommit" placeholder="0000-00-00"/>
+                        <label *ngIf="editForm.get('dateCommit').value != null" (click)="clearInput('dateCommit','dateCommit')" class="clearBox m-0">X</label>
+                        <div class="p-1 ml-2">
+                          <img class="icons" (click)="dateCommitDp.toggle()" src="../../../content/icons/calendar.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="router.url != '/action-finding/new'">
+                  <div class="d-flex mt-2 align-items-center">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.finding.tracking.realEndAct" for="dateRealCommit">Date Real Commit</label>
+                    <div class="toolTip">
+                      <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+                      <span class="tooltiptext" jhiTranslate="fjcintranetApp.actionFinding.tipRealDate"></span>
+                    </div>
+                  </div>
+                    <div class="d-flex flex-row align-items-center">
+                        <input type="text" class="form-control mr-2" readonly id="dateRealCommit" ngbDatepicker  #dateRealCommitDp="ngbDatepicker" formControlName="dateRealCommit" placeholder="0000-00-00"/>
+                        <label *ngIf="editForm.get('dateRealCommit').value != null" (click)="clearInput('dateRealCommit','dateRealCommit')" class="clearBox m-0">X</label>
+                        <div class="p-1 ml-2">
+                          <img class="icons" (click)="dateRealCommitDp.toggle()" src="../../../content/icons/calendar.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="router.url != '/action-finding/new'">
+                  <div class="d-flex mt-2 align-items-center">
+                    <label class="form-control-label m-0" jhiTranslate="fjcintranetApp.finding.tracking.evidence" for="field_descHow">Desc How</label>
+                    <div class="toolTip">
+                      <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+                      <span class="tooltiptext" jhiTranslate="fjcintranetApp.actionFinding.tipDscEvidence"></span>
+                    </div>
+                  </div>
+                    <textarea  id="field_descHow" class="form-control"rows="8"formControlName="descHow" class="w-100" placeholder="{{ 'fjcintranetApp.finding.tracking.placeholderEvidence' | translate }}"></textarea>
+                </div>
+                <div class="d-flex flex-column w-100 mb-2">
+                  <div class="d-flex mt-2 align-items-center">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.finding.create.invol" for="involved">Involved</label>
+                    <div class="toolTip">
+                      <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+                      <span class="tooltiptext" jhiTranslate="fjcintranetApp.actionFinding.tipInvolved"></span>
+                    </div>
+                  </div>
+                  <input type="text" id="involved" (keyup)="searchUser($event)" autocomplete="off" placeholder="{{ 'fjcintranetApp.activity.create.placeholderInvol' | translate }}" formControlName="involved">
+                  <div class="dataResult">
+                    <p *ngFor="let name of likeUser" class="listItem" (click)="uploadName(name.login,i)">{{name.login}}-{{name.firstName}} {{name.lastName}}</p>
+                    <p *ngIf="likeUser.length > 10" class="lastResult">Especifique para mejorar la busqueda</p>
+                  </div>
+
+                  <div>
+                    <p *ngFor="let name of involvedNames; let k = index" class="involvedNames m-2">
+                      <span>{{ name }}</span>
+                      <span class="deleteInvolved ml-2" (click)="deleteInvol(k)">X</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="form-group" *ngIf="router.url != '/action-finding/new'">
+                  <div class="d-flex mt-2 align-items-center">
+                    <div class="toolTip">
+                      <label for="evidenceDoc" class="m-0" jhiTranslate="fjcintranetApp.finding.tracking.evidenceDoc"></label>
+                      <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+                      <span class="tooltiptext" jhiTranslate="fjcintranetApp.actionFinding.tipDoc"></span>
+                    </div>
+                  </div>
+                  <div class="boxFile" *ngIf="!editForm.get('evidenceDoc').value">
+                    <input class="w-100 h-100 fileBox" type="file" id="evidenceDoc" (change)="setFileData($event, 'evidenceDoc', false, i)" [disabled]="isReadOnly"/>
+                  </div>
+                  <div *ngIf="editForm.get('evidenceDoc').value" class="form-text text-success clearfix">
+                      <a class="pull-left" (click)="openFile(editForm.get('evidenceDocContentType').value, editForm.get('evidenceDoc').value)" jhiTranslate="entity.action.open">open</a><br>
+                      <span class="pull-left">{{editForm.get('evidenceDocContentType').value}}, {{byteSize(editForm.get('evidenceDoc').value)}}</span><br>
+                      <button type="button" (click)="editForm.patchValue({evidenceDoc: null});editForm.patchValue({evidenceDocContentType: null});"
+                              class="btn btn-secondary btn-xs pull-right" *ngIf="!isReadOnly">
+                          <fa-icon [icon]="'times'"></fa-icon>
+                      </button>
+                  </div>
+                </div>
+                <div class="form-group" *ngIf="router.url != '/action-finding/new'">
+                  <div class="d-flex mt-2 align-items-center">
+                    <label class="form-control-label m-0" jhiTranslate="fjcintranetApp.finding.tracking.observation" for="field_observation">Observation</label>
+                    <div class="toolTip">
+                      <img class="tipIcon ml-3" src="../../../content/icons/tip.svg">
+                      <span class="tooltiptext" jhiTranslate="fjcintranetApp.actionFinding.tipObservation"></span>
+                    </div>
+                  </div>
+                    <textarea  id="field_observation" name="observation" class="form-control" rows="8" formControlName="observation" class="w-100" placeholder="{{ 'fjcintranetApp.finding.tracking.placeholderObservation' | translate }}"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.actionFinding.actFinding" for="field_actFinding">Act Finding</label>
+                    <select class="form-control" id="field_actFinding" name="actFinding" formControlName="actFinding">
+                        <option *ngIf="!editForm.get('actFinding').value" [ngValue]="undefined" selected jhiTranslate="fjcintranetApp.finding.create.optDisabled"></option>
+                        <option [ngValue]="findingOption.id === editForm.get('actFinding').value?.id ? editForm.get('actFinding').value : findingOption" *ngFor="let findingOption of findings; trackBy: trackFindingById">{{findingOption.id}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('actFinding').invalid && (editForm.get('actFinding').dirty || editForm.get('actFinding').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('actFinding').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

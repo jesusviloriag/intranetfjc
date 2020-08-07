@@ -1,0 +1,32 @@
+{
+  "fjcintranetApp": {
+    "documentState": {
+      "home": {
+        "title": "Document States",
+        "createLabel": "Create a new Document State",
+        "createOrEditLabel": "Create or edit a Document State",
+        "search": "Search for Document State",
+        "notFound": "No Document States found"
+      },
+      "created": "A new Document State is created with identifier {{ param }}",
+      "updated": "A Document State is updated with identifier {{ param }}",
+      "deleted": "A Document State is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Document State {{ id }}?"
+      },
+      "detail": {
+        "title": "Document State"
+      },
+      "nameEs": "Name Es",
+      "nameEn": "Name En",
+      "descriptionEs": "Description Es",
+      "descriptionEn": "Description En",
+      "placeholder":{
+        "nombre": "Spanish name",
+        "name" : "English name",
+        "descripcion":"Spanish description..",
+        "description":"English description.."
+      }
+    }
+  }
+}

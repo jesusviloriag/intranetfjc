@@ -1,0 +1,179 @@
+<div class="d-flex flex-column align-items-center screenBox">
+  <div *ngIf="showModalMsg">
+    <jhi-modal-closures [modalTitle]="modalTitle" [modalMsg]="modalMsg" [icon]="modalIcon" [btnMsg]="modalbtn"
+    (closeModalVal)="closeModal($event)"></jhi-modal-closures>
+  </div>
+    <h1 class="pageTitle" jhiTranslate="fjcintranetApp.closures.create.title"></h1>
+    <div class="findingBox mt-3">
+        <form name="form" [formGroup]="closureForm" (ngSubmit)="save()">
+
+             <div class="d-flex flex-row justify-content-between  w-100 mb-3">
+                <span class="d-flex flex-row align-items-center">
+                    <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.closures.create.code"></span>
+                    <span>{{finding.codFinding + id}}</span>
+                </span>
+
+                <!--<span class="d-flex flex-row align-items-center">
+                    <span class="subTitles" jhiTranslate="fjcintranetApp.finding.view.closure.author"></span>
+                    <span>{{finding.creator?.login}}</span>
+                </span>-->
+
+                <span class="d-flex flex-row align-items-center justify-content-center">
+                    <label class="subTitles mr-1" for="stateClosure" jhiTranslate="fjcintranetApp.closures.create.status"></label>
+                    <input  class="input-s"  placeholder="{{ 'fjcintranetApp.closures.create.statusPlaceholder' | translate }}"
+                      jhiTranslate="fjcintranetApp.closures.create.status" id="stateClosure" type="text" readonly formControlName="stateClosure"/>
+                </span>
+
+                <span class="d-flex flex-row align-items-center justify-content-end">
+                    <label class="subTitles mr-1" for="departament" jhiTranslate="fjcintranetApp.closures.create.involved"></label>
+                    <input  class="input-s" id="departament" type="text" readonly formControlName="dept"/>
+                </span>
+                </div>
+
+
+                <div class="d-flex flex-row justify-content-between  w-100 mb-3">
+                <span class="d-flex flex-row align-items-center">
+                    <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.closures.create.since"></span>
+                    <span>{{finding.dateStart | date:'dd/MM/yyyy'}}</span><!-- Hasta Inicio de hllazgo-->
+                </span>
+
+                <span class="d-flex flex-row align-items-center">
+                    <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.closures.create.to"></span>
+                    <span>{{finding.dateEnd | date:'dd/MM/yyyy'}}</span><!-- Hasta estipulado de hllazgo-->
+                </span>
+
+                <span class="d-flex flex-row align-items-center">
+                    <label class="subTitles mr-1" for="realDate" jhiTranslate="fjcintranetApp.closures.create.realDate"></label>
+                    <input class="input-date" id="realDate" type="text" readonly formControlName="dateClosure"/>
+                </span>
+                </div>
+
+                <div class="d-flex flex-column justify-content-start w-100 mb-3">
+                    <div class="d-flex flex-row justify-content-start align-items-center">
+                        <label class="subTitles m-0 mr-2" for="actions" jhiTranslate="fjcintranetApp.closures.create.actionClosed"></label>
+                        <select id="actions" formControlName="actionClosed">
+                            <option selected disabled jhiTranslate="fjcintranetApp.closures.create.placeholder" value="0"></option>
+                            <option jhiTranslate="fjcintranetApp.closures.create.yes" value="Si"></option>
+                            <option  jhiTranslate="fjcintranetApp.closures.create.no" value="No"></option>
+                        </select>
+                    </div>
+                    <div class="d-flex flew-row justify-content-start w-100"
+                        *ngIf="closureForm.get('actionClosed').invalid && (closureForm.get('actionClosed').dirty || closureForm.get('actionClosed').touched)">
+                        <small class="form-text text-danger"
+                        *ngIf="closureForm.get('actionClosed').errors.required" jhiTranslate="entity.validation.required">
+                        </small>
+                    </div>
+                </div>
+
+
+
+
+
+
+            <div class="dataBox w-100">
+                <span class="subTitles" jhiTranslate="fjcintranetApp.closures.create.improveComment"></span>
+                <div *ngIf="closureForm.get('improveComment').invalid && (closureForm.get('improveComment').dirty || closureForm.get('improveComment').touched)">
+                    <small class="form-text text-danger"
+                    *ngIf="closureForm.get('improveComment').errors.required" jhiTranslate="entity.validation.required">
+                    </small>
+                </div>
+                <textarea  placeholder="{{ 'fjcintranetApp.closures.create.textPlaceholder' | translate }}"
+                 rows="5" formControlName="improveComment" class="ml-4"></textarea>
+            </div>
+
+            <div class="d-flex justify-content-center w-100 mt-3">
+                <button class="button-s m-0" type="submit">
+                    <span jhiTranslate="fjcintranetApp.closures.create.button"></span>
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<!--<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="finding">
+            <h2><span jhiTranslate="fjcintranetApp.finding.detail.title">Finding</span> {{finding.id}}</h2>
+            <h1>HOLAAAAAAAAAAAAAAAAAAAA SOY YO EL DE LOS MEMES EN TIKOKX</h1>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="fjcintranetApp.finding.codFinding">Cod Finding</span></dt>
+                <dd>
+                    <span>{{finding.codFinding}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateStart">Date Start</span></dt>
+                <dd>
+                    <span>{{finding.dateStart}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateEnd">Date End</span></dt>
+                <dd>
+                    <span>{{finding.dateEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.dateClosure">Date Closure</span></dt>
+                <dd>
+                    <span>{{finding.dateClosure}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.description">Description</span></dt>
+                <dd>
+                    <span>{{finding.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.evidence">Evidence</span></dt>
+                <dd>
+                    <span>{{finding.evidence}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.methodology">Methodology</span></dt>
+                <dd>
+                    <span>{{finding.methodology}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.linkDoc">Link Doc</span></dt>
+                <dd>
+                    <div *ngIf="finding.linkDoc">
+                        <a (click)="openFile(finding.linkDocContentType, finding.linkDoc)" jhiTranslate="entity.action.open">open</a>
+                        {{finding.linkDocContentType}}, {{byteSize(finding.linkDoc)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.descHow">Desc How</span></dt>
+                <dd>
+                    <span>{{finding.descHow}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.typeFinding">Type Finding</span></dt>
+                <dd>
+                    <span>{{finding.typeFinding}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.finding.creator">Creator</span></dt>
+                <dd>
+                    {{finding.creator?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/finding', finding.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div> -->

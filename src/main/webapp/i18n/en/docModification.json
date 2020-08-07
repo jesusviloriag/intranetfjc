@@ -1,0 +1,53 @@
+{
+  "fjcintranetApp": {
+    "docModification": {
+      "home": {
+        "title": "Doc Modifications",
+        "createLabel": "Create a new Doc Modification",
+        "createOrEditLabel": "Create or edit a Doc Modification",
+        "search": "Search for Doc Modification",
+        "notFound": "No Doc Modifications found"
+      },
+      "register": {
+        "title": "CONTROL´S REGISTER",
+        "ubication": "Ubicated at folder: ",
+        "actionDate": "Action date",
+        "author": "Author",
+        "action": "Action",
+        "revision": "Revision",
+        "view": "View",
+        "modify": "Modify"
+      },
+      "log": {
+        "title": "DOCUMENT'S GENERAL LOG",
+        "filter": "Filters:",
+        "departament": "Departament:",
+        "selectDept": "Select a departament",
+        "type": "Type:",
+        "selectType": "Select a type",
+        "actionDate": "Action date",
+        "author": "Author",
+        "departamentHead": "Departament",
+        "revision": "Revision",
+        "action": "Action",
+        "registerLink": "Register",
+        "viewLink": "View"
+      },
+      "created": "A new Doc Modification is created with identifier {{ param }}",
+      "updated": "A Doc Modification is updated with identifier {{ param }}",
+      "deleted": "A Doc Modification is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Doc Modification {{ id }}?"
+      },
+      "detail": {
+        "title": "Doc Modification"
+      },
+      "dateMod": "Date Mod",
+      "commit": "Commit",
+      "version": "Version",
+      "doc": "Doc",
+      "author": "Author",
+      "docMod": "Doc Mod"
+    }
+  }
+}

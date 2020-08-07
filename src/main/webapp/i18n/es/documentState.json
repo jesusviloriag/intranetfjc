@@ -1,0 +1,32 @@
+{
+  "fjcintranetApp": {
+    "documentState": {
+      "home": {
+        "title": "Estados de documentos",
+        "createLabel": "Crear nuevo estado de documento",
+        "createOrEditLabel": "Crear o editar estado de documento",
+        "search": "Buscar estado de documento",
+        "notFound": "Ningún estado de documento encontrado"
+      },
+      "created": "Un nuevo estado de documento ha sido creado con el identificador {{ param }}",
+      "updated": "Un estado de documento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un estado de documento ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Document State {{ id }}?"
+      },
+      "detail": {
+        "title": "Estado de documento"
+      },
+      "nameEs": "Nombre Es",
+      "nameEn": "Name En",
+      "descriptionEs": "Descripción Es",
+      "descriptionEn": "Description En",
+      "placeholder":{
+        "nombre": "Nombre en español..",
+        "name" : "Nombre en ingles",
+        "descripcion":" Descripción en español..",
+        "description":"Descripción en ingles.."
+      }
+    }
+  }
+}

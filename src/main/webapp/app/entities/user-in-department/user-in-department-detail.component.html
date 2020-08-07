@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userInDepartment">
+            <h2 jhiTranslate="fjcintranetApp.userInDepartment.detail.title"></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="global.field.id"></span></dt>
+                <dd>
+                  <span>{{userInDepartment.id}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.userInDepartment.user">User</span></dt>
+                <dd>
+                    {{userInDepartment.user?.login}}
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.userInDepartment.departament">Departament</span></dt>
+                <dd>
+                    <div *ngIf="userInDepartment.departament">
+                        <a [routerLink]="['/departament', userInDepartment.departament?.id, 'view']">{{userInDepartment.departament?.nameDepartament}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-in-department', userInDepartment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

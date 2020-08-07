@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity DocModification.
+    -->
+    <changeSet id="20200208034225-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="author_id"
+                                 baseTableName="doc_modification"
+                                 constraintName="fk_doc_modification_author_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="doc_mod_id"
+                                 baseTableName="doc_modification"
+                                 constraintName="fk_doc_modification_doc_mod_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document"/>
+
+    </changeSet>
+</databaseChangeLog>

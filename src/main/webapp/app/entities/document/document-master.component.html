@@ -1,0 +1,68 @@
+<div class="d-flex flex-column align-items-center screen">
+    <h1 class="pageTitle"jhiTranslate="fjcintranetApp.document.master.title"></h1>
+
+    <div class="box">
+        <div class="d-flex justify-content-end">
+		    <button jhiTranslate="fjcintranetApp.document.master.export" type="button" (click)="generatePdf()" class="btn-primary button-s"></button>
+		</div>
+
+        <div class="d-flex justify-content-center">
+            <table id="resultTable" class="text-center table-shadow w-100">
+            <thead>
+                <tr>
+                <th scope="col" class="pr-2"><span jhiTranslate="fjcintranetApp.document.master.code"></span></th>
+                <th scope="col" class="pr-2"><span jhiTranslate="fjcintranetApp.document.master.origin"></span></th>
+                <th scope="col" class="pr-2"><span jhiTranslate="fjcintranetApp.document.master.name"></span></th>
+                <th scope="col" class="pr-2"><span jhiTranslate="fjcintranetApp.document.master.creationDate"></span></th>
+                <th scope="col" class="pr-2"><span jhiTranslate="fjcintranetApp.document.master.revision"></span></th>
+                <th scope="col" class="pr-2"><span jhiTranslate="fjcintranetApp.document.master.revDate"></span></th>
+                <th scope="col" class="pr-2"><span jhiTranslate="fjcintranetApp.document.master.storage"></span></th>
+                <th scope="col" class="pr-2"><span jhiTranslate="fjcintranetApp.document.master.retention"></span></th>
+                <th scope="col" class="pr-2"><span jhiTranslate="fjcintranetApp.document.master.disposition"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let document of documents; let i = index">
+                    <td>{{document.codDoc}}</td>
+                    <td>{{ document.origin == 0 ? getLabel('Internal','Interno') : document.origin == 1 ? getLabel('External','Externo') : "" }}</td><!--Aqui va -->
+                    <td>{{document.nameDoc}}</td>
+                    <td>{{document.dateCreation | date:'dd/MM/yyyy'}}</td>
+                    <td>{{ docMod[i] === undefined ? "" : docMod[i][0].version }}</td><!-- Aqui va la revision-->
+                    <td>{{ docMod[i] === undefined ? "" : docMod[i][0].dateMod | date:'dd/MM/yyyy' }}</td><!-- Aqui va la fecha de revision-->
+                    <td>
+                        <span *ngIf="document.storage == 0" jhiTranslate="fjcintranetApp.document.create.storageOpt.digital"></span>
+                        <span *ngIf="document.storage == 1" jhiTranslate="fjcintranetApp.document.create.storageOpt.physical"></span>
+                        <span *ngIf="document.storage == 2" jhiTranslate="fjcintranetApp.document.create.storageOpt.both"></span>
+                    </td>
+                    <td>
+                        <span *ngIf="document.duration == 0" jhiTranslate="fjcintranetApp.document.create.activeOpt.perman"></span>
+                        <span *ngIf="document.duration == 1" jhiTranslate="fjcintranetApp.document.create.activeOpt.one"></span>
+                        <span *ngIf="document.duration == 2" jhiTranslate="fjcintranetApp.document.create.activeOpt.two"></span>
+                        <span *ngIf="document.duration == 3" jhiTranslate="fjcintranetApp.document.create.activeOpt.three"></span>
+                        <span *ngIf="document.duration == 4" jhiTranslate="fjcintranetApp.document.create.activeOpt.four"></span>
+                        <span *ngIf="document.duration == 5" jhiTranslate="fjcintranetApp.document.create.activeOpt.five"></span>
+                        <span *ngIf="document.duration == 6" jhiTranslate="fjcintranetApp.document.create.activeOpt.six"></span>
+                        <span *ngIf="document.duration == 7" jhiTranslate="fjcintranetApp.document.create.activeOpt.seven"></span>
+                        <span *ngIf="document.duration == 8" jhiTranslate="fjcintranetApp.document.create.activeOpt.eigth"></span>
+                        <span *ngIf="document.duration == 9" jhiTranslate="fjcintranetApp.document.create.activeOpt.nine"></span>
+                        <span *ngIf="document.duration == 10" jhiTranslate="fjcintranetApp.document.create.activeOpt.teen"></span>
+                    </td>
+                    <td>
+                       <span *ngIf="document.finalDisposition == 1" jhiTranslate="fjcintranetApp.document.create.dispoOpt.delete"></span>
+                        <span *ngIf="document.finalDisposition == 2" jhiTranslate="fjcintranetApp.document.create.dispoOpt.upgrade"></span>
+                        <span *ngIf="document.finalDisposition == 3" jhiTranslate="fjcintranetApp.document.create.dispoOpt.archive"></span>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

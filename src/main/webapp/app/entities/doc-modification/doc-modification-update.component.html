@@ -1,0 +1,109 @@
+<div class="row justify-content-center mt-12 mainContent">
+  <div class="col-8 mt-6">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-doc-modification-heading" jhiTranslate="fjcintranetApp.docModification.home.createOrEditLabel">
+        Create or edit a Doc Modification
+      </h2>
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group " [hidden]="!editForm.get('id').value">
+          <label for="id" jhiTranslate="global.field.id">ID</label>
+          <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+        </div>
+        <div class="form-group  mt-12">
+          <label class="form-control-label" jhiTranslate="fjcintranetApp.docModification.dateMod" for="field_dateMod">Date Mod</label>
+          <div class="input-group">
+            <input type="text" class="form-control w-75 mr-2" readonly  id="dateMod" ngbDatepicker #dateStartDp="ngbDatepicker" formControlName="dateMod" placeholder="0000-00-00"
+            />
+            <label *ngIf="editForm.get('dateMod').value != null" (click)="clearInput('dateMod', 'dateMod')" class="clearBox m-0">X</label>
+            <div class="p-1 ml-2">
+              <img class="icons" (click)="dateStartDp.toggle()" src="../../../content/icons/calendar.svg" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fjcintranetApp.docModification.commit" for="field_commit">Commit</label>
+          <input type="text" class="form-control" name="commit" id="field_commit" formControlName="commit" placeholder="{{ 'fjcintranetApp.closures.create.textPlaceholder' | translate }}"/>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fjcintranetApp.docModification.version" for="field_version">Version</label>
+          <input type="text" class="form-control" name="version" id="field_version" formControlName="version" placeholder="{{ 'fjcintranetApp.closures.create.textPlaceholder' | translate }}"/>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fjcintranetApp.docModification.doc" for="field_doc">Doc</label>
+          <div>
+            <div *ngIf="editForm.get('doc').value" class="form-text text-danger clearfix">
+              <a
+                class="pull-left"
+                (click)="openFile(editForm.get('docContentType').value, editForm.get('doc').value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-left">{{ editForm.get('docContentType').value }}, {{ byteSize(editForm.get('doc').value) }}</span>
+              <button
+                type="button"
+                (click)="editForm.patchValue({ doc: null }); editForm.patchValue({ docContentType: null })"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon [icon]="'times'"></fa-icon>
+              </button>
+            </div>
+            <input type="file" id="file_doc" (change)="setFileData($event, 'doc', false)" jhiTranslate="entity.action.addblob" />
+          </div>
+          <input type="hidden" class="form-control" name="doc" id="field_doc" formControlName="doc" />
+          <input type="hidden" class="form-control" name="docContentType" id="field_docContentType" formControlName="docContentType" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fjcintranetApp.docModification.author" for="field_author">Author</label>
+          <select class="form-control" id="field_author" name="author" formControlName="author">
+            <option *ngIf="!editForm.get('author').value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('author').value?.id ? editForm.get('author').value : userOption"
+              *ngFor="let userOption of users; trackBy: trackUserById"
+              >{{ userOption.login }}</option
+            >
+          </select>
+        </div>
+        <div *ngIf="editForm.get('author').invalid && (editForm.get('author').dirty || editForm.get('author').touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get('author').errors.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fjcintranetApp.docModification.docMod" for="field_docMod">Doc Mod</label>
+          <select class="form-control" id="field_docMod" name="docMod" formControlName="docMod">
+            <option *ngIf="!editForm.get('docMod').value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="documentOption.id === editForm.get('docMod').value?.id ? editForm.get('docMod').value : documentOption"
+              *ngFor="let documentOption of documents; trackBy: trackDocumentById"
+              >{{ documentOption.id }}</option
+            >
+          </select>
+        </div>
+        <div *ngIf="editForm.get('docMod').invalid && (editForm.get('docMod').dirty || editForm.get('docMod').touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get('docMod').errors.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+          <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="isSaving">
+    <div class="modalBox">
+        <div class="firstCircle">
+            <div class="secondCircle">
+            </div>
+        </div>
+    </div>
+</div>

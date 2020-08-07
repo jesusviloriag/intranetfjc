@@ -1,0 +1,24 @@
+{
+  "fjcintranetApp": {
+    "userInDepartment": {
+      "home": {
+        "title": "User In Departments",
+        "createLabel": "Create a new User In Department",
+        "createOrEditLabel": "Create or edit a User In Department",
+        "search": "Search for User In Department",
+        "notFound": "No User In Departments found"
+      },
+      "created": "A new User In Department is created with identifier {{ param }}",
+      "updated": "A User In Department is updated with identifier {{ param }}",
+      "deleted": "A User In Department is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User In Department {{ id }}?"
+      },
+      "detail": {
+        "title": "User In Department"
+      },
+      "user": "User",
+      "departament": "Departament"
+    }
+  }
+}

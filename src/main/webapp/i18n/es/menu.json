@@ -1,0 +1,58 @@
+{
+  "fjcintranetApp": {
+    "menu": {
+      "home": {
+        "title": "MENU PRINCIPAL",
+        "createLabel": "Crear nuevo Menu",
+        "createOrEditLabel": "Crear o editar Menu",
+        "search": "Buscar Menu",
+        "notFound": "Ningún Menus encontrado"
+      },
+      "permisology": {
+        "title": "PERMISOLOGÍA",
+        "createPermit": "Crear permiso",
+        "registerPermit": "Registro de permisos"
+      },
+      "managementDoc": {
+        "title": "GESTIÓN DOCUMENTAL",
+        "createDoc": "Crear documento",
+        "findDoc": "Búsqueda de documentos",
+        "binnacleDoc": "Bitácora de control",
+        "masterList": "Lista maestra"
+      },
+      "findings": {
+        "title": "HALLAZGOS",
+        "createFind": "Crear hallazgo",
+        "registerFindings": "Registro de hallazgos",
+        "globalFindings": "Análisis global"
+      },
+      "activityAgenda": {
+        "title": "AGENDA DE ACTIVIDADES",
+        "createActi": "Crear actividad",
+        "registerActi": "Registro de actividades",
+        "agendaActi": "Agenda de actividades"
+      },
+      "humanTalent": {
+        "title": "TALENTO HUMANO",
+        "createFormation": "Crear formación",
+        "registerFormation": "Registro de formaciones"
+      },
+      "softwareFJC": {
+        "title": "SOFTWARE JFC",
+        "softUDM": "Software de UDM",
+        "softUEI": "Software de UEI",
+        "managementSystem": "Software de GME"
+      },
+      "created": "Un nuevo Menu ha sido creado con el identificador {{ param }}",
+      "updated": "Un Menu ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Menu ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Menu {{ id }}?"
+      },
+      "detail": {
+        "title": "Menu"
+      },
+      "prueba": "Prueba"
+    }
+  }
+}

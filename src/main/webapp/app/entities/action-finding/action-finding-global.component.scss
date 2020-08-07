@@ -1,0 +1,64 @@
+.pageTitle {
+  font-family: 'oswald-bold';
+  font-size: 30px;
+}
+
+.screenBox {
+  margin-top: 80px;
+  margin-bottom: 40px;
+  padding: 10px;
+}
+
+input,
+button {
+  height: 45px;
+  border-style: none;
+}
+
+input {
+  border-radius: 15px;
+  border: 2px solid #3f5486;
+  text-align: center;
+}
+
+button {
+  border-radius: 10px;
+}
+
+.inputLabel {
+  width: 40%;
+  font-family: 'poppins-regular';
+  font-size: 100%;
+}
+
+#registeredActions,
+#registerAct {
+  background: #6492ff;
+}
+
+#processActions,
+#notFinishedAct {
+  background: #ffd439;
+}
+
+#nonEficActions,
+#processAct {
+  background: #ff2727;
+}
+
+#eficActions,
+#closeActions {
+  background: #6bd67f;
+}
+
+#findingWaiting {
+  background: #ffa500;
+}
+
+.buttonBack {
+  font-family: 'poppins-bold';
+  font-size: 120%;
+  padding: 10px 20px;
+  background: #3f5486;
+  border-radius: 10px;
+}

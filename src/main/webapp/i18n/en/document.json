@@ -1,0 +1,167 @@
+{
+  "fjcintranetApp": {
+    "document": {
+      "home": {
+        "title": "Documents",
+        "createLabel": "Create a new Document",
+        "createOrEditLabel": "Create or edit a Document",
+        "search": "Search for Document",
+        "notFound": "No Documents found"
+      },
+      "search": {
+        "title": "DOCUMENT'S SEARCH",
+        "filter": "Filters: ",
+        "statusFilter": "Status: ",
+        "dateFilter": "To: ",
+        "typeFilter": " Type: ",
+        "createDate": "Creation Date",
+        "author": "Author",
+        "auditor": "Auditor",
+        "revision": "Revision",
+        "code": "Code",
+        "name": "Name",
+        "status": "Status",
+        "actions": "Actions",
+        "view": "View",
+        "modify": "Modify",
+        "register": "Register",
+        "statusOption": {
+          "placeholder": "Select one",
+          "all": "All",
+          "active": "Active",
+          "revision": "On revision"
+        }
+      },
+      "master": {
+        "title": "DOCUMENT MASTER LIST",
+        "export": "Export to PDF",
+        "code": "Code",
+        "origin": "Origin",
+        "name": "Name",
+        "creationDate": "Creation D.",
+        "revision": "Revision",
+        "revDate": "Revision D.",
+        "storage": "Storage",
+        "retention": "Retention",
+        "disposition": "Final Disposition"
+      },
+      "created": "A new Document is created with identifier {{ param }}",
+      "updated": "A Document is updated with identifier {{ param }}",
+      "deleted": "A Document is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Document {{ id }}?"
+      },
+      "detail": {
+        "title": "Document"
+      },
+      "create": {
+        "pageTitle": "DOCUMENT CREATION",
+        "instructions": "Enter the data required to create a document",
+        "codDoc": "Code:",
+        "placeholderCode": "Code...",
+        "nameDoc": "Document's Name:",
+        "placeholderName": "Name...",
+        "storage": "Storage:",
+        "typeDoc": "Type of document:",
+        "retention": "Retention",
+        "disabledOpt": "Select...",
+        "active": "Active:",
+        "finalDis": "Final disposition:",
+        "btn": "Create",
+        "origin": "Origin:",
+        "typeDoc": "Doc's type:",
+        "typeDocOpt": {
+          "process": "Procedure",
+          "form": "Form",
+          "instruc": "Instructive",
+          "informative": "Informative"
+        },
+        "originOpt": {
+          "int": "Internal",
+          "ext": "External"
+        },
+        "storageOpt": {
+          "physical": "Physical",
+          "digital": "Digital",
+          "both": "Physical/Digital"
+        },
+        "activeOpt": {
+          "perman": "Permanently",
+          "one": "1 Year",
+          "two": "2 Years",
+          "three": "3 Years",
+          "four": "4 Years",
+          "five": "5 Years",
+          "six": "6 Years",
+          "seven": "7 Years",
+          "eigth": "8 Years",
+          "nine": "9 Years",
+          "teen": "10 Years"
+        },
+        "dispoOpt": {
+          "delete": "Delete",
+          "upgrade": "Update",
+          "archive": "Archive"
+        },
+        "otherOption": "Other"
+      },
+      "template": {
+        "pageTitle": "TEMPLATE SELECTION",
+        "instructions": "Select a template to create the document",
+        "instructionsAfter": "Upload the file after it has been created",
+        "save": "Save"
+      },
+      "confirm": {
+        "title": "Document created successfully",
+        "msg": "The document was successfully created and saved. Select if you want to save the document and have it sent for review or simply save the document for later editing.",
+        "btns": {
+          "save": "Save",
+          "revise": "Revision"
+        }
+      },
+      "modify": {
+        "pageTitle": "MODIFY DOCUMENT",
+        "creation": "Creation:",
+        "author": "Author:",
+        "verifiedBy": "Verified by:",
+        "code": "Code:",
+        "status": "Status:",
+        "lookDoc": "Watch Document",
+        "btnSave": "Save",
+        "btnSend": "Send for review",
+        "statusOpt": {
+          "active": "Active",
+          "inactive": "Inactive"
+        }
+      },
+      "info": {
+        "pageTitle": "DOCUMENT'S INFO",
+        "codDoc": "Code:",
+        "nameDoc": "Name:",
+        "storage": "Storage:",
+        "dateCreation": "Creation date:",
+        "departament": "Department:",
+        "state": "State:",
+        "type": "Type:",
+        "duration": "Duration:",
+        "finalDisposition": "Final disposition:",
+        "origin": "Origin:",
+        "doc": "See document",
+        "modify": "Modify document",
+        "creator": "Creator:"
+      },
+      "codDoc": "Cod Doc",
+      "nameDoc": "Name Doc",
+      "storage": "Storage",
+      "dateCreation": "Date Creation",
+      "departament": "Departament",
+      "state": "State",
+      "type": "Type",
+      "duration": "Duration",
+      "finalDisposition": "Final Disposition",
+      "origin": "Origin",
+      "doc": "Doc",
+      "creator": "Creator"
+    }
+  }
+}

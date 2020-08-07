@@ -1,0 +1,43 @@
+<div class="row justify-content-center mainContent">
+    <div class="col-8">
+        <div *ngIf="documentState">
+            <h2 jhiTranslate="fjcintranetApp.documentState.detail.title"></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="global.field.id"></span></dt>
+                <dd>
+                    <span>{{documentState.id}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.documentState.nameEs">Name Es</span></dt>
+                <dd>
+                    <span>{{documentState.nameEs}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.documentState.nameEn">Name En</span></dt>
+                <dd>
+                    <span>{{documentState.nameEn}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.documentState.descriptionEs">Description Es</span></dt>
+                <dd>
+                    <span>{{documentState.descriptionEs}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.documentState.descriptionEn">Description En</span></dt>
+                <dd>
+                    <span>{{documentState.descriptionEn}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/document-state', documentState.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

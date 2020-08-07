@@ -1,0 +1,70 @@
+{
+  "fjcintranetApp": {
+    "closures": {
+      "home": {
+        "title": "Closures",
+        "createLabel": "Create a new Closures",
+        "createOrEditLabel": "Create or edit a Closures",
+        "search": "Search for Closures",
+        "notFound": "No Closures found"
+      },
+      "created": "A new Closures is created with identifier {{ param }}",
+      "updated": "A Closures is updated with identifier {{ param }}",
+      "deleted": "A Closures is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Closures {{ id }}?"
+      },
+      "detail": {
+        "title": "Closures"
+      },
+      "create": {
+        "title": "CLOSURE CREATION",
+        "viewTitle": "CLOSURE'S INFO",
+        "code": "Code:",
+        "status": "Status:",
+        "statusPlaceholder":"Open",
+        "involved": "Closed by:",
+        "since": "Since:",
+        "to": "To (stipulated):",
+        "realDate": "Close date:",
+        "actionClosed": "Did the actions be closed?:",
+        "button": "Create",
+        "yes": "Yes",
+        "no": "No",
+        "placeholder": "Yes/no?",
+        "textPlaceholder":"Describe...",
+        "statusClosure":"Closed",
+        "improveComment": "Comments in case of action's improvement:"
+      },
+      "status": {
+        "pending":"To be checked",
+        "effective": "Successfully closed",
+        "noEffective": " Not Successfully closed"
+      },
+      "verify": {
+        "title": "CLOSURE VERIFICATION",
+        "code": "Code:",
+        "author": "Author:",
+        "from": "From:",
+        "to": "To(stipulated):",
+        "realDate": "Close date:",
+        "stateEfic": "Was it effective?:",
+        "comment": "Efficiency Verification, Comments. Could it happen again?",
+        "button": "Verify closure",
+        "yes": "Yes",
+        "no": "No",
+        "fakeOption": "Select..."
+      },
+      "stateClosure": "State Closure",
+      "actionClosed": "Action Closed",
+      "effectiveness": "Effectiveness",
+      "dept": "Dept",
+      "improveComment": "Improve Comment",
+      "effectivenessComment": "Effectiveness Comment",
+      "findClose": "Find Close",
+      "effectiveness0": "In process",
+      "effectiveness1": "Closed successfully",
+      "effectiveness2": "Closed not successfully"
+    }
+  }
+}

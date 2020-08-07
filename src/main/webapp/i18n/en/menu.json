@@ -1,0 +1,58 @@
+{
+  "fjcintranetApp": {
+    "menu": {
+      "home": {
+        "title": "MENU",
+        "createLabel": "Create a new Menu",
+        "createOrEditLabel": "Create or edit a Menu",
+        "search": "Search for Menu",
+        "notFound": "No Menus found"
+      },
+      "permisology": {
+        "title": "PERMISOLOGY",
+        "createPermit": "Create permit",
+        "registerPermit": "Permits' register"
+      },
+      "managementDoc": {
+        "title": "MANAGEMENT DOCUMENTARY",
+        "createDoc": "Create document",
+        "findDoc": "Document's search",
+        "binnacleDoc": "Document's binnacle",
+        "masterList": "Master list"
+      },
+      "findings": {
+        "title": "FINDINGS",
+        "createFind": "Create finding",
+        "registerFindings": "Findings records",
+        "globalFindings": "Global analysis"
+      },
+      "activityAgenda": {
+        "title": "ACTIVITIES' AGENDA",
+        "createActi": "Create activity",
+        "registerActi": "Activities records",
+        "agendaActi": "Activities' agenda"
+      },
+      "humanTalent": {
+        "title": "HUMAN TALENT",
+        "createFormation": "Create formation",
+        "registerFormation": "Formations' register"
+      },
+      "softwareFJC": {
+        "title": "JFC SOFTWARE",
+        "softUDM": "UDM Software",
+        "softUEI": " UEI Software",
+        "managementSystem": "GME Software"
+      },
+      "created": "A new Menu is created with identifier {{ param }}",
+      "updated": "A Menu is updated with identifier {{ param }}",
+      "deleted": "A Menu is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Menu {{ id }}?"
+      },
+      "detail": {
+        "title": "Menu"
+      },
+      "prueba": "Prueba"
+    }
+  }
+}

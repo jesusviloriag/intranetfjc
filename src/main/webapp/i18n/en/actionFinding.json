@@ -1,0 +1,56 @@
+{
+  "fjcintranetApp": {
+    "actionFinding": {
+      "home": {
+        "title": "Action Findings",
+        "createLabel": "Create a new Action Finding",
+        "createOrEditLabel": "Create or edit an Action Finding",
+        "search": "Search for Action Finding",
+        "global": "Global Analysis",
+        "notFound": "No Action Findings found"
+      },
+      "created": "A new Action Finding is created with identifier {{ param }}",
+      "updated": "A Action Finding is updated with identifier {{ param }}",
+      "deleted": "A Action Finding is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Action Finding {{ id }}?"
+      },
+      "detail": {
+        "title": "Action Finding"
+      },
+      "global": {
+        "title": "GLOBAL ANALYSIS",
+        "titleFind": "FINDINGS",
+        "registeredFind": "Registered",
+        "processFind": "In progress",
+        "findWaiting": "Waiting for verification",
+        "nonEficFind": "With non effective closure",
+        "eficFind": "With effective closure",
+        "titleAct": "ACTIONS",
+        "registerAct": "Registered",
+        "processAct": "In progress",
+        "closeActions": "Closed",
+        "actionNotFinished": "Not finished",
+        "goBack": "Back"
+      },
+      "descAction": "Description of (how?)",
+      "dateStartAction": "Start date",
+      "dateCommit": "Commitment date",
+      "dateRealCommit": "Date Real Commit",
+      "descHow": "Evidence",
+      "involved": "Involved",
+      "status": "Status",
+      "evidenceDoc": "Evidence Document",
+      "observation": "Observations",
+      "actFinding": "Finding",
+      "tipDscHow": "The activity belonging to the action plan to eliminate the root cause of the deviation.",
+      "tipDscEvidence": "If you have an annex (photo, document, among others) that shows the result, it must be described.",
+      "tipDoc": "Document with evidence.",
+      "tipObservation": "Write the result of the action at the time of the review.",
+      "tipStartDate": "Write the date on which the member agrees to start the activity.",
+      "tipLimitDate": "Write the date on which the member agrees to complete the activity.",
+      "tipRealDate": "Write the date the activity actually runs.",
+      "tipInvolved": "Add those involved who should interact in the action."
+    }
+  }
+}

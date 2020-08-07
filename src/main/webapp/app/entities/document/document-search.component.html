@@ -1,0 +1,125 @@
+<div class="screenBox d-flex align-items-center flex-column">
+  <h1 class="pageTitle text-center" jhiTranslate="fjcintranetApp.document.search.title"></h1>
+  <div class="box">
+
+    <div class="d-flex justify-content-center">
+      <div [hidden]="warning != true">
+        <p class="text-danger" jhiTranslate="fjcintranetApp.finding.records.warningFilter"></p>
+      </div>
+    </div>
+
+    <div class="boxShadow mb-3">
+      <table class="text-center w-100" aria-describedby="page-heading">
+        <thead>
+          <tr>
+            <td colspan="8">
+              <div class="justify-content-center">
+                <div class="d-flex flex-row justify-content-between boxFilter">
+                  <span class="align-self-center ml-2" jhiTranslate="fjcintranetApp.document.search.filter"></span>
+                  <div class="d-flex flex-row align-items-center inputBox">
+                    <label for="Date" class="mr-1"jhiTranslate="fjcintranetApp.document.search.dateFilter"></label>
+                    <input class="mr-2 input-date" placeholder="0000-00-00" type="text" name="Date" ngbDatepicker #dateStartDp="ngbDatepicker" [ngModel]="mymodel" (ngModelChange)="getParams($event, 'Date')" id="Date" readonly>
+                    <label *ngIf="dateLimit != ''" (click)="clearInput('Date')" class="clearBox">X</label>
+                    <img class="icons ml-2" alt="Since date"  (click)="dateStartDp.toggle()" src="../../../content/icons/calendar.svg">
+                  </div>
+                  <div class="d-flex flex-row align-items-center inputBox mr-3">
+                    <label for="status" class="mr-2" jhiTranslate="fjcintranetApp.document.search.statusFilter"></label>
+                    <select class="input-s" id="status" name="status" [ngModel]="mymodel" (ngModelChange)="getParams($event,'status')">
+                      <option hidden [value]="Seleccione"  disabled selected aria-readonly="true" jhiTranslate="fjcintranetApp.document.search.statusOption.placeholder"></option>
+                      <option value="0" jhiTranslate="fjcintranetApp.document.search.statusOption.all"></option>
+                      <option [value]="STATUS.id" *ngFor="let STATUS of statuses">{{ STATUS.nameEs }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col">
+              <span jhiTranslate="fjcintranetApp.document.search.createDate"></span>
+              <div class="arrowsGroup">
+                <i class="up" id="dateCreateUp" (click)="changeOrder($event)"></i>
+                <i class="down" id="dateCreateDown" (click)="changeOrder($event)"></i>
+              </div>
+            </th>
+            <th scope="col">
+              <span jhiTranslate="fjcintranetApp.document.search.author"></span>
+              <div class="arrowsGroup">
+                <i class="up" id="authorUp" (click)="changeOrder($event)"></i>
+                <i class="down" id="authorDown" (click)="changeOrder($event)"></i>
+              </div>
+            </th>
+            <th scope="col">
+              <span jhiTranslate="fjcintranetApp.document.search.auditor"></span>
+            </th>
+            <th scope="col">
+              <span jhiTranslate="fjcintranetApp.document.search.revision"></span>
+            </th>
+            <th scope="col">
+              <span jhiTranslate="fjcintranetApp.document.search.code"></span>
+              <div class="arrowsGroup">
+                <i class="up" id="codeUp" (click)="changeOrder($event)"></i>
+                <i class="down" id="codeDown" (click)="changeOrder($event)"></i>
+              </div>
+            </th>
+            <th scope="col">
+              <span jhiTranslate="fjcintranetApp.document.search.name"></span>
+              <div class="arrowsGroup">
+                <i class="up" id="nameUp" (click)="changeOrder($event)"></i>
+                <i class="down" id="nameDown" (click)="changeOrder($event)"></i>
+              </div>
+            </th>
+            <th scope="col">
+              <span jhiTranslate="fjcintranetApp.document.search.status"></span>
+              <div class="arrowsGroup">
+                <i class="up" id="statusUp" (click)="changeOrder($event)"></i>
+                <i class="down" id="statusDown" (click)="changeOrder($event)"></i>
+              </div>
+            </th>
+            <th scope="col">
+              <span jhiTranslate="fjcintranetApp.document.search.actions"></span>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let document of documents ; let i = index">
+            <td>{{document.dateCreation | date:'dd/MM/yyyy'}}</td>
+            <td>{{document.creator?.login}}</td>
+            <td>{{ docMod[i] === undefined ? "" : docMod[i][0].author.login }}</td>
+            <td>{{ docMod[i] === undefined ? "" : docMod[i][0].version }}</td>
+            <td>{{document.codDoc}}</td>
+            <td>{{document.nameDoc}}</td>
+            <td class="active-doc" *ngIf="document.state == 'Activo'">{{document.state.nameEs}}</td>
+            <td class="revision-doc" *ngIf="document.state !== 'Activo'">{{document.state.nameEs}}</td>
+            <td>
+              <div>
+                <a href="#" class=" ml-2 mr-2" jhiTranslate="fjcintranetApp.document.search.view" 
+                [routerLink]="['/document',document.id,'info']"></a>
+                <a href="#" class="mr-2" jhiTranslate="fjcintranetApp.document.search.modify"
+                  [routerLink]="['/document', document.id, 'update']"></a>
+                <a class="mr-2" jhiTranslate="fjcintranetApp.document.search.register" [routerLink]="['/doc-modification', document.id, 'register',document.nameDoc]"></a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div [hidden]="documents?.length === 0">
+      <div class="row justify-content-center">
+        <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+      </div>
+      <div class="row justify-content-center">
+        <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

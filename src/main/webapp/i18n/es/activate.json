@@ -1,0 +1,10 @@
+{
+  "activate": {
+    "title": "Activación",
+    "messages": {
+      "success": "Su cuenta ha sido activada. Por favor, inicie sesión.",
+      "error": "Su cuenta no pudo ser activada. Por favor, utilice el formulario de inscripción para registrarse.",
+      "button": "Registrarse"
+    }
+  }
+}

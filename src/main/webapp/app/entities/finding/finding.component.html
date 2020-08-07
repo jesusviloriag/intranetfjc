@@ -1,0 +1,133 @@
+<div class="cms__container">
+    <h2 id="page-heading">
+        <span jhiTranslate="fjcintranetApp.finding.home.title">Findings</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-finding" [routerLink]="['/finding/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="fjcintranetApp.finding.home.createLabel">
+            Create a new Finding
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'fjcintranetApp.finding.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="alert alert-warning" *ngIf="findings?.length === 0">
+        <span jhiTranslate="fjcintranetApp.finding.home.notFound">No findings found</span>
+    </div>
+    <div class="table-responsive cms__table--style" *ngIf="findings?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="codFinding"><span jhiTranslate="fjcintranetApp.finding.codFinding">Cod Finding</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateStart"><span jhiTranslate="fjcintranetApp.finding.dateStart">Date Start</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateEnd"><span jhiTranslate="fjcintranetApp.finding.dateEnd">Date End</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateClosure"><span jhiTranslate="fjcintranetApp.finding.dateClosure">Date Closure</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="description"><span jhiTranslate="fjcintranetApp.finding.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="evidence"><span jhiTranslate="fjcintranetApp.finding.evidence">Evidence</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="methodology"><span jhiTranslate="fjcintranetApp.finding.methodology">Methodology</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="linkDoc"><span jhiTranslate="fjcintranetApp.finding.linkDoc">Link Doc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descHow"><span jhiTranslate="fjcintranetApp.finding.descHow">Desc How</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="typeFinding"><span jhiTranslate="fjcintranetApp.finding.typeFinding">Type Finding</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="deptInvol"><span jhiTranslate="fjcintranetApp.finding.deptInvol">Dept Invol</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="identificationCause"><span jhiTranslate="fjcintranetApp.finding.identificationCause">Identification Cause</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="correctiveAct"><span jhiTranslate="fjcintranetApp.finding.correctiveAct">Corrective Act</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="actionDesc"><span jhiTranslate="fjcintranetApp.finding.actionDesc">Action Desc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="creator.login"><span jhiTranslate="fjcintranetApp.finding.creator">Creator</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let finding of findings ;trackBy: trackId; let i = index">
+                <td><a [routerLink]="['/finding', finding.id, 'view' ]">{{finding.id}}</a></td>
+                <td>{{finding.codFinding}}{{finding.id}}</td>
+                <td>{{finding.dateStart | date:'dd/MM/yyyy'}}</td>
+                <td>{{finding.dateEnd | date:'dd/MM/yyyy'}}</td>
+                <td>{{finding.dateClosure == null ? 'En proceso' : finding.dateClosure | date:'dd/MM/yyyy'}}</td>
+                <td>{{finding.description}}</td>
+                <td>{{finding.evidence}}</td>
+                <td>{{finding.methodology}}</td>
+                <td>
+                    <a *ngIf="finding.linkDoc" (click)="openFile(finding.linkDocContentType, finding.linkDoc)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="finding.linkDoc">{{finding.linkDocContentType}}, {{byteSize(finding.linkDoc)}}</span>
+                </td>
+                <td>{{finding.descHow}}</td>
+                <td>{{finding.typeFinding == 1 ? getLabel('Opportunity for improvement', 'Oportunidad de mejora') : getLabel('Nonconformity', 'No conformidad')}}</td>
+                <td>{{getDpteName(finding.deptInvol)}}</td>
+                <td>{{finding.identificationCause}}</td>
+                <td>{{finding.correctiveAct}}</td>
+                <td>{{finding.actionDesc}}</td>
+                <td>
+                    {{finding.creator?.login}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/finding', finding.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/finding', finding.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button *ngIf="closureData[i] == 'Abierto'" type="button" [routerLink]="['/closures',finding.id,'create']"
+                        class="btn btn-warning btn-sm">
+                          <fa-icon [icon]="'eye-dropper'"></fa-icon>
+                          <span class="d-none d-md-inline">
+                            <span jhiTranslate="fjcintranetApp.finding.tracking.btnClose"></span>
+                            <span *ngIf="finding.typeFinding === 1">OM</span>
+                            <span *ngIf="finding.typeFinding === 0">NC</span>
+                          </span>
+                        </button>
+                        <button *ngIf="closureData[i] == 0" type="button" [routerLink]="['/closures', closureRoute[i], 'verify' ]"
+                        class="btn btn-warning btn-sm">
+                          <fa-icon [icon]="'check'"></fa-icon>
+                          <span class="d-none d-md-inline" jhiTranslate="fjcintranetApp.finding.records.linkVerify"></span>
+                        </button>
+                        <button type="submit" (click)="delete(finding)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="findings?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

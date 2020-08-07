@@ -1,0 +1,158 @@
+<div *ngIf="showModalMsg">
+  <jhi-modal-document [modalTitle]="modalTitle" [modalMsg]="modalMsg" [icon]="modalIcon" [btnMsg]="modalbtn"
+  (closeModalVal)="closeModal($event)"></jhi-modal-document>
+</div>
+<div class="d-flex flex-column align-items-center screenBox" *ngIf="step == 1">
+  <h2 class="pageTitle" jhiTranslate="fjcintranetApp.document.create.pageTitle"></h2>
+  <div class="d-flex flex-column justify-content-center dataBox">
+    <p class="text-center my-2" jhiTranslate="fjcintranetApp.document.create.instructions"></p>
+    <form class="d-flex flex-column align-items-center px-5" [formGroup]="editForm">
+      <div class="d-flex flex-row w-100 justify-content-between my-3">
+        <div class="d-flex flex-column inputLabel">
+          <label for="nameDoc" class="m-0" jhiTranslate="fjcintranetApp.document.create.nameDoc"></label>
+          <input type="text" id="nameDoc" formControlName="nameDoc" placeholder="{{ 'fjcintranetApp.document.create.placeholderName' | translate }}">
+        </div>
+        <div class="d-flex flex-column inputLabel">
+          <label for="codDoc" class="m-0" jhiTranslate="fjcintranetApp.document.create.codDoc"></label>
+          <input type="text" id="codDoc" formControlName="codDoc" readonly placeholder="{{ 'fjcintranetApp.document.create.placeholderCode' | translate }}">
+        </div>
+      </div>
+
+      <div class="d-flex flex-row w-100 justify-content-between my-3">
+        <div class="d-flex flex-column inputLabel">
+          <label for="storageDoc" class="m-0" jhiTranslate="fjcintranetApp.document.create.storage"></label>
+          <select id="storageDoc" formControlName="storage">
+            <!-- 0 = DIGITAL; 1 = PHYSICAL; 2 = D/P OR BOTH-->
+            <option value="null" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+            <option value="0" jhiTranslate="fjcintranetApp.document.create.storageOpt.digital"></option>
+            <option value="1" jhiTranslate="fjcintranetApp.document.create.storageOpt.physical"></option>
+            <option value="2" jhiTranslate="fjcintranetApp.document.create.storageOpt.both"></option>
+          </select>
+        </div>
+        <div class="d-flex flex-column inputLabel">
+          <label for="kindDoc" class="m-0" jhiTranslate="fjcintranetApp.document.create.typeDoc"></label>
+          <select id="kindDoc">
+            <option value="null" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+            <option [value]="TIPOJAJAJQUERISA.id" *ngFor="let TIPOJAJAJQUERISA of types">{{ TIPOJAJAJQUERISA.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <h4 class="text-center mt-2 mb-0 subtitle" jhiTranslate="fjcintranetApp.document.create.retention"></h4>
+      <hr class="w-100 mt-0 mb-2 lineColor">
+
+      <div class="d-flex flex-row w-100 justify-content-between my-3">
+        <div class="d-flex flex-column inputLabel">
+          <label for="active" class="m-0" jhiTranslate="fjcintranetApp.document.create.active"></label>
+          <select id="active" formControlName="duration">
+            <option value="null" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+            <option value="0" jhiTranslate="fjcintranetApp.document.create.activeOpt.perman"></option>
+            <option value="1" jhiTranslate="fjcintranetApp.document.create.activeOpt.one"></option>
+            <option value="2" jhiTranslate="fjcintranetApp.document.create.activeOpt.two"></option>
+            <option value="3" jhiTranslate="fjcintranetApp.document.create.activeOpt.three"></option>
+            <option value="4" jhiTranslate="fjcintranetApp.document.create.activeOpt.four"></option>
+            <option value="5" jhiTranslate="fjcintranetApp.document.create.activeOpt.five"></option>
+            <option value="6" jhiTranslate="fjcintranetApp.document.create.activeOpt.six"></option>
+            <option value="7" jhiTranslate="fjcintranetApp.document.create.activeOpt.seven"></option>
+            <option value="8" jhiTranslate="fjcintranetApp.document.create.activeOpt.eigth"></option>
+            <option value="9" jhiTranslate="fjcintranetApp.document.create.activeOpt.nine"></option>
+            <option value="10" jhiTranslate="fjcintranetApp.document.create.activeOpt.teen"></option>
+          </select>
+        </div>
+        <div class="d-flex flex-column inputLabel">
+          <label for="finalDis" class="m-0" jhiTranslate="fjcintranetApp.document.create.finalDis"></label>
+          <select id="finalDis" formControlName="finalDisposition">
+            <!-- 0 = ELIMINAR; 1 = ACTUALIZAR; 2 = ARCHIVAR -->
+            <option selected value="null" disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+            <option value="1" jhiTranslate="fjcintranetApp.document.create.dispoOpt.delete"></option>
+            <option value="2" jhiTranslate="fjcintranetApp.document.create.dispoOpt.upgrade"></option>
+            <option value="3" jhiTranslate="fjcintranetApp.document.create.dispoOpt.archive"></option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row w-100 justify-content-between my-3">
+        <div class="d-flex flex-column inputLabel">
+          <label for="typeDoc" class="m-0" jhiTranslate="fjcintranetApp.document.create.typeDoc"></label>
+          <select id="typeDoc" formControlName="type" (change)="generateCode()">
+            <option value="null" selected disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+            <!-- 0 = Procedimiento; 1 = Formulario; 2 = instructivo; 3 = informativo-->
+            <option value="0" jhiTranslate="fjcintranetApp.document.create.typeDocOpt.process"></option>
+            <option value="1" jhiTranslate="fjcintranetApp.document.create.typeDocOpt.form"></option>
+            <option value="2" jhiTranslate="fjcintranetApp.document.create.typeDocOpt.instruc"></option>
+            <option value="3" jhiTranslate="fjcintranetApp.document.create.typeDocOpt.informative"></option>
+          </select>
+        </div>
+        <div class="d-flex flex-column inputLabel">
+          <label for="originMASTER" class="m-0" jhiTranslate="fjcintranetApp.document.create.origin"></label>
+          <select id="originMASTER" formControlName="origin">
+            <option selected value="null" disabled jhiTranslate="fjcintranetApp.document.create.disabledOpt"></option>
+            <option value="0" jhiTranslate="fjcintranetApp.document.create.originOpt.int"></option>
+            <option value="1" jhiTranslate="fjcintranetApp.document.create.originOpt.ext"></option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center w-75">
+        <button type="button" (click)="nextStep(2)" class="w-25 create m-2" jhiTranslate="fjcintranetApp.document.create.btn"></button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="d-flex flex-column align-items-center screenBox" *ngIf="step == 2">
+  <h2 class="pageTitle" jhiTranslate="fjcintranetApp.document.template.pageTitle"></h2>
+
+  <div class="w-75 d-flex justify-content-around my-2" id="docTemplates" *ngIf="typeDoc == 'Word'">
+    <img src="../../../content/images/templateWord.png" alt="template" class="templateRes" (click)="getDoc('word','plantilla_vacia')">
+    <img src="../../../content/images/completeTemplate.png" alt="template" class="templateRes" (click)="getDoc('word','plantilla_procedimientos')">
+    <img src="../../../content/images/horizontalTemplate.png" alt="template" class="templateRes" (click)="getDoc('word','plantilla_horizontal')">
+  </div>
+
+  <div class="w-75 d-flex justify-content-around my-2" id="docTemplates" *ngIf="typeDoc == 'Excel'">
+    <img src="../../../content/images/templateExcel.jpeg" alt="template" class="templateRes" (click)="getDoc('excel','plantilla_excel')">
+  </div>
+
+  <p class="text-center my-2" jhiTranslate="fjcintranetApp.document.template.instructions" *ngIf="typeDoc == 'excel' || typeDoc == 'word'"></p>
+
+  <p class="text-center my-2" jhiTranslate="fjcintranetApp.document.template.instructionsAfter"></p>
+  <form class="d-flex flex-column align-items-center px-5 w-50">
+    <div class="boxFile" *ngIf="!editForm.get('doc').value">
+      <input class="w-100 h-100 fileBox" type="file" id="file_doc" (change)="setFileData($event, 'doc', false)"/>
+    </div>
+    <div *ngIf="editForm.get('doc').value" class="form-text text-success clearfix text-center">
+        <a class="pull-left" (click)="openFile(editForm.get('docContentType').value, editForm.get('doc').value)" jhiTranslate="entity.action.open">open</a><br>
+        <span class="pull-left">{{editForm.get('docContentType').value}}, {{byteSize(editForm.get('doc').value)}}</span><br>
+        <button type="button" (click)="editForm.patchValue({doc: null});editForm.patchValue({docContentType: null});"
+                class="btn btn-secondary btn-xs pull-right">
+            <fa-icon [icon]="'times'"></fa-icon>
+        </button>
+    </div>
+
+    <button type="button" (click)="nextStep(3)" class="w-25 save m-3" jhiTranslate="fjcintranetApp.document.template.save"></button>
+  </form>
+</div>
+
+<div class="d-flex flex-column align-items-center screenBox" *ngIf="step == 3">
+  <h2 class="pageTitle" jhiTranslate="fjcintranetApp.document.create.pageTitle"></h2>
+  <div class="d-flex flex-column justify-content-center confirmBox">
+    <div class="d-flex justify-content-center">
+      <img src="../../../content/icons/ic_success.svg" alt="success" class="w-25">
+    </div>
+
+    <p class="text-center my-2 subtitle" jhiTranslate="fjcintranetApp.document.confirm.title"></p>
+    <p class="text-center my-2" jhiTranslate="fjcintranetApp.document.confirm.msg"></p>
+    <div class="d-flex justify-content-around">
+      <button type="button" class="w-25 save m-3" (click)="save(1)" jhiTranslate="fjcintranetApp.document.confirm.btns.save"></button>
+      <button type="button" class="w-25 revise m-3" (click)="save(2)" jhiTranslate="fjcintranetApp.document.confirm.btns.revise"></button>
+    </div>
+  </div>
+</div>
+<div *ngIf="isSaving">
+	<div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "activate": {
+    "title": "Activation",
+    "messages": {
+      "success": "Your user account has been activated. Please login.",
+      "error": "Your user could not be activated. Please use the registration form to sign up.",
+      "button": "Sign up"
+    }
+  }
+}

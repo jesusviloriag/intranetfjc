@@ -1,0 +1,202 @@
+<div class="d-flex flex-column align-items-center screenBox">
+    <h1 class="pageTitle" jhiTranslate="fjcintranetApp.finding.view.title"></h1>
+    <div class="findingBox" *ngIf="finding">
+        <div class="d-flex flex-row justify-content-between w-100 mb-2">
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.codFinding"></span>
+                <span>{{finding.codFinding}}</span>
+            </span>
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.author"></span>
+                <span>{{finding.creator?.login}}</span>
+            </span>
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.status"></span>
+                <span>{{finding.codFinding}}</span> <!--Aqui va status que viene de cierre-->
+            </span>
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.involved"></span>
+                <span>{{findingDept == undefined ? '' : findingDept.nameDepartament}}</span> <!--Aqui va el departamento-->
+            </span>
+        </div>
+
+        <div class="d-flex flex-row justify-content-between w-100 mb-4">
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.since"></span>
+                <span>{{finding.dateStart | date:'dd/MM/yyyy'}}</span>
+            </span>
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.to"></span>
+                <span>{{finding.dateEnd | date:'dd/MM/yyyy'}}</span>
+            </span>
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.toReal"></span>
+                <span *ngIf="finding.dateClosure == null" jhiTranslate="fjcintranetApp.finding.view.null"></span>
+                <span>{{finding.dateClosure | date:'dd/MM/yyyy'}}</span>
+            </span>
+        </div>
+
+        <div class="dataBox">
+            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.desc"></span>
+            <p class="ml-4">{{finding.description}}</p>
+        </div>
+
+        <div class="dataBox">
+            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.descHow"></span>
+            <p class="ml-4">{{finding.descHow}}</p>
+        </div>
+
+        <div class="dataBox">
+            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.evidence"></span>
+            <p class="ml-4">{{finding.evidence}}</p>
+        </div>
+
+        <div class="dataBox">
+            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.actionResult"></span>
+            <p class="ml-4">{{finding.correctiveAct}}</p><!--Aqui va accion correctra-->
+        </div>
+
+        <div class="dataBox">
+            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.descAction"></span>
+            <p class="ml-4">{{finding.actionDesc}}</p> <!-- Aqui va descripcion de la medida o accion-->
+        </div>
+
+        <div class="dataBox">
+            <span class="subTitles" jhiTranslate="fjcintranetApp.finding.view.descAction"></span>
+        </div>
+
+        <div class="d-flex flex-row justify-content-between mt-2 mb-2">
+            <span class="flex-row d-flex">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.methodology"></span>
+                <span>{{finding.methodology}}</span>
+            </span>
+
+            <span id="linkDoc" class="flex-row d-flex">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.doc"></span>
+                <a class="text-success clearfix" (click)="openFile(finding.linkDocContentType, finding.linkDoc)" jhiTranslate="entity.action.open"></a>
+            </span>
+        </div>
+
+        <div class="d-flex flex-row justify-content-between">
+            <span class="subTitles" jhiTranslate="fjcintranetApp.finding.view.titleAction"></span>
+        </div>
+
+
+        <div class="d-flex flex-column">
+            <div *ngFor="let action of actionFindings;let i = index" id="{{i}}">
+                <span class="sep"></span>
+                 <div class="d-flex flex-row justify-content-between w-100 mb-2">
+                    <span class="subTitles mr-1">Nº{{i+1}}</span>
+                    <span (click)="showAction(i,action.isOpen)" class="arrow" [@rotatedState]="action.isOpen"></span>
+                </div>
+                <div *ngIf="action.isOpen" [@slideAnimation]>
+                    <div class="d-flex flex-row justify-content-between w-100 mb-2">
+                        <span class="d-flex flex-row">
+                            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.since"></span>
+                            <span>{{action.dateStartAction | date:'dd/MM/yyyy'}}</span>
+                        </span>
+
+                        <span class="d-flex flex-row">
+                            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.to"></span>
+                            <span>{{action.dateCommit| date:'dd/MM/yyyy'}}</span>
+                        </span>
+
+                        <span class="d-flex flex-row">
+                            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.toReal"></span>
+                            <span *ngIf="action.dateRealCommit == null" jhiTranslate="fjcintranetApp.finding.view.null"></span>
+                            <span>{{action.dateRealCommit | date:'dd/MM/yyyy'}}</span>
+                        </span>
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-between w-100 mb-2">
+                        <span class="d-flex flex-row mr-3">
+                            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.involved"></span>
+                            <span>{{action.involved}}</span>
+                        </span>
+
+                        <span class="d-flex flex-row" *ngIf="action.evidenceDocContentType != null">
+                            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.doc"></span>
+                            <a class="text-success clearfix" (click)="openFile(action.evidenceDocContentType, action.evidenceDoc)" jhiTranslate="entity.action.open"></a>
+                        </span>
+                    </div>
+
+                    <div class="dataBox">
+                        <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.descActionHow"></span>
+                        <p class="ml-4">{{action.descHow}}</p> <!-- Aqui va descripcion del como-->
+                    </div>
+
+                    <div class="dataBox">
+                        <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.evidenceAction"></span>
+                        <p class="ml-4">{{action.descAction}}</p> <!-- Aqui va evidencia de la accion-->
+                    </div>
+
+                     <div class="dataBox">
+                        <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.finding.view.observation"></span>
+                        <p class="ml-4">{{action.observation}}</p> <!-- Aqui va observaciones de la accion-->
+                    </div>
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-center w-100" *ngIf="!closure">
+                <button class="button-s mx-2" type="button" [routerLink]="['/finding', finding.id, 'tracking']"
+                jhiTranslate="fjcintranetApp.finding.view.buttonTracking"></button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="findingBox mt-5" *ngIf="closure">
+        <span id="closureTitle" jhiTranslate="fjcintranetApp.closures.create.viewTitle"></span>
+
+         <div class="d-flex flex-row justify-content-between w-100 mb-2">
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.closures.create.actionClosed"></span>
+                <span>{{closure.actionClosed}}</span>
+            </span>
+
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.closures.create.status"></span>
+                <span *ngIf="closure.effectiveness == 0" jhiTranslate="fjcintranetApp.closures.create.statusClosure"></span>
+                <span *ngIf="closure.effectiveness == 1" jhiTranslate="fjcintranetApp.closures.status.effective"></span>
+                <span *ngIf="closure.effectiveness == 2" jhiTranslate="fjcintranetApp.closures.status.noEffective"></span>
+            </span>
+
+            <span class="d-flex flex-row">
+                <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.closures.create.involved"></span>
+                <span>{{closureDept.nameDepartament}}</span> <!--Aqui va el departamento-->
+            </span>
+            </div>
+
+
+        <div class="dataBox">
+            <span class="subTitles mr-1" jhiTranslate="fjcintranetApp.closures.create.improveComment"></span>
+            <p class="ml-4">{{closure.improveComment}}</p> <!-- Aqui va comentario en caso de accion-->
+        </div>
+
+        <div *ngIf="closure.effectiveness == 0" class="d-flex justify-content-center w-100 mt-5">
+            <button class="button-s m-0" type="button"  [routerLink]="['/closures', closure.id, 'verify' ]" jhiTranslate="fjcintranetApp.finding.records.linkVerify">></button>
+        </div>
+
+        </div>
+
+        <div class="d-flex justify-content-center w-100 mt-5">
+        <button class="button-s mx-2" type="button"  (click)="navigateBack()" jhiTranslate="fjcintranetApp.finding.view.buttonBack"></button>
+      </div>
+
+    </div>
+
+<div *ngIf="!infoLoad">
+    <div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

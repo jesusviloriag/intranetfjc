@@ -1,0 +1,50 @@
+<div class="row justify-content-center mainContent w-100">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-document-state-heading" jhiTranslate="fjcintranetApp.documentState.home.createOrEditLabel">Create or edit a Document State</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.documentState.nameEs" for="field_nameEs">Name Es</label>
+                    <input type="text" class="form-control" name="nameEs" id="field_nameEs"
+                           formControlName="nameEs" placeholder="{{ 'fjcintranetApp.documentState.placeholder.nombre' | translate }}"/>
+                    <div *ngIf="editForm.get('nameEs').invalid && (editForm.get('nameEs').dirty || editForm.get('nameEs').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameEs').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.documentState.nameEn" for="field_nameEn">Name En</label>
+                    <input type="text" class="form-control" name="nameEn" id="field_nameEn"
+                           formControlName="nameEn" placeholder="{{ 'fjcintranetApp.documentState.placeholder.name' | translate }}"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.documentState.descriptionEs" for="field_descriptionEs">Description Es</label>
+                    <input type="text" class="form-control" name="descriptionEs" id="field_descriptionEs"
+                           formControlName="descriptionEs" placeholder="{{ 'fjcintranetApp.documentState.placeholder.descripcion' | translate }}"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fjcintranetApp.documentState.descriptionEn" for="field_descriptionEn">Description En</label>
+                    <input type="text" class="form-control" name="descriptionEn" id="field_descriptionEn"
+                           formControlName="descriptionEn" placeholder="{{ 'fjcintranetApp.documentState.placeholder.description' | translate }}"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

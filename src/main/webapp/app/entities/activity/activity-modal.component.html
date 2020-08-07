@@ -1,0 +1,9 @@
+<div class="modalBox">
+  <div class="msgBox">
+    <img class="iconModal mb-2" *ngIf="icon == 'confirm'" src="../../../content/icons/ic_success.svg">
+    <img class="iconModal mb-2" *ngIf="icon != 'confirm'" src="../../../content/icons/ic_warning.svg">
+    <h2 class="text-center titleModal">{{ modalTitle }}</h2>
+    <p class="msg my-3 text-center">{{ modalMsg }}</p>
+    <button type="button" class="btnSave" (click)="closeModal()">{{ btnMsg }}</button>
+  </div>
+</div>

@@ -1,0 +1,131 @@
+<div class="d-flex align-items-center flex-column screenBox" >
+    <h1 class="pageTitle" jhiTranslate="fjcintranetApp.activity.records.title"></h1>
+    <div class="box">
+
+        <div class="d-flex justify-content-center">
+        <div [hidden]="warning != true">
+          <p class="text-danger" jhiTranslate="fjcintranetApp.activity.records.warningFilter"></p>
+        </div>
+      </div>
+
+            <table class="text-center table table-s" aria-describedby="page-heading">
+                <thead class="filter-s">
+                  <tr>
+                    <td colspan="7">
+                      <div class="justify-content-between">
+                          <div class="d-flex flex-row justify-content-between align-items-center boxFilter">
+
+                              <span class="align-self-center ml-2" jhiTranslate="fjcintranetApp.activity.records.filter"></span>
+
+                              <div class="d-flex flex-row align-items-center inputBox">
+                                  <label for="sinceDate"  class="mr-1" jhiTranslate="fjcintranetApp.activity.records.sinceDate"></label>
+
+                                  <input class="mr-2 input-date" placeholder="0000-00-00" type="text" ngbDatepicker #dateStartDp="ngbDatepicker" id="sinceDate" [ngModel]="mymodel" (ngModelChange)="getParams($event, 'dateStart')" readonly>
+                                  <label *ngIf="dateStart != ''" (click)="clearInput('sinceDate')" class="clearBox">X</label>
+                                  <img class="icons ml-2" alt="Since date"  (click)="dateStartDp.toggle()" src="../../../content/icons/calendar.svg">
+                              </div>
+
+                              <div class="d-flex flex-row align-items-center inputBox">
+                                  <label for="untilDate"  class="mr-1" jhiTranslate="fjcintranetApp.activity.records.toDate"></label>
+                                  <input class="mr-2 input-date" placeholder="0000-00-00" type="text" ngbDatepicker  #dateEndDp="ngbDatepicker" id="untilDate" [ngModel]="mymodel" (ngModelChange)="getParams($event,'dateEnd')" readonly>
+                                  <label *ngIf="dateEnd != ''" (click)="clearInput('untilDate')" class="clearBox">X</label>
+                                  <img class="icons ml-2" alt="Until Date" (click)="dateEndDp.toggle()" src="../../../content/icons/calendar.svg">
+                              </div>
+
+                              <div class="d-flex flex-row align-items-center inputBox mr-2">
+                                  <label for="status" class="mr-1" jhiTranslate="fjcintranetApp.activity.records.statusFilter"></label>
+                                  <select class="input-s" id="status" [ngModel]="mymodel" (ngModelChange)="getParams($event,'status')">
+                                      <option hidden [value]="Seleccione" disabled selected aria-readonly="true" jhiTranslate="fjcintranetApp.activity.records.placeholder.status"></option>
+                                      <option jhiTranslate="fjcintranetApp.activity.records.placeholder.all" value="0"></option>
+                                      <option value="1" jhiTranslate="fjcintranetApp.finding.records.statusOption.open"></option>
+                                      <option value="2" jhiTranslate="fjcintranetApp.finding.records.statusOption.closed"></option>
+                                  </select>
+                              </div>
+                          </div>
+                       </div>
+                    </td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="tr-head">
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.activity.records.date"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="dateStartUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="dateStartDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.activity.records.author"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="authorUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="authorDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.activity.records.dept"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="dpteUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="dpteDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.activity.records.name"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="nameUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="nameDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.activity.records.desc"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="dscUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="dscDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                      <span class="mr-2" jhiTranslate="fjcintranetApp.activity.records.status"></span>
+                      <div class="arrowsGroup">
+                        <i class="up" id="statusUp" (click)="changeOrder($event)"></i>
+                        <i class="down" id="statusDown" (click)="changeOrder($event)"></i>
+                      </div>
+                    </th>
+                    <th scope="col">
+                    </th>
+                  </tr>
+                  <tr class="tr-s" *ngFor="let activity of activities">
+                    <td>{{activity.dateStart | date:'dd/MM/yyyy'}}</td>
+                    <td>{{activity.creator?.login}}</td>
+                    <td>{{ getDpteName(activity.dept) }}</td>
+                    <td>{{activity.nameActivity}}</td>
+                    <td>{{activity.description}}</td>
+                    <td class="closedFinding" *ngIf="activity.status != 1">Finalizado</td>
+                    <td class="openFinding" *ngIf="activity.status == 1">Activo</td>
+                    <td class="p-4">
+                      <div class="d-flex flex-row">
+                        <a jhiTranslate="fjcintranetApp.finding.records.linkView"
+                          [routerLink]="['/activity', activity.id, 'info' ]"></a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+
+        <div [hidden]="activities?.length === 0">
+            <div class="row justify-content-center mt-3">
+                <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!infoLoad">
+  <div class="modalBox">
+		<div class="firstCircle">
+			<div class="secondCircle">
+			</div>
+		</div>
+	</div>
+</div>

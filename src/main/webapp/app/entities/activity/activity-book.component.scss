@@ -1,0 +1,165 @@
+.screenBox {
+  margin-top: 90px;
+  margin-bottom: 40px;
+}
+
+.box {
+  width: 100%;
+  font-family: 'poppins-regular';
+  font-size: 14px;
+  color: #000;
+  display: flex;
+  flex-direction: row;
+}
+
+h4 {
+  margin: 0;
+}
+p{
+  margin: 0;
+}
+
+.pageTitle {
+  font-family: 'oswald-bold';
+  font-size: 18px;
+}
+
+.button-s {
+  background-color: #3f5486;
+  border: 2px solid #3f5486;
+  border-radius: 10px;
+  color: white;
+  font-family: 'poppins-bold';
+  height: 30px;
+  font-size: 16px;
+  padding: 2px 10px;
+
+}
+
+.activity-date-header {
+  background-color: #6c90e5;
+  color: white;
+  padding: 3px;
+  font-size: 15px;
+  border-bottom: 2px solid #3f5486;
+}
+
+.activity-box {
+  width: 25%;
+  margin-left: 2%;
+  margin-right: 2%;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #3f5486;
+  box-shadow: 5px 6px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  height: 75.5vh;
+  max-height: 100%;
+  padding-bottom: 1%;
+}
+
+.header-activity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 2px solid #3f5486;
+}
+
+.activity {
+  border-bottom: 2px solid #3f5486;
+  border-collapse: collapse;
+  width: 100%;
+  display: flex;
+  padding-left: 8%;
+}
+
+.activity-data {
+  width: 90%;
+}
+
+.activity-date {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+}
+
+.activity-index {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.index {
+  color: white;
+  border-radius: 50%;
+  background-color: #6c90e5;
+  padding: 2px 8px;
+  margin-right: 35%;
+}
+
+.events {
+  overflow: auto;
+}
+
+.calendar {
+  width: 75%;
+  margin-right: 2%;
+  border: 3px solid #3f5486;
+  border-bottom: 1.7px;
+  box-shadow: 5px 6px 16px rgba(0, 0, 0, 0.3);
+  height: -webkit-fill-available;
+  height: -moz-available;
+}
+
+.header-calendar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #3f5486;
+  padding: 5px;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+#arrow-right {
+  transform: rotate(180deg);
+}
+
+.today {
+  margin-right: 40px;
+}
+.today:hover{
+  cursor: pointer;
+}
+
+.cal-cell-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cal-day-number {
+  margin: 0;
+  margin-left: 2px;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+.cal-day-badge {
+  margin: 0;
+  margin-right: 5px;
+  margin-top: 5px;
+  background-color: #3f5486;
+}
+
+.today-arrow {
+  display: flex;
+  place-items: center;
+}

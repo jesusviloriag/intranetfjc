@@ -1,0 +1,41 @@
+{
+  "register": {
+    "title": "REGISTRO",
+    "form": {
+      "info": "Completa los datos requeridos para crear una cuenta",
+      "user": "*Nombre de usuario:",
+      "email": "*Correo electrónico:",
+      "firstname": "*Nombre:",
+      "lastname": "*Apellido:",
+      "password": "*Contraseña:",
+      "confirmpassword": "*Repita la contraseña:",
+      "dept" : "Departamento: ",
+      "rol": "Rol: ",
+      "rolUser":" Usuario",
+      "rolAdmin": "Administrador",
+      "language" : "Idioma: ",
+      "selectPlaceholder":"Seleccione..",
+      "activate": "Activar usuario",
+      "button": "Registrar",
+      "info.login": "Ya tienes una cuenta?",
+      "info.link": "Inicia sesión."
+    },
+    "messages": {
+      "validate": {
+        "login": {
+          "required": "Su usuario es obligatorio.",
+          "minlength": "Mínimo 3 caracteres.",
+          "maxlength": "No puede tenerç más de 50 caracteres.",
+          "pattern": "Sólo debe contener letras minúsculas y dígitos."
+        }
+      },
+      "success": "Sus datos fueron almacenado correctamente! Por favor, revise su correo electrónico para confirmar.",
+      "successButton": "Iniciar sesión",
+      "error": {
+        "fail": "<strong>¡El registro ha fallado!</strong> Por favor, inténtelo de nuevo más tarde.",
+        "userexists": "<strong>¡El nombre de usuario ya está registrado!</strong> Por favor, escoja otro usuario.",
+        "emailexists": "<strong>¡El correo electrónico ya está en uso!</strong> Por favor, escoja otro email."
+      }
+    }
+  }
+}

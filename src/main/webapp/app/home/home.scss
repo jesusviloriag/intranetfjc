@@ -1,0 +1,71 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+.hipster {
+  display: inline-block;
+  width: 347px;
+  height: 497px;
+  background: url('../../content/images/jhipster_family_member_2.svg') no-repeat center top;
+  background-size: contain;
+}
+
+.title-font {
+  font-family: 'oswald-bold';
+  font-size: 30px;
+}
+
+.icons {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+input {
+  border: 2px solid #aaaaaa;
+  border-radius: 10px;
+  text-indent: 1rem;
+  height: 40px;
+  width: 98%;
+}
+
+.box {
+  border: 3px solid #3f5486;
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  font-family: 'poppins-regular';
+  width: 55%;
+}
+
+.button-s {
+  background-color: #3f5486;
+  border: 2px solid #3f5486;
+  border-radius: 10px;
+  color: white;
+  font-family: 'poppins-bold';
+  height: 40px;
+  width: 28%;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.text-register {
+  font-family: 'poppins-regular';
+  margin-top: 10px;
+}
+
+.screenBox {
+  height: 90%;
+}
+
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+  .hipster {
+    background: url('../../content/images/jhipster_family_member_2.svg') no-repeat center top;
+    background-size: contain;
+  }
+}

@@ -1,0 +1,65 @@
+<div class="row justify-content-center mainContent">
+    <div class="col-8">
+        <div *ngIf="docModification">
+            <h2 jhiTranslate="fjcintranetApp.docModification.detail.title"></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="global.field.id"></span></dt>
+                <dd>
+                  <span>{{docModification.id}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.docModification.dateMod">Date Mod</span></dt>
+                <dd>
+                    <span>{{docModification.dateMod | date:'dd/MM/yyyy'}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.docModification.commit">Commit</span></dt>
+                <dd>
+                    <span>{{docModification.commit}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.docModification.version">Version</span></dt>
+                <dd>
+                    <span>{{docModification.version}}</span>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.docModification.doc">Doc</span></dt>
+                <dd>
+                    <div *ngIf="docModification.doc">
+                        <a (click)="openFile(docModification.docContentType, docModification.doc)" jhiTranslate="entity.action.open">open</a>
+                        {{docModification.docContentType}}, {{byteSize(docModification.doc)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.docModification.author">Author</span></dt>
+                <dd>
+                    {{docModification.author?.login}}
+                </dd>
+                <dt><span jhiTranslate="fjcintranetApp.docModification.docMod">Doc Mod</span></dt>
+                <dd>
+                    <div *ngIf="docModification.docMod">
+                        <a [routerLink]="['/document', docModification.docMod?.id, 'view']">{{docModification.docMod?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/doc-modification', docModification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isLoading">
+    <div class="modalBox">
+        <div class="firstCircle">
+            <div class="secondCircle">
+            </div>
+        </div>
+    </div>
+</div>

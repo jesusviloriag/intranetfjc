@@ -1,0 +1,123 @@
+.mainContent {
+  margin-top: 90px;
+  margin-bottom: 20px;
+}
+
+input,
+textarea,
+select {
+  border: 2px solid #9f9f9f;
+  text-indent: 5px;
+  border-radius: 10px;
+}
+
+input,
+select {
+  border-radius: 5px;
+  height: 40px;
+}
+
+textarea {
+  line-height: 1.2;
+  text-indent: 5px;
+  resize: none;
+}
+
+.icons {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.clearBox {
+  cursor: pointer;
+  font-family: 'poppins-bold';
+}
+
+.dataResult {
+  background: #ddd;
+  width: 100%;
+  height: auto;
+  max-height: 100px;
+  overflow: auto;
+}
+
+.listItem {
+  margin: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  padding: 0px 10px;
+}
+
+.listItem:hover {
+  color: #fff;
+  background-color: #2d3888;
+}
+
+.lastResult {
+  color: #fff !important;
+  background-color: #2d3888;
+  text-align: center;
+  padding: 5px 10px !important;
+  border-radius: 10px;
+}
+
+.modalBox {
+  position: fixed;
+}
+
+.involvedNames {
+  padding: 5px 20px;
+  background-color: gray;
+  border-radius: 15px;
+  color: #fff;
+  margin: 0px;
+  float: left;
+}
+
+.deleteInvolved {
+  cursor: pointer;
+  font-family: 'poppins-bold';
+}
+
+.boxFile {
+  width: 100%;
+  height: 80px;
+  border: 3px dashed #444;
+  border-radius: 15px;
+}
+
+.boxFile:hover {
+  border-color: #3f5486;
+}
+
+.fileBox {
+  opacity: 0;
+}
+
+.tipIcon {
+  width: 25px;
+  height: 25px;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 25%;
+  background: #ccc;
+  border-radius: 20px;
+  position: absolute;
+  z-index: 1;
+  height: auto;
+  padding: 5px 15px;
+  margin-top: 30px;
+  margin-left: -100px;
+}
+
+.toolTip:hover .tooltiptext {
+  visibility: visible;
+}
+
+label {
+  margin: 0px;
+}

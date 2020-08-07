@@ -1,0 +1,62 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.screen {
+  margin-top: 90px;
+  margin-bottom: 40px;
+}
+.pageTitle {
+  font-family: 'oswald-bold';
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.box {
+  width: 90%;
+  font-family: 'poppins-regular';
+  font-size: 14px;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button-s {
+  background-color: #3f5486;
+  border: 2px solid #3f5486;
+  border-radius: 10px;
+  color: white;
+  font-family: 'poppins-bold';
+  height: 40px;
+  width: 11%;
+  margin-bottom: 1.5rem;
+}
+
+table {
+  overflow-x: auto;
+}
+
+td {
+  border: 2px solid #3f5486;
+  padding: 4px;
+}
+
+th {
+  border-right: 2px solid #3f5486;
+  border-top: 2px solid #3f5486;
+  padding: 5px;
+}
+
+th:first-child {
+  border-left: 2px solid #3f5486;
+}
+
+a {
+  padding: 8px;
+}
+
+#table-shadow {
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.3);
+}

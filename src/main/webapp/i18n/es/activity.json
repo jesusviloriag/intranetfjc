@@ -1,0 +1,114 @@
+{
+  "fjcintranetApp": {
+    "activity": {
+      "home": {
+        "title": "Actividades",
+        "createLabel": "Crear nueva actividad",
+        "createOrEditLabel": "Crear o editar actividad",
+        "search": "Buscar Actividad",
+        "notFound": "Ningúna actividad encontrada"
+      },
+      "records": {
+        "title": "REGISTRO DE ACTIVIDADES",
+        "filter": "Filtros: ",
+        "sinceDate": "Desde: ",
+        "toDate": "Hasta: ",
+        "statusFilter": "Estado: ",
+        "date": "Fecha de inicio",
+        "author": "Autor",
+        "dept": "Departamento",
+        "name": "Título",
+        "desc": "Descripción",
+        "status": "Estado",
+        "warningFilter": "No hay datos que coincidan con la busqueda.",
+        "placeholder": {
+          "status": "Selecciona..",
+          "all": "Todos"
+        }
+      },
+      "book": {
+        "title": "AGENDA DE ACTIVIDADES",
+        "link": "Ver más",
+        "dateStart": "Inicio: ",
+        "dateEnd": "Fin: ",
+        "involved": "Involucrados: ",
+        "todayDate": "Hoy"
+      },
+      "info": {
+        "title": "INFORMACIÓN DE ACTIVIDAD",
+        "startDate": "Fecha inicio: ",
+        "endDate": "Fecha estimada: ",
+        "realDate": "Fecha real: ",
+        "author": "Autor: ",
+        "dept": "Departamento: ",
+        "status": {
+          "status": "Estado: ",
+          "active": "Activo",
+          "finished": "finalizado"
+        },
+        "invol": "Involucrados: ",
+        "description": "Descripción: ",
+        "deliverables": "Entregables: ",
+        "modify": "Modificar"
+      },
+      "created": "Una nueva actividad ha sido creada con el identificador {{ param }}",
+      "updated": "Una actividad ha sido actualizada con el identificador {{ param }}",
+      "deleted": "Una actividad ha sido eliminada con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Actividad {{ name }} {{ id }}?"
+      },
+      "detail": {
+        "title": "Actividad"
+      },
+      "create": {
+        "titlePage": "CREACIÓN DE ACTIVIDAD",
+        "name": "Nombre de la Actividad:",
+        "placeholderName": "Nombre...",
+        "startDate": "Fecha de Inicio:",
+        "dateFinish": "Fecha Limite:",
+        "dsc": "Descripción:",
+        "placeholderDsc": "Descripción...",
+        "deliverables": "Entregables:",
+        "placeholderDel": "Entregables...",
+        "dpte": "Departamento:",
+        "involved": "Involucrados:",
+        "placeholderInvol": "Involucrados...",
+        "button": "Guardar",
+        "status": "Status:",
+        "dateClosure": "Fecha real:",
+        "author": "Author:",
+        "dpteOpt": {
+          "placeholder": "Seleccione...",
+          "all": "TODOS"
+        }
+      },
+      "modify": {
+        "titlePage": "MODIFICACIÓN DE ACTIVIDAD",
+        "startDate": "Fecha de inicio:",
+        "finishDate": "Fecha de finalización:",
+        "author": "Autor:",
+        "dpte": "Departamento:",
+        "involved": "Involucrados:",
+        "dsc": "Descripción:",
+        "deliverables": "Entregables:",
+        "button": "Actualizar",
+        "status": "Status:",
+        "statusOpt": {
+          "select": "Seleccione...",
+          "active": "Activo",
+          "finished": "Finalizado"
+        }
+      },
+      "nameActivity": "Nombre de la Actividad",
+      "dateStart": "Fecha de inicio",
+      "dateLimit": "Fecha de finalización",
+      "description": "Descripción",
+      "deliverables": "Entregables",
+      "dept": "Departamento",
+      "involvedActivity": "Involucrados",
+      "status": "Status",
+      "dateClosure": "Fecha real",
+      "creator": "Autor"
+    }
+  }
+}

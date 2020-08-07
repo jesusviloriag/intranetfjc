@@ -1,0 +1,28 @@
+{
+  "fjcintranetApp": {
+    "departament": {
+      "home": {
+        "title": "Departaments",
+        "createLabel": "Create a new Departament",
+        "createOrEditLabel": "Create or edit a Departament",
+        "search": "Search for Departament",
+        "notFound": "No Departaments found"
+      },
+      "created": "A new Departament is created with identifier {{ param }}",
+      "updated": "A Departament is updated with identifier {{ param }}",
+      "deleted": "A Departament is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Departament {{ id }}?"
+      },
+      "detail": {
+        "title": "Departament"
+      },
+      "nameDepartament": "Name Departament",
+      "idDepartament": "Id Departament",
+      "shortDsc": "Short Dsc",
+      "placeholderName": "Name...",
+      "placeholderId": "ID...",
+      "placeholderShort": "Short..."
+    }
+  }
+}

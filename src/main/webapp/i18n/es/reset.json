@@ -1,0 +1,41 @@
+{
+  "reset": {
+    "request": {
+      "title": "RECUPERACIÓN DE CONTRASEÑA",
+      "form": {
+        "button": "Enviar"
+      },
+      "messages": {
+        "info": "Se le enviará un enlace por correo para el reestablecimiento de su contraseña",
+        "secondInfo": "Una vez reciba el correo podrá reestablecer su contraseña y volver a usar su cuenta",
+        "link": "Regresar al login",
+        "success": "Revise su correo electrónico para obtener más información sobre cómo restablecer su contraseña.",
+        "notfound": "<strong>¡Dirección de correo no registrada!</strong> Por favor, compruebe e inténtelo de nuevo",
+        "error": "Ha ocurrido un error, vuelva a intentarlo."
+      },
+      "confirm": {
+        "info": "El correo de recuperación fue enviado a:",
+        "button": "Regresar"
+      }
+    },
+    "finish": {
+      "title": "Reestablecer la contraseña",
+      "form": {
+        "button": "Validar la nueva contraseña",
+        "linkLogin": "Regresar al Login"
+      },
+      "messages": {
+        "info": "Elija una contraseña nueva",
+        "success": "Su contraseña ha sido restablecida. Por favor, ",
+        "successLink": "Inicie sesión",
+        "keymissing": {
+          "missingTitle": "Falta la clave de reinició",
+          "missingMsg": "Para reestablecer su contraseña, debe tener una clave de reinició.",
+          "missingBackInit": "Puede regresar al ",
+          "missingBackFinish": " y realizar nuevamente el procedimiento."
+        },
+        "error": "Su contraseña no puede ser restablecida. Recuerde que una solicitud de reinicio de contraseña sólo es válida durante 24 horas."
+      }
+    }
+  }
+}
