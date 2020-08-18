@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nameDepartament",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idDepartament",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "shortDsc",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20200208161412",
+    "dto": "no",
+    "searchEngine": "elasticsearch",
+    "service": "no",
+    "entityTableName": "departament",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -1,0 +1,111 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "creator",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "finding"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "codFinding",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateStart",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateEnd",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateClosure",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        },
+        {
+            "fieldName": "evidence",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        },
+        {
+            "fieldName": "methodology",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "linkDoc",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "descHow",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        },
+        {
+            "fieldName": "typeFinding",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "deptInvol",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "identificationCause",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        },
+        {
+            "fieldName": "correctiveAct",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        },
+        {
+            "fieldName": "actionDesc",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        }
+    ],
+    "changelogDate": "20200207041833",
+    "dto": "no",
+    "searchEngine": "elasticsearch",
+    "service": "no",
+    "entityTableName": "finding",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

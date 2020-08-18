@@ -1,0 +1,45 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.jacintoconvit.intranet",
+      "nativeLanguage": "es"
+    },
+    "jhipsterVersion": "6.5.1",
+    "applicationType": "monolith",
+    "baseName": "fjcintranet",
+    "packageName": "com.jacintoconvit.intranet",
+    "packageFolder": "com/jacintoconvit/intranet",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NTAzYzMzYzk5NDZlZTkwMjYwMzRlNWZiNTVhZWE4ODhlMTNmNWEwMjdlNjU1ODBiMzVlY2JjMTU0OWY5NzZlZTY1ZjIyOTI3MWM0NzM3YTYxYTRhNWI3NjVmYzdhOTk0OGNhNTY1ZmE3NDcyNjM0ZGY4YTI2NWQ2MjY0NjU4OWI=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "es",
+    "languages": [
+      "es",
+      "en"
+    ],
+    "blueprints": []
+  }
+}

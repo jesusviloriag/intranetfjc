@@ -1,0 +1,61 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "findClose",
+            "otherEntityName": "finding",
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "useJPADerivedIdentifier": false,
+            "otherEntityRelationshipName": "closureFinding"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "stateClosure",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "actionClosed",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "effectiveness",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "dept",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "improveComment",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        },
+        {
+            "fieldName": "effectivenessComment",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        }
+    ],
+    "changelogDate": "20200208044953",
+    "dto": "no",
+    "searchEngine": "elasticsearch",
+    "service": "no",
+    "entityTableName": "closures",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

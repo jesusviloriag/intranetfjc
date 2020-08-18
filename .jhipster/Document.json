@@ -1,0 +1,72 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "creator",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "document"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "codDoc",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nameDoc",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "storage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateCreation",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "departament",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "finalDisposition",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "origin",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "doc",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "changelogDate": "20200207034111",
+    "dto": "no",
+    "searchEngine": "elasticsearch",
+    "service": "no",
+    "entityTableName": "document",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

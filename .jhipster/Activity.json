@@ -1,0 +1,71 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "creator",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "activity"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nameActivity",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateStart",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateLimit",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        },
+        {
+            "fieldName": "deliverables",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        },
+        {
+            "fieldName": "dept",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "involvedActivity",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dateClosure",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20200206201130",
+    "dto": "no",
+    "searchEngine": "elasticsearch",
+    "service": "no",
+    "entityTableName": "activity",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

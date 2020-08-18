@@ -1,0 +1,54 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "author",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "docModification"
+        },
+        {
+            "relationshipName": "docMod",
+            "otherEntityName": "document",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "docModification"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateMod",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "commit",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "version",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "doc",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "changelogDate": "20200208034225",
+    "dto": "no",
+    "searchEngine": "elasticsearch",
+    "service": "no",
+    "entityTableName": "doc_modification",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

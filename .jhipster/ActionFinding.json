@@ -1,0 +1,75 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "actFinding",
+            "otherEntityName": "finding",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "actionFinding"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "descAction",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        },
+        {
+            "fieldName": "dateStartAction",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateCommit",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateRealCommit",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "descHow",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        },
+        {
+            "fieldName": "involved",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer",
+        },
+        {
+            "fieldName": "evidenceDoc",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "observation",
+            "fieldType": "String",
+            "fieldValidateRules": [
+              "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2048"
+        }
+    ],
+    "changelogDate": "20200208041917",
+    "dto": "no",
+    "searchEngine": "elasticsearch",
+    "service": "no",
+    "entityTableName": "action_finding",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}
